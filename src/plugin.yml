@@ -1,0 +1,154 @@
+name: MythologicalOrigins
+version: 1.0
+author: Magister
+main: com.magister.mythologicalorigins.MythologicalOrigins
+api-version: 1.17
+commands:
+  heal:
+    description: Heals player to Max Health
+    usage: /<command>
+    aliases: [healing, healme, healmax]
+  feed:
+    description: Feeds player
+    usage: /<command>
+    aliases: [feedme, fillhunger, restorehunger]
+
+  lvl10:
+    description: Sets player level to 10
+    usage: /<command>
+  lvl20:
+    description: Sets player level to 20
+    usage: /<command>
+  lvl30:
+    description: Sets player level to 30
+    usage: /<command>
+  lvl40:
+    description: Sets player level to 40
+    usage: /<command>
+  lvl50:
+    description: Sets player level to 50
+    usage: /<command>
+  lvl0:
+    description: Sets player level to 0
+    usage: /<command>
+  getlvl:
+    description: Tells the player their level
+    usage: /<command>
+
+  homegreece:
+    description: Sets players home to Greece
+    usage: /<command> <player>
+  homenorway:
+    description: Sets players home to Norway
+    usage: /<command> <player>
+  roll:
+    description: Rolls a players parent god
+    usage: /<command> <player>
+  addroll:
+    description: Add a roll for a player
+    usage: /<command>
+  parent:
+    description: Tells player their Godly parentt
+    usage: /<command> <player>
+
+  zeus:
+    description: Sets players parent to Zeus
+    usage: /<command> <player>
+  poseidon:
+    description: Sets players parent to Poseidon
+    usage: /<command> <player>
+  hades:
+    description: Sets players parent to Hades
+    usage: /<command> <player>
+  aphrodite:
+    description: Sets players parent to Aphrodite
+    usage: /<command> <player>
+  apollo:
+    description: Sets players parent to Apollo
+    usage: /<command> <player>
+  ares:
+    description: Sets players parent to Ares
+    usage: /<command> <player>
+  artemis:
+    description: Sets players parent to Artemis
+    usage: /<command> <player>
+  athena:
+    description: Sets players parent to Athena
+    usage: /<command> <player>
+  demeter:
+    description: Sets players parent to Demeter
+    usage: /<command> <player>
+  dionysus:
+    description: Sets players parent to Dionysus
+    usage: /<command> <player>
+  hephaestus:
+    description: Sets players parent to Hephaestus
+    usage: /<command> <player>
+  hermes:
+    description: Sets players parent to Hermes
+    usage: /<command> <player>
+  chronos:
+    description: Sets players parent to Chronos
+    usage: /<command> <player>
+
+  odin:
+    description: Sets players parent to Odin
+    usage: /<command> <player>
+  thor:
+    description: Sets players parent to Thor
+    usage: /<command> <player>
+  loki:
+    description: Sets players parent to Loki
+    usage: /<command> <player>
+  baldur:
+    description: Sets players parent to Balur
+    usage: /<command> <player>
+  bragi:
+    description: Sets players parent to Bragi
+    usage: /<command> <player>
+  freya:
+    description: Sets players parent to Freya
+    usage: /<command> <player>
+  freyr:
+    description: Sets players parent to Freyr
+    usage: /<command> <player>
+  frigg:
+    description: Sets players parent to Frigg
+    usage: /<command> <player>
+  heimdall:
+    description: Sets players parent to Heimdall
+    usage: /<command> <player>
+  hel:
+    description: Sets players parent to Hel
+    usage: /<command> <player>
+  njord:
+    description: Sets players parent to Njord
+    usage: /<command> <player>
+  tyr:
+    description: Sets players parent to Tyr
+    usage: /<command> <player>
+  ymir:
+    description: Sets players parent to Ymir
+    usage: /<command> <player>
+
+  giveWine:
+    description: Gives Player Wine Item
+    usage: /<command>
+  giveHelmOfDarkness:
+    description: Gives Player Helm Of Darkness Item
+    usage: /<command>
+  giveLightningBolt:
+    description: Gives Player Zeus's Lightning Bolt Item
+    usage: /<command>
+
+  giveMead:
+    description: Gives Player Mead Item
+    usage: /<command>
+  giveMjolnir:
+    description: Gives Player Mjolnir
+    usage: /<command>
+
+  bifrost:
+    description: Heimdall uses the Bifrost
+    usage: /<command>
+    aliases: [b]

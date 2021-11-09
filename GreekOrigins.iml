@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="minecraft" name="Minecraft">
+      <configuration>
+        <autoDetectTypes>
+          <platformType>SPIGOT</platformType>
+          <platformType>MCP</platformType>
+        </autoDetectTypes>
+      </configuration>
+    </facet>
+  </component>
+  <component name="McpModuleSettings">
+    <option name="srgType" value="SRG" />
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../PluginDev/Dependency" />
+          <root url="file://$MODULE_DIR$/../PluginDev/Dependency" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../PluginDev/Dependency" />
+          <root url="file://$MODULE_DIR$/../PluginDev/Dependency/Bukkit/src/main/java" />
+          <root url="file://$MODULE_DIR$/../PluginDev/Dependency/Bukkit/src/test/java" />
+          <root url="file://$MODULE_DIR$/../PluginDev/Dependency/CraftBukkit/src/main/java" />
+          <root url="file://$MODULE_DIR$/../PluginDev/Dependency/CraftBukkit/src/test/java" />
+          <root url="file://$MODULE_DIR$/../PluginDev/Dependency/Spigot/Spigot-API/src/main/java" />
+          <root url="file://$MODULE_DIR$/../PluginDev/Dependency/Spigot/Spigot-API/src/test/java" />
+          <root url="file://$MODULE_DIR$/../PluginDev/Dependency/Spigot/Spigot-Server/src/main/java" />
+          <root url="file://$MODULE_DIR$/../PluginDev/Dependency/Spigot/Spigot-Server/src/test/java" />
+          <root url="file://$MODULE_DIR$/../PluginDev/Dependency/work/decompile-00fabbe5" />
+        </SOURCES>
+        <jarDirectory url="file://$MODULE_DIR$/../PluginDev/Dependency" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/../PluginDev/Dependency" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
+  </component>
+</module>
