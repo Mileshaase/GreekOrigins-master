@@ -14,7 +14,6 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import static com.magister.greekorigins.events.generalevents.PlayerLevelEvents.PlayerLevel;
 import static com.magister.greekorigins.events.generalevents.RollEvents.GodlyParent;
 
 public class ChildOfHermes implements Listener {
@@ -28,7 +27,7 @@ public class ChildOfHermes implements Listener {
     @EventHandler
     public static void negateFallDamage(EntityDamageEvent event) {
         Player player = (Player) event.getEntity();
-        if (GodlyParent.get(player.getName()).equals("Hermes")) {
+        if (GodlyParent.get(player.getUniqueId()).equals("Hermes")) {
             if (event.getCause().equals(EntityDamageEvent.DamageCause.FALL) || event.getCause().equals(EntityDamageEvent.DamageCause.FLY_INTO_WALL)) {
                 event.setCancelled(true);
             }
@@ -38,7 +37,7 @@ public class ChildOfHermes implements Listener {
     @EventHandler
     public static void sped(PlayerMoveEvent event){
         Player player = event.getPlayer();
-        if (GodlyParent.get(player.getName()).equals("Hermes")) {
+        if (GodlyParent.get(player.getUniqueId()).equals("Hermes")) {
             player.addPotionEffect(speed);
             player.addPotionEffect(jump);
             player.addPotionEffect(haste);
@@ -48,7 +47,7 @@ public class ChildOfHermes implements Listener {
     @EventHandler
     public static void playerRightClick(PlayerInteractEvent event) {
         Player player = event.getPlayer();
-        if (GodlyParent.get(player.getName()).equals("Hermes")) {
+        if (GodlyParent.get(player.getUniqueId()).equals("Hermes")) {
             if (event.getItem() == null) {
                 if (!(player.hasPotionEffect(cooldown.getType()))) {
                     if (player.isSneaking()) {
@@ -76,7 +75,7 @@ public class ChildOfHermes implements Listener {
         loc1.setY(loc1.getY() - 2);
         loc2.setY(loc2.getY() - 1);
 
-        if(GodlyParent.get(player.getName()).equals("Hermes")) {
+        if(GodlyParent.get(player.getUniqueId()).equals("Hermes")) {
             if (player.isSneaking() && loc1.getBlock().getRelative(BlockFace.DOWN).getType() == Material.AIR && loc2.getBlock().getRelative(BlockFace.DOWN).getType() == Material.AIR && loc3.getBlock().getRelative(BlockFace.DOWN).getType() == Material.AIR) {
                 player.setGliding(true);
             }
@@ -86,7 +85,7 @@ public class ChildOfHermes implements Listener {
     @EventHandler
     public static void EntityToggleGlideEvent(EntityToggleGlideEvent event){
         Player player = (Player) event.getEntity();
-        if(GodlyParent.get(player.getName()).equals("Hermes")) {
+        if(GodlyParent.get(player.getUniqueId()).equals("Hermes")) {
             if(player.getLocation().getBlock().getRelative(BlockFace.DOWN).getType() == Material.AIR) {
                 event.setCancelled(true);
             }

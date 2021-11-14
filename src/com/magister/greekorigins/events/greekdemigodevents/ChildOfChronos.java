@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Random;
 
 import static com.magister.greekorigins.events.generalevents.PlayerLevelEvents.PlayerLevel;
+import static com.magister.greekorigins.events.generalevents.PlayerParties.Party;
 import static com.magister.greekorigins.events.generalevents.RollEvents.GodlyParent;
 
 public class ChildOfChronos implements Listener {
@@ -56,13 +57,13 @@ public class ChildOfChronos implements Listener {
                 if (GodlyParent.get(player.getUniqueId()).equals("Chronos")) {
                     if (event.getItem() == null) {
                         if (!(player.hasPotionEffect(cooldown.getType()))) {
+                            Location loc;
+                            Location start = player.getLocation();
                             if (PlayerLevel.get(player.getUniqueId()) >= 50) {
                                 player.addPotionEffect(slowness);
                                 player.addPotionEffect(stopjump);
                                 player.addPotionEffect(slowdig);
                                 List<Entity> players = player.getNearbyEntities(40, 40, 40);
-                                Location loc;
-                                Location start = player.getLocation();
                                 for (Entity i : players) {
                                     int p = players.indexOf(i);
                                     loc = players.get(p).getLocation();
@@ -80,8 +81,6 @@ public class ChildOfChronos implements Listener {
                                 player.addPotionEffect(stopjump);
                                 player.addPotionEffect(slowdig);
                                 List<Entity> players = player.getNearbyEntities(30, 30, 30);
-                                Location loc;
-                                Location start = player.getLocation();
                                 for (Entity i : players) {
                                     loc = i.getLocation();
                                     player.teleport(loc);
@@ -98,8 +97,6 @@ public class ChildOfChronos implements Listener {
                                 player.addPotionEffect(stopjump);
                                 player.addPotionEffect(slowdig);
                                 List<Entity> players = player.getNearbyEntities(20, 20, 20);
-                                Location loc;
-                                Location start = player.getLocation();
                                 for (Entity i : players) {
                                     loc = i.getLocation();
                                     player.teleport(loc);
@@ -115,7 +112,6 @@ public class ChildOfChronos implements Listener {
                                 player.addPotionEffect(slowness);
                                 player.addPotionEffect(stopjump);
                                 player.addPotionEffect(slowdig);
-                                Location loc = player.getLocation();
                                 Entity opponent = getNearestEntityInSight(player, 20);
                                 assert opponent != null;
                                 player.teleport(opponent.getLocation());
@@ -129,7 +125,6 @@ public class ChildOfChronos implements Listener {
                                 player.addPotionEffect(slowness);
                                 player.addPotionEffect(stopjump);
                                 player.addPotionEffect(slowdig);
-                                Location loc = player.getLocation();
                                 Entity opponent = getNearestEntityInSight(player, 10);
                                 assert opponent != null;
                                 player.teleport(opponent.getLocation());
@@ -157,7 +152,9 @@ public class ChildOfChronos implements Listener {
                     if (Math.abs(entity.getLocation().getY() - location.getY()) < 1.5) {
                         if (Math.abs(entity.getLocation().getZ() - location.getZ()) < 1.3) {
                             if(entity.getType() != EntityType.SHULKER_BULLET && entity.getType() != EntityType.DROPPED_ITEM && entity.getType() != EntityType.ITEM_FRAME && entity.getType() != EntityType.ARROW && entity.getType() != EntityType.WITHER_SKULL && entity.getType() != EntityType.SNOWBALL && entity.getType() != EntityType.EGG && entity.getType() != EntityType.BOAT) {
-                                return entity;
+                                if(Party.get(entity.getUniqueId()).equals(Party.get(player.getUniqueId()))){
+                                    return entity;
+                                }
                             }
                         }
                     }

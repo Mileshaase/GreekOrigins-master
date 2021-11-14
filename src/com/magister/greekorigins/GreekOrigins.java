@@ -52,9 +52,10 @@ public class GreekOrigins extends JavaPlugin {
         getCommand("lvl0").setExecutor(commands);
         getCommand("getlvl").setExecutor(commands);
 
-        getCommand("Roll").setExecutor(commands);
-        getCommand("AddRoll").setExecutor(commands);
-        getCommand("Parent").setExecutor(commands);
+        getCommand("roll").setExecutor(commands);
+        getCommand("addroll").setExecutor(commands);
+        getCommand("getrolls").setExecutor(commands);
+        getCommand("parent").setExecutor(commands);
 
         getCommand("Zeus").setExecutor(greekGodCommands);
         getCommand("Poseidon").setExecutor(greekGodCommands);

@@ -17,6 +17,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.util.*;
 
 import static com.magister.greekorigins.events.generalevents.PlayerLevelEvents.PlayerLevel;
+import static com.magister.greekorigins.events.generalevents.PlayerParties.Party;
 import static com.magister.greekorigins.events.generalevents.RollEvents.GodlyParent;
 
 public class ChildOfHades implements Listener {
@@ -29,7 +30,7 @@ public class ChildOfHades implements Listener {
         Player player  = (Player) event.getTarget();
         Entity entity = event.getEntity();
         assert player != null;
-        if (GodlyParent.get(player.getName()).equals("Hades")) {
+        if (GodlyParent.get(player.getUniqueId()).equals("Hades")) {
             event.setCancelled(true);
         }
         if(Objects.equals(entity.getCustomName(), "Zambie")){
@@ -44,11 +45,13 @@ public class ChildOfHades implements Listener {
         Player player = (Player) event.getDamager();
         Entity attacked = event.getEntity();
         Random rand = new Random();
-        if(GodlyParent.get(player.getName()).equals("Hades")){
+        if(GodlyParent.get(player.getUniqueId()).equals("Hades")){
             int  n = rand.nextInt(100) + 1;
-            if(PlayerLevel.get(player.getName()) > 0) {
+            if(PlayerLevel.get(player.getUniqueId()) > 0) {
                 if (n <= 10){
-                    ((LivingEntity) attacked).addPotionEffect(wither);
+                    if (!Party.get(attacked.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                        ((LivingEntity) attacked).addPotionEffect(wither);
+                    }
                 }
             }
         }
@@ -59,7 +62,7 @@ public class ChildOfHades implements Listener {
         Player player = event.getPlayer();
         if(player.isSneaking()){
             if (event.getAction() == Action.LEFT_CLICK_BLOCK) {
-                if (GodlyParent.get(player.getName()).equals("Hades")) {
+                if (GodlyParent.get(player.getUniqueId()).equals("Hades")) {
                     if (event.getItem() == null) {
                         if (!(player.hasPotionEffect(cooldown.getType()))) {
                             ArrayList<Entity> zombies = new ArrayList<>();
@@ -68,13 +71,13 @@ public class ChildOfHades implements Listener {
                             Location loc2 = player.getLocation();
                             Location loc3 = player.getLocation();
                             Location loc4 = player.getLocation();
-                            if (PlayerLevel.get(player.getName()) >= 50) {
+                            if (PlayerLevel.get(player.getUniqueId()) >= 50) {
                                 troops = 4;
-                            } else if (PlayerLevel.get(player.getName()) >= 40) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
                                 troops = 3;
-                            } else if (PlayerLevel.get(player.getName()) >= 30) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
                                 troops = 2;
-                            } else if (PlayerLevel.get(player.getName()) >= 20) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 20) {
                                 troops = 1;
                             }
                             for (int i = 0; i < troops; i++) {
@@ -130,7 +133,9 @@ public class ChildOfHades implements Listener {
                     if (Math.abs(entity.getLocation().getY() - location.getY()) < 1.5) {
                         if (Math.abs(entity.getLocation().getZ() - location.getZ()) < 1.3) {
                             if(entity.getType() != EntityType.SHULKER_BULLET && entity.getType() != EntityType.DROPPED_ITEM && entity.getType() != EntityType.ITEM_FRAME && entity.getType() != EntityType.ARROW && entity.getType() != EntityType.WITHER_SKULL && entity.getType() != EntityType.SNOWBALL && entity.getType() != EntityType.EGG && entity.getType() != EntityType.BOAT && !Objects.equals(entity.getCustomName(), "Zambie")) {
-                                return entity;
+                                if(Party.get(entity.getUniqueId()).equals(Party.get(player.getUniqueId()))){
+                                    return entity;
+                                }
                             }
                         }
                     }

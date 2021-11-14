@@ -1,5 +1,6 @@
 package com.magister.greekorigins.events.generalevents;
 
+import com.magister.greekorigins.files.CustomConfig;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -14,7 +15,7 @@ public class RollEvents implements Listener {
 
     public static void RandomGreekRoll(Player player){
         Random rand = new Random();
-        int chosenGod = chosenGod = rand.nextInt(731);
+        int chosenGod = rand.nextInt(731);
 
         if(chosenGod == 1){
             GodlyParent.put(player.getUniqueId(), "Chronos");
@@ -55,6 +56,9 @@ public class RollEvents implements Listener {
         if(chosenGod >= 661){
             GodlyParent.put(player.getUniqueId(), "Hermes");
         }
-        player.sendTitle(ChatColor.DARK_PURPLE + "You're Godly Parent is ", ChatColor.GOLD + GodlyParent.get(player.getUniqueId()), 1, 20, 1);
+        player.sendTitle(ChatColor.DARK_PURPLE + "You're Godly Parent is ", ChatColor.GOLD + GodlyParent.get(player.getUniqueId()), 1, 50, 1);
+        NumberOfRolls.put(player.getUniqueId(), NumberOfRolls.get(player.getUniqueId()) - 1);
+        CustomConfig.get().addDefault(String.valueOf(player.getUniqueId() + " parent:"), GodlyParent.get(player.getUniqueId()));
+        CustomConfig.get().addDefault(String.valueOf(player.getUniqueId() + " rolls:"), NumberOfRolls.get(player.getUniqueId()));
     }
 }

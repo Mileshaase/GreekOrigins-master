@@ -28,7 +28,7 @@ public class ChildOfAres implements Listener {
     public static void onPlayerDealDamage(EntityDamageByEntityEvent event){
         Player player = (Player) event.getDamager();
         Random rand = new Random();
-        if(GodlyParent.get(player.getName()).equals("Ares")){
+        if(GodlyParent.get(player.getUniqueId()).equals("Ares")){
             int  n = rand.nextInt(100) + 1;
                 if (n <= 25) {
                     double damageBoost = event.getDamage() / 5;
@@ -45,7 +45,7 @@ public class ChildOfAres implements Listener {
     public static void onPlayerKill(PlayerDeathEvent event){
         Player player = event.getEntity().getKiller();
         assert player != null;
-        if(GodlyParent.get(player.getName()).equals("Ares")){
+        if(GodlyParent.get(player.getUniqueId()).equals("Ares")){
             PotionEffect absorption = new PotionEffect(PotionEffectType.ABSORPTION, 200, 2, true, false, true);
             PotionEffect regen = new PotionEffect(PotionEffectType.REGENERATION, 200, 1, true, false, true);
             player.addPotionEffect(absorption);
@@ -58,24 +58,24 @@ public class ChildOfAres implements Listener {
         Player player = event.getPlayer();
         if(player.isSneaking()) {
             if (event.getAction() == Action.LEFT_CLICK_AIR) {
-                if (GodlyParent.get(player.getName()).equals("Ares")) {
+                if (GodlyParent.get(player.getUniqueId()).equals("Ares")) {
                     if (event.getItem() == null) {
                         if (!(player.hasPotionEffect(cooldown.getType()))) {
                             int duration = 0;
                             int strength = 0;
-                            if (PlayerLevel.get(player.getName()) >= 50) {
+                            if (PlayerLevel.get(player.getUniqueId()) >= 50) {
                                 duration = 350;
                                 strength = 5;
-                            } else if (PlayerLevel.get(player.getName()) >= 40) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
                                 duration = 250;
                                 strength = 4;
-                            } else if (PlayerLevel.get(player.getName()) >= 30) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
                                 duration = 150;
                                 strength = 3;
-                            } else if (PlayerLevel.get(player.getName()) >= 20) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 20) {
                                 duration = 100;
                                 strength = 2;
-                            } else if (PlayerLevel.get(player.getName()) >= 10) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
                                 duration = 50;
                                 strength = 1;
                             }

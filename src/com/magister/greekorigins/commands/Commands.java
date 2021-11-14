@@ -1,7 +1,6 @@
 package com.magister.greekorigins.commands;
 
 import com.magister.greekorigins.inventories.RollForGod;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.command.Command;
@@ -53,6 +52,9 @@ public class Commands implements CommandExecutor {
         }
         else if (cmd.getName().equalsIgnoreCase("addroll")) {
             NumberOfRolls.put(player.getUniqueId(), NumberOfRolls.get(player.getUniqueId()) + 1);
+        }
+        else if (cmd.getName().equalsIgnoreCase("getrolls")) {
+            player.sendMessage("You have " + NumberOfRolls.get(player.getUniqueId()));
         }
         else if (cmd.getName().equalsIgnoreCase("parent")) {
             String parent = GodlyParent.get(player.getUniqueId());

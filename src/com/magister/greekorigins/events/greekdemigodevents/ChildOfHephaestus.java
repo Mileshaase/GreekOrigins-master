@@ -16,10 +16,10 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
-import java.util.List;
 import java.util.Random;
 
 import static com.magister.greekorigins.events.generalevents.PlayerLevelEvents.PlayerLevel;
+import static com.magister.greekorigins.events.generalevents.PlayerParties.Party;
 import static com.magister.greekorigins.events.generalevents.RollEvents.GodlyParent;
 
 public class ChildOfHephaestus implements Listener {
@@ -69,7 +69,7 @@ public class ChildOfHephaestus implements Listener {
     }
 
     @EventHandler
-    public static void playerNoDrunk(PlayerMoveEvent event){
+    public static void playerNoFireDamage(PlayerMoveEvent event){
         Player player = event.getPlayer();
         if(GodlyParent.get(player.getUniqueId()).equals("Hephaestus")) {
             player.addPotionEffect(fireResist);
@@ -85,8 +85,9 @@ public class ChildOfHephaestus implements Listener {
             int  n = rand.nextInt(100) + 1;
             if(PlayerLevel.get(player.getUniqueId()) > 0) {
                 if (n <= 40){
-                    attacked.setFireTicks(100);
-                    PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.2);
+                    if (!Party.get(attacked.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                        attacked.setFireTicks(100);
+                    }
                 }
             }
         }

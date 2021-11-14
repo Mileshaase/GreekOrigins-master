@@ -7,16 +7,17 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 import java.util.HashMap;
 import java.util.Objects;
+import java.util.UUID;
 
 public class PlayerParties implements Listener {
-    public static HashMap<String, String> Party = new HashMap<>();
-    public static HashMap<String, String> PartyLeaders = new HashMap<>();
+    public static HashMap<UUID, String> Party = new HashMap<>();
+    public static HashMap<UUID, String> PartyLeaders = new HashMap<>();
 
     @EventHandler
     public static void friendlyFire (EntityDamageByEntityEvent event){
         Player player = (Player) event.getDamager();
         Player attacked = (Player) event.getEntity();
-        if(Objects.equals(Party.get(player.getName()), Party.get(attacked.getName()))) {
+        if(Objects.equals(Party.get(player.getUniqueId()), Party.get(attacked.getUniqueId()))) {
             event.setCancelled(true);
         }
     }

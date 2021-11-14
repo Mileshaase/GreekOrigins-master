@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Random;
 
 import static com.magister.greekorigins.events.generalevents.PlayerLevelEvents.PlayerLevel;
+import static com.magister.greekorigins.events.generalevents.PlayerParties.Party;
 import static com.magister.greekorigins.events.generalevents.RollEvents.GodlyParent;
 
 public class ChildOfPoseidon implements Listener {
@@ -39,7 +40,7 @@ public class ChildOfPoseidon implements Listener {
         Player player  = (Player) event.getTarget();
         Entity entity = event.getEntity();
         assert player != null;
-        if (GodlyParent.get(player.getName()).equals("Poseidon")) {
+        if (GodlyParent.get(player.getUniqueId()).equals("Poseidon")) {
             if(entity.getType() == EntityType.DROWNED || entity.getType() == EntityType.GUARDIAN || entity.getType() == EntityType.ELDER_GUARDIAN){
                 event.setCancelled(true);
             }
@@ -59,20 +60,20 @@ public class ChildOfPoseidon implements Listener {
     @EventHandler
     public static void playerInWater(PlayerMoveEvent event){
         Player player = event.getPlayer();
-        if(GodlyParent.get(player.getName()).equals("Poseidon")) {
+        if(GodlyParent.get(player.getUniqueId()).equals("Poseidon")) {
             if (player.isInWater()) {
-                if (PlayerLevel.get(player.getName()) >= 40) {
+                if (PlayerLevel.get(player.getUniqueId()) >= 40) {
                     player.addPotionEffect(waterBreathing);
                     player.addPotionEffect(dolphinsGrace);
                     player.addPotionEffect(conduitPower);
                     player.addPotionEffect(strength);
                     player.addPotionEffect(regeneration);
-                } else if (PlayerLevel.get(player.getName()) >= 20) {
+                } else if (PlayerLevel.get(player.getUniqueId()) >= 20) {
                     player.addPotionEffect(waterBreathing);
                     player.addPotionEffect(dolphinsGrace);
                     player.addPotionEffect(conduitPower);
                     player.addPotionEffect(regeneration);
-                } else if (PlayerLevel.get(player.getName()) >= 0) {
+                } else if (PlayerLevel.get(player.getUniqueId()) >= 0) {
                     player.addPotionEffect(waterBreathing);
                     player.addPotionEffect(dolphinsGrace);
                     player.addPotionEffect(conduitPower);
@@ -96,13 +97,15 @@ public class ChildOfPoseidon implements Listener {
         Random rand = new Random();
         Location loc = attacked.getLocation();
         loc.setY(loc.getY() - 0.5);
-        if(GodlyParent.get(player.getName()).equals("Poseidon")){
+        if(GodlyParent.get(player.getUniqueId()).equals("Poseidon")){
             int  n = rand.nextInt(100) + 1;
-            if(PlayerLevel.get(player.getName()) >= 0) {
+            if(PlayerLevel.get(player.getUniqueId()) >= 0) {
                 if (n <= 10){
-                    attacked.getWorld().createExplosion(loc, 2, false, false);
-                    attacked.getWorld().spawnParticle(Particle.FALLING_DUST, attacked.getLocation(), 100);
-                    ((LivingEntity) attacked).addPotionEffect(levitate);
+                    if (!Party.get(attacked.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                        attacked.getWorld().createExplosion(loc, 2, false, false);
+                        attacked.getWorld().spawnParticle(Particle.FALLING_DUST, attacked.getLocation(), 100);
+                        ((LivingEntity) attacked).addPotionEffect(levitate);
+                    }
                 }
             }
         }
@@ -111,7 +114,7 @@ public class ChildOfPoseidon implements Listener {
     @EventHandler
     public static void playerShiftRightClick(PlayerInteractEvent event) {
         Player player = event.getPlayer();
-        if (GodlyParent.get(player.getName()).equals("Poseidon")) {
+        if (GodlyParent.get(player.getUniqueId()).equals("Poseidon")) {
             if (player.isSneaking()) {
                 if (event.getAction() == Action.LEFT_CLICK_AIR) {
                     if (event.getItem() == null) {
@@ -124,7 +127,7 @@ public class ChildOfPoseidon implements Listener {
                         Location loc3 = player.getLocation();
                         Location loc4 = player.getLocation();
                         if (!(player.hasPotionEffect(cooldown.getType()))) {
-                            if (PlayerLevel.get(player.getName()) >= 50) {
+                            if (PlayerLevel.get(player.getUniqueId()) >= 50) {
                                 troops = 5;
                                 ArrayList<Block> blocks = getNearbyBlocks(player.getLocation(), 25, 25);
                                 Entity guardian = player.getWorld().spawnEntity(loc, EntityType.ELDER_GUARDIAN);
@@ -171,7 +174,7 @@ public class ChildOfPoseidon implements Listener {
                                     }
                                 }
                                 player.addPotionEffect(cooldown);
-                            } else if (PlayerLevel.get(player.getName()) >= 40) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
                                 troops = 4;
                                 ArrayList<Block> blocks = getNearbyBlocks(player.getLocation(), 20, 20);
                                 Entity guardian = player.getWorld().spawnEntity(loc, EntityType.GUARDIAN);
@@ -218,7 +221,7 @@ public class ChildOfPoseidon implements Listener {
                                 }
 
                                 player.addPotionEffect(cooldown);
-                            } else if (PlayerLevel.get(player.getName()) >= 30) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
                                 troops = 3;
                                 ArrayList<Block> blocks = getNearbyBlocks(player.getLocation(), 15, 15);
                                 Entity guardian = player.getWorld().spawnEntity(loc, EntityType.GUARDIAN);
@@ -265,10 +268,12 @@ public class ChildOfPoseidon implements Listener {
                                 }
 
                                 player.addPotionEffect(cooldown);
-                            } else if (PlayerLevel.get(player.getName()) >= 20) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 20) {
                                 ArrayList<Block> blocks = new ArrayList<>();
                                 for(Entity e : player.getNearbyEntities(10, 10, 10)){
-                                    blocks.addAll(getNearbyBlocks(e.getLocation(), 1, 2));
+                                    if (!Party.get(e.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                                        blocks.addAll(getNearbyBlocks(e.getLocation(), 1, 2));
+                                    }
                                 }
                                 for(Block b : blocks){
                                     if (b.getType() == Material.AIR || b.getType() == Material.DEAD_BUSH  || b.getType() == Material.VINE  || b.getType() == Material.FERN || b.getType() == Material.LARGE_FERN  || b.getType() == Material.GRASS || b.getType() == Material.TALL_GRASS || b.getType() == Material.CORNFLOWER || b.getType() == Material.ALLIUM || b.getType() == Material.AZURE_BLUET || b.getType() == Material.BLUE_ORCHID || b.getType() == Material.BROWN_MUSHROOM || b.getType() == Material.CACTUS|| b.getType() == Material.DANDELION || b.getType() == Material.POPPY || b.getType() == Material.AZURE_BLUET || b.getType() == Material.ORANGE_TULIP || b.getType() == Material.PINK_TULIP || b.getType() == Material.RED_TULIP || b.getType() == Material.WHITE_TULIP || b.getType() == Material.OXEYE_DAISY|| b.getType() == Material.LILY_OF_THE_VALLEY || b.getType() == Material.LILAC || b.getType() == Material.ROSE_BUSH || b.getType() == Material.PEONY) {
@@ -283,10 +288,12 @@ public class ChildOfPoseidon implements Listener {
                                     }
                                 }
                                 player.addPotionEffect(cooldown);
-                            } else if (PlayerLevel.get(player.getName()) >= 10) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
                                 ArrayList<Block> blocks = new ArrayList<>();
                                 for(Entity e : player.getNearbyEntities(10, 10, 10)){
-                                    blocks.addAll(getNearbyBlocks(e.getLocation(), 1, 2));
+                                    if (!Party.get(e.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                                        blocks.addAll(getNearbyBlocks(e.getLocation(), 1, 2));
+                                    }
                                 }
                                 for(Block b : blocks){
                                     if (b.getType() == Material.AIR || b.getType() == Material.DEAD_BUSH  || b.getType() == Material.VINE  || b.getType() == Material.FERN || b.getType() == Material.LARGE_FERN  || b.getType() == Material.GRASS || b.getType() == Material.TALL_GRASS || b.getType() == Material.CORNFLOWER || b.getType() == Material.ALLIUM || b.getType() == Material.AZURE_BLUET || b.getType() == Material.BLUE_ORCHID || b.getType() == Material.BROWN_MUSHROOM || b.getType() == Material.CACTUS|| b.getType() == Material.DANDELION || b.getType() == Material.POPPY || b.getType() == Material.AZURE_BLUET || b.getType() == Material.ORANGE_TULIP || b.getType() == Material.PINK_TULIP || b.getType() == Material.RED_TULIP || b.getType() == Material.WHITE_TULIP || b.getType() == Material.OXEYE_DAISY|| b.getType() == Material.LILY_OF_THE_VALLEY || b.getType() == Material.LILAC || b.getType() == Material.ROSE_BUSH || b.getType() == Material.PEONY) {
@@ -322,7 +329,9 @@ public class ChildOfPoseidon implements Listener {
                     if (Math.abs(entity.getLocation().getY() - location.getY()) < 1.5) {
                         if (Math.abs(entity.getLocation().getZ() - location.getZ()) < 1.3) {
                             if(entity.getType() != EntityType.SHULKER_BULLET && entity.getType() != EntityType.DROPPED_ITEM && entity.getType() != EntityType.ITEM_FRAME && entity.getType() != EntityType.ARROW && entity.getType() != EntityType.WITHER_SKULL && entity.getType() != EntityType.SNOWBALL && entity.getType() != EntityType.EGG && entity.getType() != EntityType.BOAT) {
-                                return entity;
+                                if(!Party.get(entity.getUniqueId()).equals(Party.get(player.getUniqueId()))){
+                                    return entity;
+                                }
                             }
                         }
                     }

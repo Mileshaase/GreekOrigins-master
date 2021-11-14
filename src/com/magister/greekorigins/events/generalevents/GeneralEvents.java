@@ -2,6 +2,7 @@ package com.magister.greekorigins.events.generalevents;
 
 import com.magister.greekorigins.files.CustomConfig;
 import com.magister.greekorigins.items.GeneralItemsManager;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -15,11 +16,9 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.Objects;
-import java.util.Random;
 
 import static com.magister.greekorigins.events.generalevents.PlayerLevelEvents.PlayerLevel;
-import static com.magister.greekorigins.events.generalevents.RollEvents.GodlyParent;
-import static com.magister.greekorigins.events.generalevents.RollEvents.NumberOfRolls;
+import static com.magister.greekorigins.events.generalevents.RollEvents.*;
 
 public class GeneralEvents implements Listener {
 
@@ -41,6 +40,7 @@ public class GeneralEvents implements Listener {
     public void onJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
         if(!player.hasPlayedBefore()){
+            PlayerLevel.put(player.getUniqueId(), 0.0);
             NumberOfRolls.put(player.getUniqueId(), 3);
         }
     }
@@ -48,8 +48,14 @@ public class GeneralEvents implements Listener {
     @EventHandler
     public void logWhenJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
-        CustomConfig.get().addDefault(String.valueOf(player.getUniqueId() + " level:"), PlayerLevel.get(player.getUniqueId()));
-        CustomConfig.get().addDefault(String.valueOf(player.getUniqueId() + " parent:"), GodlyParent.get(player.getUniqueId()));
+
+        PlayerLevel.put(player.getUniqueId(), CustomConfig.get().getDouble(player.getUniqueId() + " level:"));
+        GodlyParent.put(player.getUniqueId(), (String) CustomConfig.get().get(player.getUniqueId() + " parent:"));
+        NumberOfRolls.put(player.getUniqueId(), (int) CustomConfig.get().getDouble(player.getUniqueId() + " rolls:"));
+//
+//        CustomConfig.get().addDefault(String.valueOf(player.getUniqueId() + " level:"), PlayerLevel.get(player.getUniqueId()));
+//        CustomConfig.get().addDefault(String.valueOf(player.getUniqueId() + " parent:"), GodlyParent.get(player.getUniqueId()));
+//        CustomConfig.get().addDefault(String.valueOf(player.getUniqueId() + " rolls:"), NumberOfRolls.get(player.getUniqueId()));
         CustomConfig.get().options().copyDefaults(true);
         CustomConfig.save();
     }
@@ -59,6 +65,7 @@ public class GeneralEvents implements Listener {
         Player player = event.getPlayer();
         CustomConfig.get().addDefault(String.valueOf(player.getUniqueId() + " level:"), PlayerLevel.get(player.getUniqueId()));
         CustomConfig.get().addDefault(String.valueOf(player.getUniqueId() + " parent:"), GodlyParent.get(player.getUniqueId()));
+        CustomConfig.get().addDefault(String.valueOf(player.getUniqueId() + " rolls:"), NumberOfRolls.get(player.getUniqueId()));
         CustomConfig.get().options().copyDefaults(true);
         CustomConfig.save();
     }
@@ -77,6 +84,7 @@ public class GeneralEvents implements Listener {
         Player player = event.getPlayer();
         ItemStack consumable = event.getItem();
         if(Objects.equals(consumable.getItemMeta(), GeneralItemsManager.Ambrosia.getItemMeta())){
+            player.sendTitle("Your mythology has been reset", ChatColor.GOLD + "Good Luck!", 1, 50, 1);
             PlayerLevel.put(player.getUniqueId(), 0.0);
             NumberOfRolls.put(player.getUniqueId(), NumberOfRolls.get(player.getUniqueId()) + 3);
         }

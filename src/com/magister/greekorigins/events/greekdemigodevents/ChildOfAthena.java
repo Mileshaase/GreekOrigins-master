@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Random;
 
 import static com.magister.greekorigins.events.generalevents.PlayerLevelEvents.PlayerLevel;
+import static com.magister.greekorigins.events.generalevents.PlayerParties.Party;
 import static com.magister.greekorigins.events.generalevents.RollEvents.GodlyParent;
 
 public class ChildOfAthena implements Listener {
@@ -98,45 +99,51 @@ public class ChildOfAthena implements Listener {
                             if (PlayerLevel.get(player.getUniqueId()) >= 50) {
                                 List<Entity> players = player.getNearbyEntities(20, 10, 20);
                                 for (Entity i : players) {
-                                    ItemStack item = ((Player) i).getInventory().getItemInMainHand();
-                                    ((Player) i).getInventory().remove(((Player) i).getInventory().getItemInMainHand());
-                                    new BukkitRunnable() {
-                                        @Override
-                                        public void run() {
-                                            // What you want to schedule goes here
-                                            ((Player) i).getInventory().addItem(item);
-                                        }
-                                    }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
+                                    if (!Party.get(i.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                                        ItemStack item = ((Player) i).getInventory().getItemInMainHand();
+                                        ((Player) i).getInventory().remove(((Player) i).getInventory().getItemInMainHand());
+                                        new BukkitRunnable() {
+                                            @Override
+                                            public void run() {
+                                                // What you want to schedule goes here
+                                                ((Player) i).getInventory().addItem(item);
+                                            }
+                                        }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
+                                    }
                                 }
                                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
                                 List<Entity> players = player.getNearbyEntities(10, 10, 10);
                                 for (Entity i : players) {
-                                    ItemStack item = ((Player) i).getInventory().getItemInMainHand();
-                                    ((Player) i).getInventory().remove(((Player) i).getInventory().getItemInMainHand());
-                                    new BukkitRunnable() {
-                                        @Override
-                                        public void run() {
-                                            // What you want to schedule goes here
-                                            ((Player) i).getInventory().addItem(item);
-                                        }
-                                    }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
+                                    if (!Party.get(i.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                                        ItemStack item = ((Player) i).getInventory().getItemInMainHand();
+                                        ((Player) i).getInventory().remove(((Player) i).getInventory().getItemInMainHand());
+                                        new BukkitRunnable() {
+                                            @Override
+                                            public void run() {
+                                                // What you want to schedule goes here
+                                                ((Player) i).getInventory().addItem(item);
+                                            }
+                                        }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
+                                    }
                                 }
                                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
                                 List<Entity> players = player.getNearbyEntities(5, 10, 5);
                                 for (Entity i : players) {
-                                    ItemStack item = ((Player) i).getInventory().getItemInMainHand();
-                                    ((Player) i).getInventory().remove(((Player) i).getInventory().getItemInMainHand());
-                                    new BukkitRunnable() {
-                                        @Override
-                                        public void run() {
-                                            // What you want to schedule goes here
-                                            ((Player) i).getInventory().addItem(item);
-                                        }
-                                    }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
+                                    if (!Party.get(i.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                                        ItemStack item = ((Player) i).getInventory().getItemInMainHand();
+                                        ((Player) i).getInventory().remove(((Player) i).getInventory().getItemInMainHand());
+                                        new BukkitRunnable() {
+                                            @Override
+                                            public void run() {
+                                                // What you want to schedule goes here
+                                                ((Player) i).getInventory().addItem(item);
+                                            }
+                                        }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
+                                    }
                                 }
                                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
@@ -187,7 +194,9 @@ public class ChildOfAthena implements Listener {
                     if (Math.abs(entity.getLocation().getY() - location.getY()) < 1.5) {
                         if (Math.abs(entity.getLocation().getZ() - location.getZ()) < 1.3) {
                             if(entity.getType() != EntityType.SHULKER_BULLET && entity.getType() != EntityType.DROPPED_ITEM && entity.getType() != EntityType.ITEM_FRAME && entity.getType() != EntityType.ARROW && entity.getType() != EntityType.WITHER_SKULL && entity.getType() != EntityType.SNOWBALL && entity.getType() != EntityType.EGG && entity.getType() != EntityType.BOAT) {
-                                return entity;
+                                if(Party.get(entity.getUniqueId()).equals(Party.get(player.getUniqueId()))){
+                                    return entity;
+                                }
                             }
                         }
                     }

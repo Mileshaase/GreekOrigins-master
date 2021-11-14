@@ -20,6 +20,7 @@ import java.util.Objects;
 import java.util.Random;
 
 import static com.magister.greekorigins.events.generalevents.PlayerLevelEvents.PlayerLevel;
+import static com.magister.greekorigins.events.generalevents.PlayerParties.Party;
 import static com.magister.greekorigins.events.generalevents.RollEvents.GodlyParent;
 
 public class ChildOfZeus implements Listener {
@@ -46,8 +47,10 @@ public class ChildOfZeus implements Listener {
             int  n = rand.nextInt(100) + 1;
             if(PlayerLevel.get(player.getUniqueId()) > 10) {
                 if (n <= 40){
-                    attacked.getWorld().strikeLightning(attacked.getLocation());
-                    PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.2);
+                    if (!Party.get(attacked.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                        attacked.getWorld().strikeLightning(attacked.getLocation());
+                        PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.2);
+                    }
                 }
             }
         }
@@ -65,9 +68,11 @@ public class ChildOfZeus implements Listener {
                                 List<Entity> players = player.getNearbyEntities(20, 10, 20);
                                 Location loc;
                                 for (Entity i : players) {
-                                    int p = players.indexOf(i);
-                                    loc = players.get(p).getLocation();
-                                    player.getWorld().strikeLightning(loc);
+                                    if (!Party.get(i.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                                        int p = players.indexOf(i);
+                                        loc = players.get(p).getLocation();
+                                        player.getWorld().strikeLightning(loc);
+                                    }
                                 }
                                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
@@ -75,9 +80,11 @@ public class ChildOfZeus implements Listener {
                                 List<Entity> players = player.getNearbyEntities(15, 10, 15);
                                 Location loc;
                                 for (Entity i : players) {
-                                    int p = players.indexOf(i);
-                                    loc = players.get(p).getLocation();
-                                    player.getWorld().strikeLightning(loc);
+                                    if (!Party.get(i.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                                        int p = players.indexOf(i);
+                                        loc = players.get(p).getLocation();
+                                        player.getWorld().strikeLightning(loc);
+                                    }
                                 }
                                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
@@ -85,9 +92,11 @@ public class ChildOfZeus implements Listener {
                                 List<Entity> players = player.getNearbyEntities(10, 10, 10);
                                 Location loc;
                                 for (Entity i : players) {
-                                    int p = players.indexOf(i);
-                                    loc = players.get(p).getLocation();
-                                    player.getWorld().strikeLightning(loc);
+                                    if (!Party.get(i.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                                        int p = players.indexOf(i);
+                                        loc = players.get(p).getLocation();
+                                        player.getWorld().strikeLightning(loc);
+                                    }
                                 }
                                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
@@ -119,7 +128,9 @@ public class ChildOfZeus implements Listener {
                     if (Math.abs(entity.getLocation().getY() - location.getY()) < 1.5) {
                         if (Math.abs(entity.getLocation().getZ() - location.getZ()) < 1.3) {
                             if(entity.getType() != EntityType.SHULKER_BULLET && entity.getType() != EntityType.DROPPED_ITEM && entity.getType() != EntityType.ITEM_FRAME && entity.getType() != EntityType.ARROW && entity.getType() != EntityType.WITHER_SKULL && entity.getType() != EntityType.SNOWBALL && entity.getType() != EntityType.EGG && entity.getType() != EntityType.BOAT) {
-                                return entity;
+                                if(!Party.get(entity.getUniqueId()).equals(Party.get(player.getUniqueId()))){
+                                    return entity;
+                                }
                             }
                         }
                     }

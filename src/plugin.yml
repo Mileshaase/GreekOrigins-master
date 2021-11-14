@@ -37,13 +37,16 @@ commands:
 
   roll:
     description: Rolls a players parent god
-    usage: /<command> <player>
+    usage: /<command>
   addroll:
     description: Add a roll for a player
     usage: /<command>
+  getrolls:
+    description: Gets number of rolls left for a player
+    usage: /<command>
   parent:
     description: Tells player their Godly parentt
-    usage: /<command> <player>
+    usage: /<command>
 
   zeus:
     description: Sets players parent to Zeus

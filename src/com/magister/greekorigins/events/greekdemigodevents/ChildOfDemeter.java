@@ -26,7 +26,7 @@ public class ChildOfDemeter implements Listener {
     @EventHandler
     public static void negateHunger(PlayerMoveEvent event){
         Player player = event.getPlayer();
-        if(GodlyParent.get(player.getName()).equals("Demeter")){
+        if(GodlyParent.get(player.getUniqueId()).equals("Demeter")){
             player.addPotionEffect(negateHunger);
         }
     }
@@ -34,21 +34,21 @@ public class ChildOfDemeter implements Listener {
     @EventHandler
     public static void onLeftClickGrowth(PlayerInteractEvent event){
         Player player = event.getPlayer();
-        if(GodlyParent.get(player.getName()).equals("Demeter")) {
+        if(GodlyParent.get(player.getUniqueId()).equals("Demeter")) {
             if (player.isSneaking()) {
                 if ((event.getAction() == Action.LEFT_CLICK_AIR)) {
                     if (event.getItem() == null) {
                         if (!(player.hasPotionEffect(cooldown.getType()))) {
                             int radius = 0;
-                            if (PlayerLevel.get(player.getName()) >= 50) {
+                            if (PlayerLevel.get(player.getUniqueId()) >= 50) {
                                 radius = 50;
-                            } else if (PlayerLevel.get(player.getName()) >= 40) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
                                 radius = 40;
-                            } else if (PlayerLevel.get(player.getName()) >= 30) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
                                 radius = 30;
-                            } else if (PlayerLevel.get(player.getName()) >= 20) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 20) {
                                 radius = 20;
-                            } else if (PlayerLevel.get(player.getName()) >= 10) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
                                 radius = 10;
                             }
                             for (Block b : getNearbyBlocks(player.getLocation(), radius)) {

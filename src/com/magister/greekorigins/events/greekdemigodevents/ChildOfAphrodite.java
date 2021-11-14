@@ -14,6 +14,7 @@ import org.bukkit.potion.PotionEffectType;
 import java.util.*;
 
 import static com.magister.greekorigins.events.generalevents.PlayerLevelEvents.PlayerLevel;
+import static com.magister.greekorigins.events.generalevents.PlayerParties.Party;
 import static com.magister.greekorigins.events.generalevents.RollEvents.GodlyParent;
 
 public class ChildOfAphrodite implements Listener {
@@ -48,30 +49,36 @@ public class ChildOfAphrodite implements Listener {
                             if (PlayerLevel.get(player.getUniqueId()) >= 50) {
                                 List<Entity> players = player.getNearbyEntities(30, 5, 30);
                                 for (Entity i : players) {
-                                    ((LivingEntity) i).addPotionEffect(slow);
-                                    ((LivingEntity) i).addPotionEffect(stopjump);
-                                    ((LivingEntity) i).addPotionEffect(slowDig);
-                                    ((LivingEntity) i).addPotionEffect(tempCooldown);
+                                    if (!Party.get(i.getUniqueId()).equals(Party.get(player.getUniqueId()))){
+                                        ((LivingEntity) i).addPotionEffect(slow);
+                                        ((LivingEntity) i).addPotionEffect(stopjump);
+                                        ((LivingEntity) i).addPotionEffect(slowDig);
+                                        ((LivingEntity) i).addPotionEffect(tempCooldown);
+                                    }
                                 }
                                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
                                 List<Entity> players = player.getNearbyEntities(20, 5, 20);
                                 for (Entity i : players) {
-                                    ((LivingEntity) i).addPotionEffect(slow);
-                                    ((LivingEntity) i).addPotionEffect(stopjump);
-                                    ((LivingEntity) i).addPotionEffect(slowDig);
-                                    ((LivingEntity) i).addPotionEffect(tempCooldown);
+                                    if(!Party.get(i.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                                        ((LivingEntity) i).addPotionEffect(slow);
+                                        ((LivingEntity) i).addPotionEffect(stopjump);
+                                        ((LivingEntity) i).addPotionEffect(slowDig);
+                                        ((LivingEntity) i).addPotionEffect(tempCooldown);
+                                    }
                                 }
                                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
                                 List<Entity> players = player.getNearbyEntities(20, 5, 20);
                                 for (Entity i : players) {
-                                    ((LivingEntity) i).addPotionEffect(slow);
-                                    ((LivingEntity) i).addPotionEffect(stopjump);
-                                    ((LivingEntity) i).addPotionEffect(slowDig);
-                                    ((LivingEntity) i).addPotionEffect(tempCooldown);
+                                    if(!Party.get(i.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                                        ((LivingEntity) i).addPotionEffect(slow);
+                                        ((LivingEntity) i).addPotionEffect(stopjump);
+                                        ((LivingEntity) i).addPotionEffect(slowDig);
+                                        ((LivingEntity) i).addPotionEffect(tempCooldown);
+                                    }
                                 }
                                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
@@ -108,7 +115,9 @@ public class ChildOfAphrodite implements Listener {
                     if (Math.abs(entity.getLocation().getY() - location.getY()) < 1.5) {
                         if (Math.abs(entity.getLocation().getZ() - location.getZ()) < 1.3) {
                             if(entity.getType() != EntityType.SHULKER_BULLET && entity.getType() != EntityType.DROPPED_ITEM && entity.getType() != EntityType.ITEM_FRAME && entity.getType() != EntityType.ARROW && entity.getType() != EntityType.WITHER_SKULL && entity.getType() != EntityType.SNOWBALL && entity.getType() != EntityType.EGG && entity.getType() != EntityType.BOAT) {
-                                return entity;
+                                if(!Party.get(entity.getUniqueId()).equals(Party.get(player.getUniqueId()))){
+                                    return entity;
+                                }
                             }
                         }
                     }

@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static com.magister.greekorigins.events.generalevents.PlayerLevelEvents.PlayerLevel;
+import static com.magister.greekorigins.events.generalevents.PlayerParties.Party;
 import static com.magister.greekorigins.events.generalevents.RollEvents.GodlyParent;
 
 public class ChildOfApollo implements Listener {
@@ -100,8 +101,10 @@ public class ChildOfApollo implements Listener {
                                 List<Entity> players = player.getNearbyEntities(30, 5, 30);
                                 Location loc;
                                 for (Entity i : players) {
-                                    int p = players.indexOf(i);
-                                    ((LivingEntity) i).addPotionEffect(blindness);
+                                    if (!Party.get(i.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                                        int p = players.indexOf(i);
+                                        ((LivingEntity) i).addPotionEffect(blindness);
+                                    }
                                 }
                                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
@@ -109,12 +112,8 @@ public class ChildOfApollo implements Listener {
                                 List<Entity> players = player.getNearbyEntities(20, 5, 20);
                                 Location loc;
                                 for (Entity i : players) {
-                                    int p = players.indexOf(i);
-                                    if (i.getType().equals(EntityType.PLAYER)) {
-                                        if (((Player) i).canSee(player)) {
-                                            ((LivingEntity) i).addPotionEffect(blindness);
-                                        }
-                                    } else {
+                                    if (!Party.get(i.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                                        int p = players.indexOf(i);
                                         ((LivingEntity) i).addPotionEffect(blindness);
                                     }
                                 }
@@ -124,12 +123,8 @@ public class ChildOfApollo implements Listener {
                                 List<Entity> players = player.getNearbyEntities(20, 5, 20);
                                 Location loc;
                                 for (Entity i : players) {
-                                    int p = players.indexOf(i);
-                                    if (i.getType().equals(EntityType.PLAYER)) {
-                                        if (((Player) i).canSee(player)) {
-                                            ((LivingEntity) i).addPotionEffect(blindness);
-                                        }
-                                    } else {
+                                    if (!Party.get(i.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                                        int p = players.indexOf(i);
                                         ((LivingEntity) i).addPotionEffect(blindness);
                                     }
                                 }
@@ -161,7 +156,9 @@ public class ChildOfApollo implements Listener {
                     if (Math.abs(entity.getLocation().getY() - location.getY()) < 1.5) {
                         if (Math.abs(entity.getLocation().getZ() - location.getZ()) < 1.3) {
                             if(entity.getType() != EntityType.SHULKER_BULLET && entity.getType() != EntityType.DROPPED_ITEM && entity.getType() != EntityType.ITEM_FRAME && entity.getType() != EntityType.ARROW && entity.getType() != EntityType.WITHER_SKULL && entity.getType() != EntityType.SNOWBALL && entity.getType() != EntityType.EGG && entity.getType() != EntityType.BOAT) {
-                                return entity;
+                                if (Party.get(entity.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                                    return entity;
+                                }
                             }
                         }
                     }
