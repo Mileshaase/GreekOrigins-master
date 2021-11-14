@@ -1,6 +1,6 @@
 package com.magister.greekorigins.events.greekdemigodevents;
 
-import com.magister.greekorigins.MythologicalOrigins;
+import com.magister.greekorigins.GreekOrigins;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.*;
@@ -30,16 +30,16 @@ public class ChildOfAthena implements Listener {
     @EventHandler
     public static void infiniteLevels(EnchantItemEvent event){
         Player player = event.getEnchanter();
-        if(GodlyParent.get(player.getName()).equals("Athena")){
-            if (PlayerLevel.get(player.getName()) >= 50) {
+        if(GodlyParent.get(player.getUniqueId()).equals("Athena")){
+            if (PlayerLevel.get(player.getUniqueId()) >= 50) {
                 player.setLevel(30);
-            } else if (PlayerLevel.get(player.getName()) >= 40) {
+            } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
                 player.setLevel(25);
-            } else if (PlayerLevel.get(player.getName()) >= 30) {
+            } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
                 player.setLevel(20);
-            } else if (PlayerLevel.get(player.getName()) >= 20) {
+            } else if (PlayerLevel.get(player.getUniqueId()) >= 20) {
                 player.setLevel(15);
-            } else if (PlayerLevel.get(player.getName()) >= 10) {
+            } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
                 player.setLevel(10);
             }
         }
@@ -48,16 +48,16 @@ public class ChildOfAthena implements Listener {
     @EventHandler
     public static void infiniteLevels(PlayerMoveEvent event){
         Player player = event.getPlayer();
-        if(GodlyParent.get(player.getName()).equals("Athena")){
-            if (PlayerLevel.get(player.getName()) >= 50) {
+        if(GodlyParent.get(player.getUniqueId()).equals("Athena")){
+            if (PlayerLevel.get(player.getUniqueId()) >= 50) {
                 player.setLevel(30);
-            } else if (PlayerLevel.get(player.getName()) >= 40) {
+            } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
                 player.setLevel(25);
-            } else if (PlayerLevel.get(player.getName()) >= 30) {
+            } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
                 player.setLevel(20);
-            } else if (PlayerLevel.get(player.getName()) >= 20) {
+            } else if (PlayerLevel.get(player.getUniqueId()) >= 20) {
                 player.setLevel(15);
-            } else if (PlayerLevel.get(player.getName()) >= 10) {
+            } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
                 player.setLevel(10);
             }
         }
@@ -68,9 +68,9 @@ public class ChildOfAthena implements Listener {
         Player player = (Player) event.getDamager();
         Player attacked = (Player) event.getEntity();
         Random rand = new Random();
-        if(GodlyParent.get(player.getName()).equals("Athena")){
+        if(GodlyParent.get(player.getUniqueId()).equals("Athena")){
             int  n = rand.nextInt(100) + 1;
-            if(PlayerLevel.get(player.getName()) > 0) {
+            if(PlayerLevel.get(player.getUniqueId()) > 0) {
                 if (n <= 40){
                     ItemStack item = attacked.getInventory().getItemInMainHand();
                     attacked.getInventory().remove(attacked.getInventory().getItemInMainHand());
@@ -80,8 +80,8 @@ public class ChildOfAthena implements Listener {
                             // What you want to schedule goes here
                             attacked.getInventory().addItem(item);
                         }
-                    }.runTaskLater(MythologicalOrigins.getPlugin(MythologicalOrigins.class), 500);
-                    PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.2);
+                    }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
+                    PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.2);
                 }
             }
         }
@@ -92,10 +92,10 @@ public class ChildOfAthena implements Listener {
         Player player = event.getPlayer();
         if(player.isSneaking()) {
             if (event.getAction() == Action.LEFT_CLICK_AIR) {
-                if (GodlyParent.get(player.getName()).equals("Athena")) {
+                if (GodlyParent.get(player.getUniqueId()).equals("Athena")) {
                     if (event.getItem() == null) {
                         if (!(player.hasPotionEffect(cooldown.getType()))) {
-                            if (PlayerLevel.get(player.getName()) >= 50) {
+                            if (PlayerLevel.get(player.getUniqueId()) >= 50) {
                                 List<Entity> players = player.getNearbyEntities(20, 10, 20);
                                 for (Entity i : players) {
                                     ItemStack item = ((Player) i).getInventory().getItemInMainHand();
@@ -106,11 +106,11 @@ public class ChildOfAthena implements Listener {
                                             // What you want to schedule goes here
                                             ((Player) i).getInventory().addItem(item);
                                         }
-                                    }.runTaskLater(MythologicalOrigins.getPlugin(MythologicalOrigins.class), 500);
+                                    }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
                                 }
-                                PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.5);
+                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
-                            } else if (PlayerLevel.get(player.getName()) >= 40) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
                                 List<Entity> players = player.getNearbyEntities(10, 10, 10);
                                 for (Entity i : players) {
                                     ItemStack item = ((Player) i).getInventory().getItemInMainHand();
@@ -121,11 +121,11 @@ public class ChildOfAthena implements Listener {
                                             // What you want to schedule goes here
                                             ((Player) i).getInventory().addItem(item);
                                         }
-                                    }.runTaskLater(MythologicalOrigins.getPlugin(MythologicalOrigins.class), 500);
+                                    }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
                                 }
-                                PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.5);
+                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
-                            } else if (PlayerLevel.get(player.getName()) >= 30) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
                                 List<Entity> players = player.getNearbyEntities(5, 10, 5);
                                 for (Entity i : players) {
                                     ItemStack item = ((Player) i).getInventory().getItemInMainHand();
@@ -136,11 +136,11 @@ public class ChildOfAthena implements Listener {
                                             // What you want to schedule goes here
                                             ((Player) i).getInventory().addItem(item);
                                         }
-                                    }.runTaskLater(MythologicalOrigins.getPlugin(MythologicalOrigins.class), 500);
+                                    }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
                                 }
-                                PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.5);
+                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
-                            } else if (PlayerLevel.get(player.getName()) >= 20) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 20) {
                                 Player disarmed = (Player) getNearestEntityInSight(player, 10);
                                 assert disarmed != null;
                                 ItemStack item = disarmed.getInventory().getItemInMainHand();
@@ -151,10 +151,10 @@ public class ChildOfAthena implements Listener {
                                         // What you want to schedule goes here
                                         disarmed.getInventory().addItem(item);
                                     }
-                                }.runTaskLater(MythologicalOrigins.getPlugin(MythologicalOrigins.class), 500);
-                                PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.5);
+                                }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
+                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
-                            } else if (PlayerLevel.get(player.getName()) >= 10) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
                                 Player disarmed = (Player) getNearestEntityInSight(player, 5);
                                 assert disarmed != null;
                                 ItemStack item = disarmed.getInventory().getItemInMainHand();
@@ -165,8 +165,8 @@ public class ChildOfAthena implements Listener {
                                         // What you want to schedule goes here
                                         disarmed.getInventory().addItem(item);
                                     }
-                                }.runTaskLater(MythologicalOrigins.getPlugin(MythologicalOrigins.class), 500);
-                                PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.5);
+                                }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
+                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                             }
                         }

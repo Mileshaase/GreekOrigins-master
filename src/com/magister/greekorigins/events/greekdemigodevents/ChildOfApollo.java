@@ -29,28 +29,28 @@ public class ChildOfApollo implements Listener {
     @EventHandler
     public static void onBowFire(EntityShootBowEvent event){
         Player player = (Player) event.getEntity();
-        if(GodlyParent.get(player.getName()).equals("Apollo")){
+        if(GodlyParent.get(player.getUniqueId()).equals("Apollo")){
             event.setConsumeItem(false);
             if(player.isSneaking()) {
                 if (!(player.hasPotionEffect(cooldown.getType()))) {
                     float CONE_DEGREES = 0;
                     int amount = 0;
-                    if (PlayerLevel.get(player.getName()) >= 50) {
+                    if (PlayerLevel.get(player.getUniqueId()) >= 50) {
                         amount = 15;
                         CONE_DEGREES = 32;
-                    } else if (PlayerLevel.get(player.getName()) >= 40) {
+                    } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
                         amount = 10;
                         CONE_DEGREES = 16;
-                    } else if (PlayerLevel.get(player.getName()) >= 30) {
+                    } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
                         amount = 5;
                         CONE_DEGREES = 8;
-                    } else if (PlayerLevel.get(player.getName()) >= 20) {
+                    } else if (PlayerLevel.get(player.getUniqueId()) >= 20) {
                         amount = 4;
                         CONE_DEGREES = 4;
-                    } else if (PlayerLevel.get(player.getName()) >= 10) {
+                    } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
                         amount = 2;
                         CONE_DEGREES = 2;
-                    } else if (PlayerLevel.get(player.getName()) >= 0) {
+                    } else if (PlayerLevel.get(player.getUniqueId()) >= 0) {
                         amount = 2;
                         CONE_DEGREES = 2;
                     }
@@ -92,20 +92,20 @@ public class ChildOfApollo implements Listener {
         if (event.getAction() == Action.LEFT_CLICK_AIR) {
             Player player = event.getPlayer();
             if(player.isSneaking()){
-                if(GodlyParent.get(player.getName()).equals("Apollo")){
+                if(GodlyParent.get(player.getUniqueId()).equals("Apollo")){
                     if(event.getItem() == null) {
                         if (!(player.hasPotionEffect(cooldown.getType()))) {
                             player.addPotionEffect(glowing);
-                            if (PlayerLevel.get(player.getName()) >= 50) {
+                            if (PlayerLevel.get(player.getUniqueId()) >= 50) {
                                 List<Entity> players = player.getNearbyEntities(30, 5, 30);
                                 Location loc;
                                 for (Entity i : players) {
                                     int p = players.indexOf(i);
                                     ((LivingEntity) i).addPotionEffect(blindness);
                                 }
-                                PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.5);
+                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
-                            } else if (PlayerLevel.get(player.getName()) >= 40) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
                                 List<Entity> players = player.getNearbyEntities(20, 5, 20);
                                 Location loc;
                                 for (Entity i : players) {
@@ -118,9 +118,9 @@ public class ChildOfApollo implements Listener {
                                         ((LivingEntity) i).addPotionEffect(blindness);
                                     }
                                 }
-                                PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.5);
+                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
-                            } else if (PlayerLevel.get(player.getName()) >= 30) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
                                 List<Entity> players = player.getNearbyEntities(20, 5, 20);
                                 Location loc;
                                 for (Entity i : players) {
@@ -133,15 +133,15 @@ public class ChildOfApollo implements Listener {
                                         ((LivingEntity) i).addPotionEffect(blindness);
                                     }
                                 }
-                                PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.5);
+                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
-                            } else if (PlayerLevel.get(player.getName()) >= 20) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 20) {
                                 ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 10))).addPotionEffect(blindness);
-                                PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.5);
+                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
-                            } else if (PlayerLevel.get(player.getName()) >= 10) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
                                 ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 5))).addPotionEffect(blindness);
-                                PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.5);
+                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                             }
                         }

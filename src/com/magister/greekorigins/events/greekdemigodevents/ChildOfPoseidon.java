@@ -1,6 +1,6 @@
 package com.magister.greekorigins.events.greekdemigodevents;
 
-import com.magister.greekorigins.MythologicalOrigins;
+import com.magister.greekorigins.GreekOrigins;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
@@ -167,7 +167,7 @@ public class ChildOfPoseidon implements Listener {
                                                     ((ElderGuardian) z).setHealth(0.0);
                                                 }
                                             }
-                                        }.runTaskLater(MythologicalOrigins.getPlugin(MythologicalOrigins.class), 1000);
+                                        }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 1000);
                                     }
                                 }
                                 player.addPotionEffect(cooldown);
@@ -213,7 +213,7 @@ public class ChildOfPoseidon implements Listener {
                                                     ((ElderGuardian) z).setHealth(0.0);
                                                 }
                                             }
-                                        }.runTaskLater(MythologicalOrigins.getPlugin(MythologicalOrigins.class), 1000);
+                                        }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 1000);
                                     }
                                 }
 
@@ -260,7 +260,7 @@ public class ChildOfPoseidon implements Listener {
                                                     ((ElderGuardian) z).setHealth(0.0);
                                                 }
                                             }
-                                        }.runTaskLater(MythologicalOrigins.getPlugin(MythologicalOrigins.class), 1000);
+                                        }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 1000);
                                     }
                                 }
 
@@ -279,7 +279,7 @@ public class ChildOfPoseidon implements Listener {
                                                 // What you want to schedule goes here
                                                 b.setType(Material.AIR);
                                             }
-                                        }.runTaskLater(MythologicalOrigins.getPlugin(MythologicalOrigins.class), 40);
+                                        }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 40);
                                     }
                                 }
                                 player.addPotionEffect(cooldown);
@@ -297,7 +297,7 @@ public class ChildOfPoseidon implements Listener {
                                                 // What you want to schedule goes here
                                                 b.setType(Material.AIR);
                                             }
-                                        }.runTaskLater(MythologicalOrigins.getPlugin(MythologicalOrigins.class), 40);
+                                        }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 40);
                                     }
                                 }
                                 player.addPotionEffect(cooldown);

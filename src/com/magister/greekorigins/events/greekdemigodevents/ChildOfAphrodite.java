@@ -8,7 +8,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -28,7 +27,7 @@ public class ChildOfAphrodite implements Listener {
     @EventHandler
     public static void reTargetEvent(EntityDamageByEntityEvent event){
         Player player = (Player) event.getEntity();
-        if(GodlyParent.get(player.getName()).equals("Aphrodite")){
+        if(GodlyParent.get(player.getUniqueId()).equals("Aphrodite")){
             List<Entity> players = player.getNearbyEntities(10, 20, 10);
             Location loc;
             for (Entity i : players) {
@@ -43,10 +42,10 @@ public class ChildOfAphrodite implements Listener {
         Player player = event.getPlayer();
         if (player.isSneaking()) {
             if (event.getAction() == Action.LEFT_CLICK_AIR) {
-                if (GodlyParent.get(player.getName()).equals("Aphrodite")) {
+                if (GodlyParent.get(player.getUniqueId()).equals("Aphrodite")) {
                     if (event.getItem() == null) {
                         if (!(player.hasPotionEffect(cooldown.getType()))) {
-                            if (PlayerLevel.get(player.getName()) >= 50) {
+                            if (PlayerLevel.get(player.getUniqueId()) >= 50) {
                                 List<Entity> players = player.getNearbyEntities(30, 5, 30);
                                 for (Entity i : players) {
                                     ((LivingEntity) i).addPotionEffect(slow);
@@ -54,9 +53,9 @@ public class ChildOfAphrodite implements Listener {
                                     ((LivingEntity) i).addPotionEffect(slowDig);
                                     ((LivingEntity) i).addPotionEffect(tempCooldown);
                                 }
-                                PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.5);
+                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
-                            } else if (PlayerLevel.get(player.getName()) >= 40) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
                                 List<Entity> players = player.getNearbyEntities(20, 5, 20);
                                 for (Entity i : players) {
                                     ((LivingEntity) i).addPotionEffect(slow);
@@ -64,9 +63,9 @@ public class ChildOfAphrodite implements Listener {
                                     ((LivingEntity) i).addPotionEffect(slowDig);
                                     ((LivingEntity) i).addPotionEffect(tempCooldown);
                                 }
-                                PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.5);
+                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
-                            } else if (PlayerLevel.get(player.getName()) >= 30) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
                                 List<Entity> players = player.getNearbyEntities(20, 5, 20);
                                 for (Entity i : players) {
                                     ((LivingEntity) i).addPotionEffect(slow);
@@ -74,21 +73,21 @@ public class ChildOfAphrodite implements Listener {
                                     ((LivingEntity) i).addPotionEffect(slowDig);
                                     ((LivingEntity) i).addPotionEffect(tempCooldown);
                                 }
-                                PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.5);
+                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
-                            } else if (PlayerLevel.get(player.getName()) >= 20) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 20) {
                                 ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 10))).addPotionEffect(slow);
                                 ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 10))).addPotionEffect(stopjump);
                                 ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 10))).addPotionEffect(slowDig);
                                 ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 10))).addPotionEffect(tempCooldown);
-                                PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.5);
+                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
-                            } else if (PlayerLevel.get(player.getName()) >= 10) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
                                 ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 10))).addPotionEffect(slow);
                                 ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 10))).addPotionEffect(stopjump);
                                 ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 10))).addPotionEffect(slowDig);
                                 ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 10))).addPotionEffect(tempCooldown);
-                                PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.5);
+                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                             }
                          }

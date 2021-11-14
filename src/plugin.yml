@@ -1,7 +1,7 @@
-name: MythologicalOrigins
+name: GreekOrigins
 version: 1.0
 author: Magister
-main: com.magister.mythologicalorigins.MythologicalOrigins
+main: com.magister.greekorigins.GreekOrigins
 api-version: 1.17
 commands:
   heal:
@@ -35,12 +35,6 @@ commands:
     description: Tells the player their level
     usage: /<command>
 
-  homegreece:
-    description: Sets players home to Greece
-    usage: /<command> <player>
-  homenorway:
-    description: Sets players home to Norway
-    usage: /<command> <player>
   roll:
     description: Rolls a players parent god
     usage: /<command> <player>
@@ -91,64 +85,9 @@ commands:
     description: Sets players parent to Chronos
     usage: /<command> <player>
 
-  odin:
-    description: Sets players parent to Odin
-    usage: /<command> <player>
-  thor:
-    description: Sets players parent to Thor
-    usage: /<command> <player>
-  loki:
-    description: Sets players parent to Loki
-    usage: /<command> <player>
-  baldur:
-    description: Sets players parent to Balur
-    usage: /<command> <player>
-  bragi:
-    description: Sets players parent to Bragi
-    usage: /<command> <player>
-  freya:
-    description: Sets players parent to Freya
-    usage: /<command> <player>
-  freyr:
-    description: Sets players parent to Freyr
-    usage: /<command> <player>
-  frigg:
-    description: Sets players parent to Frigg
-    usage: /<command> <player>
-  heimdall:
-    description: Sets players parent to Heimdall
-    usage: /<command> <player>
-  hel:
-    description: Sets players parent to Hel
-    usage: /<command> <player>
-  njord:
-    description: Sets players parent to Njord
-    usage: /<command> <player>
-  tyr:
-    description: Sets players parent to Tyr
-    usage: /<command> <player>
-  ymir:
-    description: Sets players parent to Ymir
-    usage: /<command> <player>
-
   giveWine:
     description: Gives Player Wine Item
     usage: /<command>
-  giveHelmOfDarkness:
-    description: Gives Player Helm Of Darkness Item
-    usage: /<command>
-  giveLightningBolt:
-    description: Gives Player Zeus's Lightning Bolt Item
-    usage: /<command>
-
   giveMead:
     description: Gives Player Mead Item
     usage: /<command>
-  giveMjolnir:
-    description: Gives Player Mjolnir
-    usage: /<command>
-
-  bifrost:
-    description: Heimdall uses the Bifrost
-    usage: /<command>
-    aliases: [b]

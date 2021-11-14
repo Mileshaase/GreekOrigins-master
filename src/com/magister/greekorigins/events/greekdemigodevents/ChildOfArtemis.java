@@ -1,6 +1,6 @@
 package com.magister.greekorigins.events.greekdemigodevents;
 
-import com.magister.greekorigins.MythologicalOrigins;
+import com.magister.greekorigins.GreekOrigins;
 import org.bukkit.DyeColor;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -165,7 +165,7 @@ public class ChildOfArtemis implements Listener {
                                         ((Wolf) z).setHealth(0.0);
                                     }
                                 }
-                            }.runTaskLater(MythologicalOrigins.getPlugin(MythologicalOrigins.class), 500);
+                            }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
                             player.addPotionEffect(cooldown);
                         }
                     }

@@ -6,55 +6,55 @@ import org.bukkit.event.Listener;
 
 import java.util.HashMap;
 import java.util.Random;
+import java.util.UUID;
 
 public class RollEvents implements Listener {
-    public static HashMap<String, String> GodlyParent = new HashMap<String, String>();
-    public static HashMap<String, String> HomeLocation = new HashMap<String, String>();
-    public static HashMap<String, Integer> NumberOfRolls = new HashMap<>();
+    public static HashMap<UUID, String> GodlyParent = new HashMap<>();
+    public static HashMap<UUID, Integer> NumberOfRolls = new HashMap<>();
 
     public static void RandomGreekRoll(Player player){
         Random rand = new Random();
         int chosenGod = chosenGod = rand.nextInt(731);
 
         if(chosenGod == 1){
-            GodlyParent.put(player.getName(), "Chronos");
+            GodlyParent.put(player.getUniqueId(), "Chronos");
         }
         if(chosenGod >= 11){
-            GodlyParent.put(player.getName(), "Zeus");
+            GodlyParent.put(player.getUniqueId(), "Zeus");
         }
         if(chosenGod >= 21){
-            GodlyParent.put(player.getName(), "Poseidon");
+            GodlyParent.put(player.getUniqueId(), "Poseidon");
         }
         if(chosenGod >= 31){
-            GodlyParent.put(player.getName(), "Hades");
+            GodlyParent.put(player.getUniqueId(), "Hades");
         }
         if(chosenGod >= 101){
-            GodlyParent.put(player.getName(), "Aphrodite");
+            GodlyParent.put(player.getUniqueId(), "Aphrodite");
         }
         if(chosenGod >= 171){
-            GodlyParent.put(player.getName(), "Apollo");
+            GodlyParent.put(player.getUniqueId(), "Apollo");
         }
         if(chosenGod >= 241){
-            GodlyParent.put(player.getName(), "Ares");
+            GodlyParent.put(player.getUniqueId(), "Ares");
         }
         if(chosenGod >= 311){
-            GodlyParent.put(player.getName(), "Artemis");
+            GodlyParent.put(player.getUniqueId(), "Artemis");
         }
         if(chosenGod >= 381){
-            GodlyParent.put(player.getName(), "Athena");
+            GodlyParent.put(player.getUniqueId(), "Athena");
         }
         if(chosenGod >= 451){
-            GodlyParent.put(player.getName(), "Demeter");
+            GodlyParent.put(player.getUniqueId(), "Demeter");
         }
         if(chosenGod >= 521){
-            GodlyParent.put(player.getName(), "Dionysus");
+            GodlyParent.put(player.getUniqueId(), "Dionysus");
         }
         if(chosenGod >= 591){
-            GodlyParent.put(player.getName(), "Hephaestus");
+            GodlyParent.put(player.getUniqueId(), "Hephaestus");
         }
         if(chosenGod >= 661){
-            GodlyParent.put(player.getName(), "Hermes");
+            GodlyParent.put(player.getUniqueId(), "Hermes");
         }
-        player.sendTitle(ChatColor.DARK_PURPLE + "You're Godly Parent is ", ChatColor.GOLD + GodlyParent.get(player.getName()), 1, 20, 1);
+        player.sendTitle(ChatColor.DARK_PURPLE + "You're Godly Parent is ", ChatColor.GOLD + GodlyParent.get(player.getUniqueId()), 1, 20, 1);
     }
 }

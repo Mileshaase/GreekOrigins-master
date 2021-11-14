@@ -1,6 +1,6 @@
 package com.magister.greekorigins.events.greekdemigodevents;
 
-import com.magister.greekorigins.MythologicalOrigins;
+import com.magister.greekorigins.GreekOrigins;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.*;
@@ -110,7 +110,7 @@ public class ChildOfHades implements Listener {
                                         ((Husk) z).setHealth(0.0);
                                     }
                                 }
-                            }.runTaskLater(MythologicalOrigins.getPlugin(MythologicalOrigins.class), 500);
+                            }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
                             player.addPotionEffect(cooldown);
                         }
                     }

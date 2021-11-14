@@ -32,9 +32,9 @@ public class ChildOfChronos implements Listener {
     public static void playerHitEntity(EntityDamageByEntityEvent event){
         Player player = (Player) event.getDamager();
         Random rand = new Random();
-        if(GodlyParent.get(player.getName()).equals("Chronos")){
+        if(GodlyParent.get(player.getUniqueId()).equals("Chronos")){
             int  n = rand.nextInt(100) + 1;
-            if(PlayerLevel.get(player.getName()) > 10) {
+            if(PlayerLevel.get(player.getUniqueId()) > 10) {
                 if (n <= 40){
                     List<Entity> players = player.getNearbyEntities(10, 10, 10);
                     for(Entity i : players){
@@ -42,7 +42,7 @@ public class ChildOfChronos implements Listener {
                         ((LivingEntity) i).addPotionEffect(stopjump);
                         ((LivingEntity) i).addPotionEffect(slowdig);
                     }
-                    PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.2);
+                    PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.2);
                 }
             }
         }
@@ -53,10 +53,10 @@ public class ChildOfChronos implements Listener {
         Player player = event.getPlayer();
         if(player.isSneaking()) {
             if (event.getAction() == Action.LEFT_CLICK_AIR) {
-                if (GodlyParent.get(player.getName()).equals("Chronos")) {
+                if (GodlyParent.get(player.getUniqueId()).equals("Chronos")) {
                     if (event.getItem() == null) {
                         if (!(player.hasPotionEffect(cooldown.getType()))) {
-                            if (PlayerLevel.get(player.getName()) >= 50) {
+                            if (PlayerLevel.get(player.getUniqueId()) >= 50) {
                                 player.addPotionEffect(slowness);
                                 player.addPotionEffect(stopjump);
                                 player.addPotionEffect(slowdig);
@@ -70,12 +70,12 @@ public class ChildOfChronos implements Listener {
                                     ((LivingEntity) i).damage(4);
                                 }
                                 player.teleport(start);
-                                PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.5);
+                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                                 player.removePotionEffect(slowness.getType());
                                 player.removePotionEffect(stopjump.getType());
                                 player.removePotionEffect(slowdig.getType());
-                            } else if (PlayerLevel.get(player.getName()) >= 40) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
                                 player.addPotionEffect(slowness);
                                 player.addPotionEffect(stopjump);
                                 player.addPotionEffect(slowdig);
@@ -88,12 +88,12 @@ public class ChildOfChronos implements Listener {
                                     ((LivingEntity) i).damage(4);
                                 }
                                 player.teleport(start);
-                                PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.5);
+                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                                 player.removePotionEffect(slowness.getType());
                                 player.removePotionEffect(stopjump.getType());
                                 player.removePotionEffect(slowdig.getType());
-                            } else if (PlayerLevel.get(player.getName()) >= 30) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
                                 player.addPotionEffect(slowness);
                                 player.addPotionEffect(stopjump);
                                 player.addPotionEffect(slowdig);
@@ -106,12 +106,12 @@ public class ChildOfChronos implements Listener {
                                     ((LivingEntity) i).damage(4);
                                 }
                                 player.teleport(start);
-                                PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.5);
+                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                                 player.removePotionEffect(slowness.getType());
                                 player.removePotionEffect(stopjump.getType());
                                 player.removePotionEffect(slowdig.getType());
-                            } else if (PlayerLevel.get(player.getName()) >= 20) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 20) {
                                 player.addPotionEffect(slowness);
                                 player.addPotionEffect(stopjump);
                                 player.addPotionEffect(slowdig);
@@ -120,12 +120,12 @@ public class ChildOfChronos implements Listener {
                                 assert opponent != null;
                                 player.teleport(opponent.getLocation());
                                 ((LivingEntity) opponent).damage(4);
-                                PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.5);
+                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                                 player.removePotionEffect(slowness.getType());
                                 player.removePotionEffect(stopjump.getType());
                                 player.removePotionEffect(slowdig.getType());
-                            } else if (PlayerLevel.get(player.getName()) >= 10) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
                                 player.addPotionEffect(slowness);
                                 player.addPotionEffect(stopjump);
                                 player.addPotionEffect(slowdig);
@@ -134,7 +134,7 @@ public class ChildOfChronos implements Listener {
                                 assert opponent != null;
                                 player.teleport(opponent.getLocation());
                                 ((LivingEntity) opponent).damage(4);
-                                PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.5);
+                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                                 player.removePotionEffect(slowness.getType());
                                 player.removePotionEffect(stopjump.getType());

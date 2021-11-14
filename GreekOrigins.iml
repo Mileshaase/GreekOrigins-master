@@ -20,7 +20,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
           <root url="file://$MODULE_DIR$/../PluginDev/Dependency" />
@@ -39,6 +39,7 @@
           <root url="file://$MODULE_DIR$/../PluginDev/Dependency/Spigot/Spigot-Server/src/test/java" />
           <root url="file://$MODULE_DIR$/../PluginDev/Dependency/work/decompile-00fabbe5" />
         </SOURCES>
+        <jarDirectory url="file://$MODULE_DIR$/../PluginDev/Dependency" recursive="false" />
         <jarDirectory url="file://$MODULE_DIR$/../PluginDev/Dependency" recursive="false" />
         <jarDirectory url="file://$MODULE_DIR$/../PluginDev/Dependency" recursive="false" type="SOURCES" />
       </library>

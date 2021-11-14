@@ -35,12 +35,12 @@ public class ChildOfDionysus implements Listener {
         Player player = (Player) event.getDamager();
         Entity attacked = event.getEntity();
         Random rand = new Random();
-        if(GodlyParent.get(player.getName()).equals("Dionysus")){
+        if(GodlyParent.get(player.getUniqueId()).equals("Dionysus")){
             int  n = rand.nextInt(100) + 1;
-            if(PlayerLevel.get(player.getName()) > 0) {
+            if(PlayerLevel.get(player.getUniqueId()) > 0) {
                 if (n <= 40){
                     ((LivingEntity) attacked).addPotionEffect(nausea);
-                    PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.2);
+                    PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.2);
                 }
             }
         }
@@ -49,7 +49,7 @@ public class ChildOfDionysus implements Listener {
     @EventHandler
     public static void playerNoDrunk(PlayerMoveEvent event){
         Player player = event.getPlayer();
-        if(GodlyParent.get(player.getName()).equals("Dionysus")) {
+        if(GodlyParent.get(player.getUniqueId()).equals("Dionysus")) {
             if (player.hasPotionEffect(nausea.getType())) {
                 player.addPotionEffect(strength);
                 player.addPotionEffect(absorption);
@@ -62,37 +62,37 @@ public class ChildOfDionysus implements Listener {
         Player player = event.getPlayer();
         if (player.isSneaking()) {
             if (event.getAction() == Action.LEFT_CLICK_AIR) {
-                if (GodlyParent.get(player.getName()).equals("Dionysus")) {
+                if (GodlyParent.get(player.getUniqueId()).equals("Dionysus")) {
                     if (event.getItem() == null) {
                         if (!(player.hasPotionEffect(cooldown.getType()))) {
-                            if (PlayerLevel.get(player.getName()) >= 50) {
+                            if (PlayerLevel.get(player.getUniqueId()) >= 50) {
                                 List<Entity> players = player.getNearbyEntities(30, 5, 30);
                                 for (Entity i : players) {
                                     ((LivingEntity) i).addPotionEffect(nausea);
                                 }
-                                PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.5);
+                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
-                            } else if (PlayerLevel.get(player.getName()) >= 40) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
                                 List<Entity> players = player.getNearbyEntities(20, 5, 20);
                                 for (Entity i : players) {
                                     ((LivingEntity) i).addPotionEffect(nausea);
                                 }
-                                    PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.5);
+                                    PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
-                            } else if (PlayerLevel.get(player.getName()) >= 30) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
                                 List<Entity> players = player.getNearbyEntities(20, 5, 20);
                                 for (Entity i : players) {
                                     ((LivingEntity) i).addPotionEffect(nausea);
                                 }
-                                        PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.5);
+                                        PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
-                            } else if (PlayerLevel.get(player.getName()) >= 20) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 20) {
                                 ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 10))).addPotionEffect(nausea);
-                                            PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.5);
+                                            PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
-                            } else if (PlayerLevel.get(player.getName()) >= 10) {
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
                                 ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 10))).addPotionEffect(nausea);
-                                                PlayerLevel.put(player.getName(), PlayerLevel.get(player.getName()) + 0.5);
+                                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                             }
                         }

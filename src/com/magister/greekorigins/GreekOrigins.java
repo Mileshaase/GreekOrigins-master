@@ -4,6 +4,7 @@ import com.magister.greekorigins.commands.*;
 import com.magister.greekorigins.events.generalevents.*;
 import com.magister.greekorigins.events.greekdemigodevents.*;
 import com.magister.greekorigins.events.inventoryevents.RollForGodInventoryEvents;
+import com.magister.greekorigins.files.CustomConfig;
 import com.magister.greekorigins.items.GeneralItemsManager;
 import com.magister.greekorigins.items.InventoryItemsManager;
 import org.bukkit.ChatColor;
@@ -55,9 +56,6 @@ public class GreekOrigins extends JavaPlugin {
         getCommand("AddRoll").setExecutor(commands);
         getCommand("Parent").setExecutor(commands);
 
-        getCommand("HomeGreece").setExecutor(commands);
-        getCommand("HomeNorway").setExecutor(commands);
-
         getCommand("Zeus").setExecutor(greekGodCommands);
         getCommand("Poseidon").setExecutor(greekGodCommands);
         getCommand("Hades").setExecutor(greekGodCommands);
@@ -72,11 +70,19 @@ public class GreekOrigins extends JavaPlugin {
         getCommand("Hermes").setExecutor(greekGodCommands);
         getCommand("Chronos").setExecutor(greekGodCommands);
 
-        getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[Mythological Origins]: Functioning");
+        getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[Greek Origins]: Functioning");
+
+        //setup config
+        getConfig().options().copyDefaults();
+        saveDefaultConfig();
+
+        CustomConfig.setup();
+        CustomConfig.get().options().copyDefaults(true);
+        CustomConfig.save();
     }
 
     @Override
     public void onDisable(){
-        getServer().getConsoleSender().sendMessage(ChatColor.RED + "[Mythological Origins]: Dying");
+        getServer().getConsoleSender().sendMessage(ChatColor.RED + "[Greek Origins]: Dying");
     }
 }
