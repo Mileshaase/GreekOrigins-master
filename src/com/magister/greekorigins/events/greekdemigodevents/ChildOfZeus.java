@@ -75,7 +75,6 @@ public class ChildOfZeus implements Listener {
                                     }
                                 }
                                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
-                                player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
                                 List<Entity> players = player.getNearbyEntities(15, 10, 15);
                                 Location loc;
@@ -87,7 +86,6 @@ public class ChildOfZeus implements Listener {
                                     }
                                 }
                                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
-                                player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
                                 List<Entity> players = player.getNearbyEntities(10, 10, 10);
                                 Location loc;
@@ -99,17 +97,15 @@ public class ChildOfZeus implements Listener {
                                     }
                                 }
                                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
-                                player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 20) {
                                 player.getWorld().strikeLightning(Objects.requireNonNull(getNearestEntityInSight(player, 10)).getLocation());
                                 player.getWorld().strikeLightning(Objects.requireNonNull(getNearestEntityInSight(player, 10)).getLocation());
                                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
-                                player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
                                 player.getWorld().strikeLightning(Objects.requireNonNull(getNearestEntityInSight(player, 5)).getLocation());
                                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
-                                player.addPotionEffect(cooldown);
                             }
+                            player.addPotionEffect(cooldown);
                         }
                     }
                 }

@@ -15,7 +15,6 @@ public class GreekOrigins extends JavaPlugin {
     @Override
     public void onEnable(){
         InventoryItemsManager.init();
-
         GeneralItemsManager.init();
 
         getServer().getPluginManager().registerEvents(new ChildOfAphrodite(), this);
@@ -37,9 +36,11 @@ public class GreekOrigins extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerLevelEvents(), this);
         getServer().getPluginManager().registerEvents(new RollEvents(), this);
         getServer().getPluginManager().registerEvents(new GeneralEvents(), this);
+        getServer().getPluginManager().registerEvents(new PlayerParties(), this);
 
         Commands commands = new Commands();
         GreekGodCommands greekGodCommands = new GreekGodCommands();
+        PartyCommands partyCommands = new PartyCommands();
 
         getCommand("heal").setExecutor(commands);
         getCommand("feed").setExecutor(commands);
@@ -70,6 +71,11 @@ public class GreekOrigins extends JavaPlugin {
         getCommand("Hephaestus").setExecutor(greekGodCommands);
         getCommand("Hermes").setExecutor(greekGodCommands);
         getCommand("Chronos").setExecutor(greekGodCommands);
+
+        getCommand("createParty").setExecutor(partyCommands);
+        getCommand("invite").setExecutor(partyCommands);
+        getCommand("accept").setExecutor(partyCommands);
+        getCommand("deny").setExecutor(partyCommands);
 
         getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[Greek Origins]: Functioning");
 

@@ -88,9 +88,22 @@ commands:
     description: Sets players parent to Chronos
     usage: /<command> <player>
 
-  giveWine:
+  givewine:
     description: Gives Player Wine Item
     usage: /<command>
-  giveMead:
+  givemead:
     description: Gives Player Mead Item
+    usage: /<command>
+
+  createparty:
+    description: Creates a party for a player
+    usage: /<command>
+  invite:
+    description: Invites a player to a party
+    usage: /<command> <player>
+  accept:
+    description: Acccepts party invite
+    usage: /<command>
+  deny:
+    description: Denies party invite
     usage: /<command>

@@ -24,15 +24,16 @@ public class PartyCommands implements CommandExecutor {
         if (cmd.getName().equalsIgnoreCase("createParty")) {
             Party.put(player.getUniqueId(), player.getName());
             PartyLeaders.put(player.getUniqueId(), player.getName());
+            player.sendMessage("You're now the leader of the party: " + Party.get(player.getUniqueId()));
         }
 
         else if (cmd.getName().equalsIgnoreCase("invite")) {
             if (args.length >= 1) {
                 try {
                     Player impactedPlayer = Bukkit.getPlayerExact(args[0]);
-                    assert impactedPlayer != null;
+                    assert impactedPlayer != null && impactedPlayer != player;
                     impactedPlayer.sendMessage("You have been invited to " + ChatColor.BLUE + player.getName() + "'s party!");
-                    impactedPlayer.sendMessage("Respond with " + ChatColor.GREEN + " /yes" + ChatColor.RESET + "or" + ChatColor.RED + "/no" + ChatColor.RESET + "to join or deny the party.");
+                    impactedPlayer.sendMessage("Respond with " + ChatColor.GREEN + " /accept " + ChatColor.RESET + "or" + ChatColor.RED + "/deny " + ChatColor.RESET + "to join or deny the party.");
                     Invited.put(impactedPlayer.getUniqueId(), true);
                     TempInvite.put(impactedPlayer.getUniqueId(), player.getName());
                 } catch (IllegalArgumentException e) {
@@ -43,7 +44,7 @@ public class PartyCommands implements CommandExecutor {
             }
         }
 
-        else if (cmd.getName().equalsIgnoreCase("yes")) {
+        else if (cmd.getName().equalsIgnoreCase("accept")) {
             if(Invited.get(player.getUniqueId()) && !TempInvite.get(player.getUniqueId()).equals("null")) {
                 Party.put(player.getUniqueId(), TempInvite.get(player.getUniqueId()));
                 Invited.put(player.getUniqueId(), false);
@@ -52,8 +53,13 @@ public class PartyCommands implements CommandExecutor {
                 player.sendMessage("You have not been invited to any parties");
             }
         }
-        else if (cmd.getName().equalsIgnoreCase("no")) {
-
+        else if (cmd.getName().equalsIgnoreCase("deny")) {
+            if (Invited.get(player.getUniqueId()) && !TempInvite.get(player.getUniqueId()).equals("null")) {
+                player.sendMessage("Okay, you don't have to join their party.");
+                Player senderPlayer = player.getServer().getPlayer(TempInvite.get(player.getUniqueId()));
+            } else {
+                player.sendMessage("You have not been invited to any parties");
+            }
         }
 
         return true;

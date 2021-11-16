@@ -1,10 +1,10 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="GreekOrigins:jar">
-    <output-path>$PROJECT_DIR$/../server/plugins</output-path>
+    <output-path>$PROJECT_DIR$/../PluginDev/server/plugins</output-path>
     <root id="archive" name="GreekOrigins.jar">
       <element id="module-output" name="GreekOrigins" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../Dependency/BuildTools.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../Dependency/spigot-1.17.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../PluginDev/Dependency/BuildTools.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../PluginDev/Dependency/spigot-1.17.1.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
