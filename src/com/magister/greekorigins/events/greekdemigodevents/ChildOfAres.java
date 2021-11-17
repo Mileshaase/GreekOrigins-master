@@ -15,6 +15,7 @@ import org.bukkit.potion.PotionEffectType;
 import java.util.Random;
 
 import static com.magister.greekorigins.events.generalevents.PlayerLevelEvents.PlayerLevel;
+import static com.magister.greekorigins.events.generalevents.PlayerParties.Party;
 import static com.magister.greekorigins.events.generalevents.RollEvents.GodlyParent;
 
 public class ChildOfAres implements Listener {
@@ -30,7 +31,8 @@ public class ChildOfAres implements Listener {
         Random rand = new Random();
         if(GodlyParent.get(player.getUniqueId()).equals("Ares")){
             int  n = rand.nextInt(100) + 1;
-                if (n <= 25) {
+            if (n <= 10) {
+                if ((Party.get(player.getUniqueId()) != (Party.get(event.getEntity().getUniqueId()))) || (Party.get(event.getEntity().getUniqueId()) == null) || (Party.get(event.getEntity().getUniqueId()) == "1")) {
                     double damageBoost = event.getDamage() / 5;
                     if (damageBoost >= 5) {
                         damageBoost = 5;
@@ -38,6 +40,7 @@ public class ChildOfAres implements Listener {
                     PotionEffect strength = new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 400, (int) damageBoost, true, false, true);
                     player.addPotionEffect(strength);
                 }
+            }
         }
     }
 
@@ -62,25 +65,25 @@ public class ChildOfAres implements Listener {
                     if (event.getItem() == null) {
                         if (!(player.hasPotionEffect(cooldown.getType()))) {
                             int duration = 0;
-                            int strength = 0;
+                            int amplifier = 0;
                             if (PlayerLevel.get(player.getUniqueId()) >= 50) {
                                 duration = 350;
-                                strength = 5;
+                                amplifier = 5;
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
                                 duration = 250;
-                                strength = 4;
+                                amplifier = 4;
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
                                 duration = 150;
-                                strength = 3;
+                                amplifier = 3;
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 20) {
                                 duration = 100;
-                                strength = 2;
+                                amplifier = 2;
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
                                 duration = 50;
-                                strength = 1;
+                                amplifier = 1;
                             }
-                            PotionEffect resistance = new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, duration, strength, true, false, true);
-                            player.addPotionEffect(resistance);
+                            PotionEffect strength = new PotionEffect(PotionEffectType.INCREASE_DAMAGE, duration, amplifier, true, false, true);
+                            player.addPotionEffect(strength);
                             player.addPotionEffect(cooldown);
                         }
                     } else if(event.getItem().getType().equals(Material.STONE_SWORD) || event.getItem().getType().equals(Material.IRON_SWORD) || event.getItem().getType().equals(Material.GOLDEN_SWORD) || event.getItem().getType().equals(Material.DIAMOND_SWORD) || event.getItem().getType().equals(Material.WOODEN_SWORD) || event.getItem().getType().equals(Material.NETHERITE_SWORD)){

@@ -108,6 +108,40 @@ public class ChildOfArtemis implements Listener {
                                 troops = 2;
                             } else if (PlayerLevel.get(player.getName()) >= 20) {
                                 troops = 1;
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 10){
+                                loc1.setX(player.getLocation().getX() - 2);
+                                loc1.setZ(player.getLocation().getZ() - 2);
+                                Entity wolf1 = player.getWorld().spawnEntity(loc1, EntityType.WOLF);
+                                wolf1.setCustomName("Hunter");
+                                wolf1.setCustomNameVisible(false);
+                                wolf1.setGlowing(true);
+                                wolf1.setTicksLived(100);
+                                ((Wolf) wolf1).setTarget((LivingEntity) getNearestEntityInSight(player, 10));
+                                ((Wolf) wolf1).setCollarColor(DyeColor.LIGHT_GRAY);
+                                ((Wolf) wolf1).setOwner(player);
+                                wolves.add(wolf1);
+
+                                loc2.setX(player.getLocation().getX() + 2);
+                                loc2.setZ(player.getLocation().getZ() + 2);
+                                Entity wolf2 = player.getWorld().spawnEntity(loc2, EntityType.WOLF);
+                                wolf2.setCustomName("Hunter");
+                                wolf2.setCustomNameVisible(false);
+                                wolf2.setTicksLived(100);
+                                wolf2.setGlowing(true);
+                                ((Wolf) wolf2).setTarget((LivingEntity) getNearestEntityInSight(player, 10));
+                                ((Wolf) wolf2).setCollarColor(DyeColor.LIGHT_GRAY);
+                                ((Wolf) wolf2).setOwner(player);
+                                wolves.add(wolf2);
+
+                                new BukkitRunnable() {
+                                    @Override
+                                    public void run() {
+                                        // What you want to schedule goes here
+                                        for(Entity z : wolves){
+                                            ((Wolf) z).setHealth(0.0);
+                                        }
+                                    }
+                                }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
                             }
                             for (int i = 0; i < troops; i++) {
                                 loc1.setX(player.getLocation().getX() - 2);
@@ -186,7 +220,7 @@ public class ChildOfArtemis implements Listener {
                     if (Math.abs(entity.getLocation().getY() - location.getY()) < 1.5) {
                         if (Math.abs(entity.getLocation().getZ() - location.getZ()) < 1.3) {
                             if(entity.getType() != EntityType.SHULKER_BULLET && entity.getType() != EntityType.DROPPED_ITEM && entity.getType() != EntityType.ITEM_FRAME && entity.getType() != EntityType.ARROW && entity.getType() != EntityType.WITHER_SKULL && entity.getType() != EntityType.SNOWBALL && entity.getType() != EntityType.EGG && entity.getType() != EntityType.BOAT && !Objects.equals(entity.getCustomName(), "Hunter")) {
-                                if(Party.get(entity.getUniqueId()).equals(Party.get(player.getUniqueId()))){
+                                if (Party.get(player.getUniqueId()) != (Party.get(entity.getUniqueId())) || (Party.get(entity.getUniqueId()) == null) || (Party.get(entity.getUniqueId()) == "1")) {
                                     return entity;
                                 }
                             }

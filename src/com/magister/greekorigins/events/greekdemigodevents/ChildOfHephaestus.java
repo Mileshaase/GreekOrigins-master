@@ -84,8 +84,8 @@ public class ChildOfHephaestus implements Listener {
         if(GodlyParent.get(player.getUniqueId()).equals("Hephaestus")){
             int  n = rand.nextInt(100) + 1;
             if(PlayerLevel.get(player.getUniqueId()) > 0) {
-                if (n <= 40){
-                    if (!Party.get(attacked.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                if (n <= 10){
+                    if (Party.get(player.getUniqueId()) != (Party.get(attacked.getUniqueId())) || (Party.get(attacked.getUniqueId()) == null) || (Party.get(attacked.getUniqueId()) == "1")) {
                         attacked.setFireTicks(100);
                     }
                 }

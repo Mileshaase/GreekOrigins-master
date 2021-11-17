@@ -29,11 +29,13 @@ public class ChildOfAphrodite implements Listener {
     public static void reTargetEvent(EntityDamageByEntityEvent event){
         Player player = (Player) event.getEntity();
         if(GodlyParent.get(player.getUniqueId()).equals("Aphrodite")){
-            List<Entity> players = player.getNearbyEntities(10, 20, 10);
+            List<Entity> players = player.getNearbyEntities(10, 10, 10);
             Location loc;
             for (Entity i : players) {
-                int p = players.indexOf(i);
-                ((Mob) i).setTarget((LivingEntity) event.getDamager());
+                if ((Party.get(player.getUniqueId()) != (Party.get(event.getDamager().getUniqueId()))) || (Party.get(event.getDamager().getUniqueId()) == null) || (Party.get(event.getDamager().getUniqueId()) == "1")) {
+                    int p = players.indexOf(i);
+                    ((Mob) i).setTarget((LivingEntity) event.getDamager());
+                }
             }
         }
     }
@@ -49,7 +51,7 @@ public class ChildOfAphrodite implements Listener {
                             if (PlayerLevel.get(player.getUniqueId()) >= 50) {
                                 List<Entity> players = player.getNearbyEntities(30, 5, 30);
                                 for (Entity i : players) {
-                                    if (!Party.get(i.getUniqueId()).equals(Party.get(player.getUniqueId()))){
+                                    if ((Party.get(player.getUniqueId()) != (Party.get(i.getUniqueId()))) || (Party.get(i.getUniqueId()) == null) || (Party.get(i.getUniqueId()) == "1")) {
                                         ((LivingEntity) i).addPotionEffect(slow);
                                         ((LivingEntity) i).addPotionEffect(stopjump);
                                         ((LivingEntity) i).addPotionEffect(slowDig);
@@ -59,9 +61,9 @@ public class ChildOfAphrodite implements Listener {
                                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
-                                List<Entity> players = player.getNearbyEntities(20, 5, 20);
+                                List<Entity> players = player.getNearbyEntities(25, 5, 25);
                                 for (Entity i : players) {
-                                    if(!Party.get(i.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                                    if ((Party.get(player.getUniqueId()) != (Party.get(i.getUniqueId()))) || (Party.get(i.getUniqueId()) == null) || (Party.get(i.getUniqueId()) == "1")) {
                                         ((LivingEntity) i).addPotionEffect(slow);
                                         ((LivingEntity) i).addPotionEffect(stopjump);
                                         ((LivingEntity) i).addPotionEffect(slowDig);
@@ -73,7 +75,7 @@ public class ChildOfAphrodite implements Listener {
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
                                 List<Entity> players = player.getNearbyEntities(20, 5, 20);
                                 for (Entity i : players) {
-                                    if(!Party.get(i.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                                    if ((Party.get(player.getUniqueId()) != (Party.get(i.getUniqueId()))) || (Party.get(i.getUniqueId()) == null) || (Party.get(i.getUniqueId()) == "1")) {
                                         ((LivingEntity) i).addPotionEffect(slow);
                                         ((LivingEntity) i).addPotionEffect(stopjump);
                                         ((LivingEntity) i).addPotionEffect(slowDig);
@@ -83,10 +85,10 @@ public class ChildOfAphrodite implements Listener {
                                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 20) {
-                                ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 10))).addPotionEffect(slow);
-                                ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 10))).addPotionEffect(stopjump);
-                                ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 10))).addPotionEffect(slowDig);
-                                ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 10))).addPotionEffect(tempCooldown);
+                                ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 15))).addPotionEffect(slow);
+                                ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 15))).addPotionEffect(stopjump);
+                                ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 15))).addPotionEffect(slowDig);
+                                ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 15))).addPotionEffect(tempCooldown);
                                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
@@ -115,7 +117,7 @@ public class ChildOfAphrodite implements Listener {
                     if (Math.abs(entity.getLocation().getY() - location.getY()) < 1.5) {
                         if (Math.abs(entity.getLocation().getZ() - location.getZ()) < 1.3) {
                             if(entity.getType() != EntityType.SHULKER_BULLET && entity.getType() != EntityType.DROPPED_ITEM && entity.getType() != EntityType.ITEM_FRAME && entity.getType() != EntityType.ARROW && entity.getType() != EntityType.WITHER_SKULL && entity.getType() != EntityType.SNOWBALL && entity.getType() != EntityType.EGG && entity.getType() != EntityType.BOAT) {
-                                if(!Party.get(entity.getUniqueId()).equals(Party.get(player.getUniqueId()))){
+                                if (Party.get(player.getUniqueId()) != (Party.get(entity.getUniqueId())) || (Party.get(entity.getUniqueId()) == null) || (Party.get(entity.getUniqueId()) == "1")) {
                                     return entity;
                                 }
                             }

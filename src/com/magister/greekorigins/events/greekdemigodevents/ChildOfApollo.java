@@ -51,9 +51,6 @@ public class ChildOfApollo implements Listener {
                     } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
                         amount = 2;
                         CONE_DEGREES = 2;
-                    } else if (PlayerLevel.get(player.getUniqueId()) >= 0) {
-                        amount = 2;
-                        CONE_DEGREES = 2;
                     }
 
                     Arrow oldArrow = (Arrow) event.getProjectile();
@@ -101,7 +98,7 @@ public class ChildOfApollo implements Listener {
                                 List<Entity> players = player.getNearbyEntities(30, 5, 30);
                                 Location loc;
                                 for (Entity i : players) {
-                                    if (!Party.get(i.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                                    if ((Party.get(player.getUniqueId()) != (Party.get(i.getUniqueId()))) || (Party.get(i.getUniqueId()) == null) || (Party.get(i.getUniqueId()) == "1")) {
                                         int p = players.indexOf(i);
                                         ((LivingEntity) i).addPotionEffect(blindness);
                                     }
@@ -112,7 +109,7 @@ public class ChildOfApollo implements Listener {
                                 List<Entity> players = player.getNearbyEntities(20, 5, 20);
                                 Location loc;
                                 for (Entity i : players) {
-                                    if (!Party.get(i.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                                    if ((Party.get(player.getUniqueId()) != (Party.get(i.getUniqueId()))) || (Party.get(i.getUniqueId()) == null) || (Party.get(i.getUniqueId()) == "1")) {
                                         int p = players.indexOf(i);
                                         ((LivingEntity) i).addPotionEffect(blindness);
                                     }
@@ -120,10 +117,10 @@ public class ChildOfApollo implements Listener {
                                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
-                                List<Entity> players = player.getNearbyEntities(20, 5, 20);
+                                List<Entity> players = player.getNearbyEntities(10, 5, 10);
                                 Location loc;
                                 for (Entity i : players) {
-                                    if (!Party.get(i.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                                    if ((Party.get(player.getUniqueId()) != (Party.get(i.getUniqueId()))) || (Party.get(i.getUniqueId()) == null) || (Party.get(i.getUniqueId()) == "1")) {
                                         int p = players.indexOf(i);
                                         ((LivingEntity) i).addPotionEffect(blindness);
                                     }
@@ -156,7 +153,7 @@ public class ChildOfApollo implements Listener {
                     if (Math.abs(entity.getLocation().getY() - location.getY()) < 1.5) {
                         if (Math.abs(entity.getLocation().getZ() - location.getZ()) < 1.3) {
                             if(entity.getType() != EntityType.SHULKER_BULLET && entity.getType() != EntityType.DROPPED_ITEM && entity.getType() != EntityType.ITEM_FRAME && entity.getType() != EntityType.ARROW && entity.getType() != EntityType.WITHER_SKULL && entity.getType() != EntityType.SNOWBALL && entity.getType() != EntityType.EGG && entity.getType() != EntityType.BOAT) {
-                                if (Party.get(entity.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                                if (Party.get(player.getUniqueId()) != (Party.get(entity.getUniqueId())) || (Party.get(entity.getUniqueId()) == null) || (Party.get(entity.getUniqueId()) == "1")) {
                                     return entity;
                                 }
                             }

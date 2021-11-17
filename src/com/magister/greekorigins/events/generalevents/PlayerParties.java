@@ -4,6 +4,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 
 import java.util.HashMap;
 import java.util.Objects;
@@ -20,5 +21,11 @@ public class PlayerParties implements Listener {
         if(Objects.equals(Party.get(player.getUniqueId()), Party.get(attacked.getUniqueId()))) {
             event.setCancelled(true);
         }
+    }
+
+    @EventHandler
+    public static void nullParty (PlayerMoveEvent event){
+        Player player = event.getPlayer();
+        Party.putIfAbsent(player.getUniqueId(), "1");
     }
 }

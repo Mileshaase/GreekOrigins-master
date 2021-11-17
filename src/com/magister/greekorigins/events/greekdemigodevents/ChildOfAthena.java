@@ -72,17 +72,18 @@ public class ChildOfAthena implements Listener {
         if(GodlyParent.get(player.getUniqueId()).equals("Athena")){
             int  n = rand.nextInt(100) + 1;
             if(PlayerLevel.get(player.getUniqueId()) > 0) {
-                if (n <= 40){
-                    ItemStack item = attacked.getInventory().getItemInMainHand();
-                    attacked.getInventory().remove(attacked.getInventory().getItemInMainHand());
-                    new BukkitRunnable() {
-                        @Override
-                        public void run() {
-                            // What you want to schedule goes here
-                            attacked.getInventory().addItem(item);
-                        }
-                    }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
-                    PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.2);
+                if (n <= 10){
+                    if (Party.get(player.getUniqueId()) != (Party.get(attacked.getUniqueId())) || (Party.get(attacked.getUniqueId()) == null) || (Party.get(attacked.getUniqueId()) == "1")) {
+                        ItemStack item = attacked.getInventory().getItemInMainHand();
+                        attacked.getInventory().remove(attacked.getInventory().getItemInMainHand());
+                        new BukkitRunnable() {
+                            @Override
+                            public void run() {
+                                // What you want to schedule goes here
+                                attacked.getInventory().addItem(item);
+                            }
+                        }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
+                    }
                 }
             }
         }
@@ -97,9 +98,9 @@ public class ChildOfAthena implements Listener {
                     if (event.getItem() == null) {
                         if (!(player.hasPotionEffect(cooldown.getType()))) {
                             if (PlayerLevel.get(player.getUniqueId()) >= 50) {
-                                List<Entity> players = player.getNearbyEntities(20, 10, 20);
+                                List<Entity> players = player.getNearbyEntities(30, 10, 30);
                                 for (Entity i : players) {
-                                    if (!Party.get(i.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                                    if ((Party.get(player.getUniqueId()) != (Party.get(i.getUniqueId()))) || (Party.get(i.getUniqueId()) == null) || (Party.get(i.getUniqueId()) == "1")) {
                                         ItemStack item = ((Player) i).getInventory().getItemInMainHand();
                                         ((Player) i).getInventory().remove(((Player) i).getInventory().getItemInMainHand());
                                         new BukkitRunnable() {
@@ -114,9 +115,9 @@ public class ChildOfAthena implements Listener {
                                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
-                                List<Entity> players = player.getNearbyEntities(10, 10, 10);
+                                List<Entity> players = player.getNearbyEntities(20, 10, 20);
                                 for (Entity i : players) {
-                                    if (!Party.get(i.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                                    if ((Party.get(player.getUniqueId()) != (Party.get(i.getUniqueId()))) || (Party.get(i.getUniqueId()) == null) || (Party.get(i.getUniqueId()) == "1")) {
                                         ItemStack item = ((Player) i).getInventory().getItemInMainHand();
                                         ((Player) i).getInventory().remove(((Player) i).getInventory().getItemInMainHand());
                                         new BukkitRunnable() {
@@ -131,9 +132,9 @@ public class ChildOfAthena implements Listener {
                                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
-                                List<Entity> players = player.getNearbyEntities(5, 10, 5);
+                                List<Entity> players = player.getNearbyEntities(10, 10, 10);
                                 for (Entity i : players) {
-                                    if (!Party.get(i.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                                    if ((Party.get(player.getUniqueId()) != (Party.get(i.getUniqueId()))) || (Party.get(i.getUniqueId()) == null) || (Party.get(i.getUniqueId()) == "1")) {
                                         ItemStack item = ((Player) i).getInventory().getItemInMainHand();
                                         ((Player) i).getInventory().remove(((Player) i).getInventory().getItemInMainHand());
                                         new BukkitRunnable() {
@@ -173,7 +174,6 @@ public class ChildOfAthena implements Listener {
                                         disarmed.getInventory().addItem(item);
                                     }
                                 }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
-                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                             }
                         }
@@ -194,7 +194,7 @@ public class ChildOfAthena implements Listener {
                     if (Math.abs(entity.getLocation().getY() - location.getY()) < 1.5) {
                         if (Math.abs(entity.getLocation().getZ() - location.getZ()) < 1.3) {
                             if(entity.getType() != EntityType.SHULKER_BULLET && entity.getType() != EntityType.DROPPED_ITEM && entity.getType() != EntityType.ITEM_FRAME && entity.getType() != EntityType.ARROW && entity.getType() != EntityType.WITHER_SKULL && entity.getType() != EntityType.SNOWBALL && entity.getType() != EntityType.EGG && entity.getType() != EntityType.BOAT) {
-                                if(Party.get(entity.getUniqueId()).equals(Party.get(player.getUniqueId()))){
+                                if (Party.get(player.getUniqueId()) != (Party.get(entity.getUniqueId())) || (Party.get(entity.getUniqueId()) == null) || (Party.get(entity.getUniqueId()) == "1")) {
                                     return entity;
                                 }
                             }
