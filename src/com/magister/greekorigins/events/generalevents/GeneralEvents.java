@@ -74,7 +74,7 @@ public class GeneralEvents implements Listener {
     public void onDrink(PlayerItemConsumeEvent event){
         Player player = event.getPlayer();
         ItemStack consumable = event.getItem();
-        if(Objects.equals(consumable.getItemMeta(), GeneralItemsManager.Wine.getItemMeta())){
+        if(Objects.equals(consumable.getItemMeta(), GeneralItemsManager.Wine.getItemMeta()) || Objects.equals(consumable.getItemMeta(), GeneralItemsManager.Mead.getItemMeta())){
             player.addPotionEffect(drunk);
         }
     }

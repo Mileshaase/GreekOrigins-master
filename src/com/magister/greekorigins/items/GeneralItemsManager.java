@@ -18,11 +18,13 @@ public class GeneralItemsManager {
     public static ItemStack CelestialFragment;
     public static ItemStack Ambrosia;
     public static ItemStack Wine;
+    public static ItemStack Mead;
 
     public static void init(){
         createCelestialFragment();
         createAmbrosia();
         createWine();
+        createMead();
     }
 
     private static void createCelestialFragment(){
@@ -79,6 +81,27 @@ public class GeneralItemsManager {
         ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("wine"), Wine);
         sr.shape(" B ", "B B", " G ");
         sr.setIngredient('B', Material.SWEET_BERRIES);
+        sr.setIngredient('G', Material.GLASS_BOTTLE);
+        Bukkit.getServer().addRecipe(sr);
+    }
+
+    private static void createMead(){
+        ItemStack item = new ItemStack(Material.HONEY_BOTTLE, 1);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.GOLD + "Mead");
+        List<String> lore = new ArrayList<>();
+        lore.add(ChatColor.YELLOW + "Hmmm, get drunk");
+        meta.setLore(lore);
+        meta.addEnchant(Enchantment.LUCK, 1, false);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        meta.setUnbreakable(true);
+        item.setItemMeta(meta);
+        Mead = item;
+
+        //Shaped Recipe
+        ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("mead"), Mead);
+        sr.shape(" H ", "H H", " G ");
+        sr.setIngredient('H', Material.HONEYCOMB);
         sr.setIngredient('G', Material.GLASS_BOTTLE);
         Bukkit.getServer().addRecipe(sr);
     }
