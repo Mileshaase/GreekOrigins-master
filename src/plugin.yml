@@ -101,9 +101,15 @@ commands:
   invite:
     description: Invites a player to a party
     usage: /<command> <player>
+  remove:
+    description: Remove a player from your party
+    usage: /<command> <player>
   accept:
     description: Acccepts party invite
     usage: /<command>
   deny:
     description: Denies party invite
+    usage: /<command>
+  leaveparty:
+    description: Leave your current party
     usage: /<command>

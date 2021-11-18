@@ -43,6 +43,24 @@ public class PartyCommands implements CommandExecutor {
                 player.sendMessage("You must invite a valid player");
             }
         }
+        else if (cmd.getName().equalsIgnoreCase("remove")) {
+            if (args.length >= 1) {
+                try {
+                    Player impactedPlayer = Bukkit.getPlayerExact(args[0]);
+                    assert impactedPlayer != null && impactedPlayer != player;
+                    if(Party.get(player.getUniqueId()) == Party.get(impactedPlayer.getUniqueId())) {
+                        impactedPlayer.sendMessage("You have been removed from " + ChatColor.BLUE + player.getName() + "'s party!");
+                        Party.put(impactedPlayer.getUniqueId(), "1");
+                    } else {
+                        player.sendMessage("This player is not in your party!");
+                    }
+                } catch (IllegalArgumentException e) {
+                    player.sendMessage("You must remove a valid player");
+                }
+            } else {
+                player.sendMessage("You must remove a valid player");
+            }
+        }
 
         else if (cmd.getName().equalsIgnoreCase("accept")) {
             if(Invited.get(player.getUniqueId()) && !TempInvite.get(player.getUniqueId()).equals("null")) {
@@ -56,11 +74,19 @@ public class PartyCommands implements CommandExecutor {
         else if (cmd.getName().equalsIgnoreCase("deny")) {
             if (Invited.get(player.getUniqueId()) && !TempInvite.get(player.getUniqueId()).equals("null")) {
                 player.sendMessage("Okay, you don't have to join their party.");
-                Player senderPlayer = player.getServer().getPlayer(TempInvite.get(player.getUniqueId()));
+                Invited.put(player.getUniqueId(), false);
             } else {
                 player.sendMessage("You have not been invited to any parties");
             }
         }
+        else if (cmd.getName().equalsIgnoreCase("leaveParty")) {
+            if(Party.get(player.getUniqueId()) != null && Party.get(player.getUniqueId()) != "1"){
+                Party.put(player.getUniqueId(), "1");
+            } else {
+                player.sendMessage("You're not in a party!");
+            }
+        }
+
 
         return true;
     }

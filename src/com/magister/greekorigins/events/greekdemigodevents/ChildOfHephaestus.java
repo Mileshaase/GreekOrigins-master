@@ -28,7 +28,7 @@ public class ChildOfHephaestus implements Listener {
     private static final PotionEffect fireResist = new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 500, 255, true, false, true);
 
     @EventHandler
-    public static void noLightningDamage(EntityDamageEvent event){
+    public static void noFireDamage(EntityDamageEvent event){
         Player player = (Player) event.getEntity();
         if(event.getCause() == EntityDamageEvent.DamageCause.FIRE || event.getCause() == EntityDamageEvent.DamageCause.FIRE_TICK){
             if(GodlyParent.get(player.getUniqueId()).equals("Hephaestus")){
@@ -46,7 +46,7 @@ public class ChildOfHephaestus implements Listener {
                 int  n = rand.nextInt(100) + 1;
                 ItemStack drops = (ItemStack) event.getBlock().getDrops();
                 int amount = 0;
-                if(n <= 40) {
+                if(n <= 10) {
                     if (PlayerLevel.get(player.getUniqueId()) >= 50) {
                         amount = 5;
                     } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
@@ -116,9 +116,6 @@ public class ChildOfHephaestus implements Listener {
                                 amount = 45;
                                 CONE_DEGREES = 45;
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
-                                amount = 30;
-                                CONE_DEGREES = 30;
-                            } else if (PlayerLevel.get(player.getUniqueId()) >= 0) {
                                 amount = 15;
                                 CONE_DEGREES = 15;
                             }

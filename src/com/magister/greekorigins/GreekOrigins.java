@@ -74,8 +74,10 @@ public class GreekOrigins extends JavaPlugin {
 
         getCommand("createParty").setExecutor(partyCommands);
         getCommand("invite").setExecutor(partyCommands);
+        getCommand("remove").setExecutor(partyCommands);
         getCommand("accept").setExecutor(partyCommands);
         getCommand("deny").setExecutor(partyCommands);
+        getCommand("leaveParty").setExecutor(partyCommands);
 
         getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[Greek Origins]: Functioning");
 

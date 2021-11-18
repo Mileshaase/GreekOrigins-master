@@ -1,6 +1,7 @@
 package com.magister.greekorigins.events.greekdemigodevents;
 
 import com.magister.greekorigins.GreekOrigins;
+import org.bukkit.DyeColor;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.*;
@@ -79,6 +80,28 @@ public class ChildOfHades implements Listener {
                                 troops = 2;
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 20) {
                                 troops = 1;
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 10){
+                                loc1.setX(player.getLocation().getX() - 2);
+                                loc1.setZ(player.getLocation().getZ() - 2);
+                                Entity zombie1 = player.getWorld().spawnEntity(loc1, EntityType.HUSK);
+                                ((Husk) zombie1).setTarget((LivingEntity) getNearestEntityInSight(player, 20));
+                                zombies.add(zombie1);
+
+                                loc2.setX(player.getLocation().getX() + 2);
+                                loc2.setZ(player.getLocation().getZ() - 2);
+                                Entity zombie2 = player.getWorld().spawnEntity(loc2, EntityType.HUSK);
+                                ((Husk) zombie2).setTarget((LivingEntity) getNearestEntityInSight(player, 20));
+                                zombies.add(zombie2);
+
+                                new BukkitRunnable() {
+                                    @Override
+                                    public void run() {
+                                        // What you want to schedule goes here
+                                        for(Entity z : zombies){
+                                            ((Husk) z).setHealth(0.0);
+                                        }
+                                    }
+                                }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
                             }
                             for (int i = 0; i < troops; i++) {
                                 loc1.setX(player.getLocation().getX() - 2);

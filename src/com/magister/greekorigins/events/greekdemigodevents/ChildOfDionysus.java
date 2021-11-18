@@ -49,7 +49,7 @@ public class ChildOfDionysus implements Listener {
     }
 
     @EventHandler
-    public static void playerNoDrunk(PlayerMoveEvent event){
+    public static void drunkenStrength(PlayerMoveEvent event){
         Player player = event.getPlayer();
         if(GodlyParent.get(player.getUniqueId()).equals("Dionysus")) {
             if (player.hasPotionEffect(nausea.getType())) {
@@ -82,7 +82,7 @@ public class ChildOfDionysus implements Listener {
                                     }
                                 }
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
-                                List<Entity> players = player.getNearbyEntities(20, 5, 20);
+                                List<Entity> players = player.getNearbyEntities(15, 5, 15);
                                 for (Entity i : players) {
                                     if ((Party.get(player.getUniqueId()) != (Party.get(i.getUniqueId()))) || (Party.get(i.getUniqueId()) == null) || (Party.get(i.getUniqueId()) == "1")) {
                                         ((LivingEntity) i).addPotionEffect(nausea);
@@ -90,7 +90,7 @@ public class ChildOfDionysus implements Listener {
                                 }
                                 player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 20) {
-                                ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 10))).addPotionEffect(nausea);
+                                ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 15))).addPotionEffect(nausea);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
                                 ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 10))).addPotionEffect(nausea);
                             }

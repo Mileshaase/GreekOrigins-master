@@ -1,6 +1,7 @@
 package com.magister.greekorigins.events.greekdemigodevents;
 
 import org.bukkit.Location;
+import org.bukkit.Particle;
 import org.bukkit.block.Block;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -52,6 +53,7 @@ public class ChildOfAphrodite implements Listener {
                                 List<Entity> players = player.getNearbyEntities(30, 5, 30);
                                 for (Entity i : players) {
                                     if ((Party.get(player.getUniqueId()) != (Party.get(i.getUniqueId()))) || (Party.get(i.getUniqueId()) == null) || (Party.get(i.getUniqueId()) == "1")) {
+                                        i.getWorld().spawnParticle(Particle.HEART, i.getLocation(), 100);
                                         ((LivingEntity) i).addPotionEffect(slow);
                                         ((LivingEntity) i).addPotionEffect(stopjump);
                                         ((LivingEntity) i).addPotionEffect(slowDig);
@@ -64,6 +66,7 @@ public class ChildOfAphrodite implements Listener {
                                 List<Entity> players = player.getNearbyEntities(25, 5, 25);
                                 for (Entity i : players) {
                                     if ((Party.get(player.getUniqueId()) != (Party.get(i.getUniqueId()))) || (Party.get(i.getUniqueId()) == null) || (Party.get(i.getUniqueId()) == "1")) {
+                                        i.getWorld().spawnParticle(Particle.HEART, i.getLocation(), 100);
                                         ((LivingEntity) i).addPotionEffect(slow);
                                         ((LivingEntity) i).addPotionEffect(stopjump);
                                         ((LivingEntity) i).addPotionEffect(slowDig);
@@ -76,6 +79,7 @@ public class ChildOfAphrodite implements Listener {
                                 List<Entity> players = player.getNearbyEntities(20, 5, 20);
                                 for (Entity i : players) {
                                     if ((Party.get(player.getUniqueId()) != (Party.get(i.getUniqueId()))) || (Party.get(i.getUniqueId()) == null) || (Party.get(i.getUniqueId()) == "1")) {
+                                        i.getWorld().spawnParticle(Particle.HEART, i.getLocation(), 100);
                                         ((LivingEntity) i).addPotionEffect(slow);
                                         ((LivingEntity) i).addPotionEffect(stopjump);
                                         ((LivingEntity) i).addPotionEffect(slowDig);
@@ -89,6 +93,7 @@ public class ChildOfAphrodite implements Listener {
                                 ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 15))).addPotionEffect(stopjump);
                                 ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 15))).addPotionEffect(slowDig);
                                 ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 15))).addPotionEffect(tempCooldown);
+                                Objects.requireNonNull(getNearestEntityInSight(player, 15)).getWorld().spawnParticle(Particle.HEART, Objects.requireNonNull(getNearestEntityInSight(player, 15)).getLocation(), 100);
                                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
@@ -96,6 +101,8 @@ public class ChildOfAphrodite implements Listener {
                                 ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 10))).addPotionEffect(stopjump);
                                 ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 10))).addPotionEffect(slowDig);
                                 ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 10))).addPotionEffect(tempCooldown);
+                                Objects.requireNonNull(getNearestEntityInSight(player, 10)).getWorld().spawnParticle(Particle.HEART, Objects.requireNonNull(getNearestEntityInSight(player, 10)).getLocation(), 100);
+
                                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                             }
