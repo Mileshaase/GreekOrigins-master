@@ -22,9 +22,13 @@ public class PartyCommands implements CommandExecutor {
         Player player = (Player) sender;
 
         if (cmd.getName().equalsIgnoreCase("createParty")) {
-            Party.put(player.getUniqueId(), player.getName());
-            PartyLeaders.put(player.getUniqueId(), player.getName());
-            player.sendMessage("You're now the leader of the party: " + Party.get(player.getUniqueId()));
+            if(Party.get(player.getUniqueId()) != player.getName()) {
+                Party.put(player.getUniqueId(), player.getName());
+                PartyLeaders.put(player.getUniqueId(), player.getName());
+                player.sendMessage("You're now the leader of the party: " + Party.get(player.getUniqueId()));
+            } else {
+                player.sendMessage("You are already the leader of a party!");
+            }
         }
 
         else if (cmd.getName().equalsIgnoreCase("invite")) {
@@ -88,7 +92,15 @@ public class PartyCommands implements CommandExecutor {
                 player.sendMessage("You're not in a party!");
             }
         }
-
+        else if (cmd.getName().equalsIgnoreCase("party")) {
+            if(Party.get(player.getUniqueId()) == player.getName()) {
+                player.sendMessage("You are leading your own party!");
+            } else if(Party.get(player.getUniqueId()) == null || Party.get(player.getUniqueId()) == "1"){
+                player.sendMessage("You are not in a party!");
+            } else {
+                player.sendMessage("You are in " + Party.get(player.getUniqueId()) + "'s party!");
+            }
+        }
 
         return true;
     }

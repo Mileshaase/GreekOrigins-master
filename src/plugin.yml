@@ -113,3 +113,6 @@ commands:
   leaveparty:
     description: Leave your current party
     usage: /<command>
+  party:
+    description: Displays the players current party
+    usage: /<command>
