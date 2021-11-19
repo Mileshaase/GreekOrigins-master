@@ -24,7 +24,7 @@ import static com.magister.greekorigins.events.generalevents.RollEvents.GodlyPar
 public class ChildOfApollo implements Listener {
 
     private static final PotionEffect cooldown = new PotionEffect(PotionEffectType.LUCK, 2400, 0, true, false, true);
-    private static final PotionEffect blindness = new PotionEffect(PotionEffectType.BLINDNESS, 400, 255, true, false, true);
+    private static final PotionEffect blindness = new PotionEffect(PotionEffectType.BLINDNESS, 400, 255, true, true, true);
     private static final PotionEffect glowing = new PotionEffect(PotionEffectType.GLOWING, 400, 255, true, false, true);
 
     @EventHandler
@@ -96,46 +96,37 @@ public class ChildOfApollo implements Listener {
                             player.addPotionEffect(glowing);
                             if (PlayerLevel.get(player.getUniqueId()) >= 50) {
                                 List<Entity> players = player.getNearbyEntities(30, 5, 30);
-                                Location loc;
                                 for (Entity i : players) {
                                     if ((Party.get(player.getUniqueId()) != (Party.get(i.getUniqueId()))) || (Party.get(i.getUniqueId()) == null) || (Party.get(i.getUniqueId()) == "1")) {
-                                        int p = players.indexOf(i);
                                         ((LivingEntity) i).addPotionEffect(blindness);
+                                        ((Player) i).sendTitle("You've been blinded by a solar flare", "", 50, 50, 50);
                                     }
                                 }
-                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
-                                player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
                                 List<Entity> players = player.getNearbyEntities(20, 5, 20);
-                                Location loc;
                                 for (Entity i : players) {
                                     if ((Party.get(player.getUniqueId()) != (Party.get(i.getUniqueId()))) || (Party.get(i.getUniqueId()) == null) || (Party.get(i.getUniqueId()) == "1")) {
-                                        int p = players.indexOf(i);
                                         ((LivingEntity) i).addPotionEffect(blindness);
+                                        ((Player) i).sendTitle("You've been blinded by a solar flare", "", 50, 50, 50);
                                     }
                                 }
-                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
-                                player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
-                                List<Entity> players = player.getNearbyEntities(10, 5, 10);
-                                Location loc;
+                                List<Entity> players = player.getNearbyEntities(15, 5, 15);
                                 for (Entity i : players) {
                                     if ((Party.get(player.getUniqueId()) != (Party.get(i.getUniqueId()))) || (Party.get(i.getUniqueId()) == null) || (Party.get(i.getUniqueId()) == "1")) {
-                                        int p = players.indexOf(i);
                                         ((LivingEntity) i).addPotionEffect(blindness);
+                                        ((Player) i).sendTitle("You've been blinded by a solar flare", "", 50, 50, 50);
                                     }
                                 }
-                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 20) {
-                                ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 10))).addPotionEffect(blindness);
-                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
-                                player.addPotionEffect(cooldown);
+                                ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 15))).addPotionEffect(blindness);
+                                ((Player) Objects.requireNonNull(getNearestEntityInSight(player, 15))).sendTitle("You've been blinded by a solar flare", "", 50, 50, 50);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
-                                ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 5))).addPotionEffect(blindness);
-                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
-                                player.addPotionEffect(cooldown);
+                                ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 10))).addPotionEffect(blindness);
+                                ((Player) Objects.requireNonNull(getNearestEntityInSight(player, 10))).sendTitle("You've been blinded by a solar flare", "", 50, 50, 50);
                             }
+                            player.addPotionEffect(cooldown);
                         }
                     }
                 }

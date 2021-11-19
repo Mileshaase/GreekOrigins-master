@@ -19,7 +19,7 @@ import static com.magister.greekorigins.events.generalevents.RollEvents.GodlyPar
 public class ChildOfHermes implements Listener {
     private static final PotionEffect cooldown = new PotionEffect(PotionEffectType.LUCK, 2400, 0, true, false, true);
 
-    private static final PotionEffect levitate = new PotionEffect(PotionEffectType.LEVITATION, 10, 50, true, false, true);
+    private static final PotionEffect levitate = new PotionEffect(PotionEffectType.LEVITATION, 10, 50, true, true, true);
     private static final PotionEffect jump = new PotionEffect(PotionEffectType.JUMP, 1000, 1, true, false, true);
     private static final PotionEffect speed = new PotionEffect(PotionEffectType.SPEED, 1000, 5, true, false, true);
     private static final PotionEffect haste = new PotionEffect(PotionEffectType.FAST_DIGGING, 1000, 8, true, false, true);

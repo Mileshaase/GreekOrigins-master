@@ -28,12 +28,12 @@ import static com.magister.greekorigins.events.generalevents.RollEvents.GodlyPar
 public class ChildOfPoseidon implements Listener {
     private static final PotionEffect cooldown = new PotionEffect(PotionEffectType.LUCK, 2400, 0, true, false, true);
 
-    private static final PotionEffect waterBreathing = new PotionEffect(PotionEffectType.WATER_BREATHING, 100, 255, true, false, false);
-    private static final PotionEffect dolphinsGrace = new PotionEffect(PotionEffectType.DOLPHINS_GRACE, 100, 255, true, false, false);
-    private static final PotionEffect conduitPower = new PotionEffect(PotionEffectType.CONDUIT_POWER, 100, 255, true, false, false);
+    private static final PotionEffect waterBreathing = new PotionEffect(PotionEffectType.WATER_BREATHING, 100, 255, true, true, false);
+    private static final PotionEffect dolphinsGrace = new PotionEffect(PotionEffectType.DOLPHINS_GRACE, 100, 255, true, true, false);
+    private static final PotionEffect conduitPower = new PotionEffect(PotionEffectType.CONDUIT_POWER, 100, 255, true, true, false);
     private static final PotionEffect regeneration = new PotionEffect(PotionEffectType.REGENERATION, 100, 1, true, false, false);
     private static final PotionEffect strength = new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 100, 2, true, false, false);
-    private static final PotionEffect levitate = new PotionEffect(PotionEffectType.LEVITATION, 5, 50, true, false, true);
+    private static final PotionEffect levitate = new PotionEffect(PotionEffectType.LEVITATION, 5, 50, true, true, true);
 
     @EventHandler
     public void onEntityTargetLivingEntity(EntityTargetLivingEntityEvent event) {
@@ -219,7 +219,6 @@ public class ChildOfPoseidon implements Listener {
                                         }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 1000);
                                     }
                                 }
-
                                 player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
                                 troops = 3;

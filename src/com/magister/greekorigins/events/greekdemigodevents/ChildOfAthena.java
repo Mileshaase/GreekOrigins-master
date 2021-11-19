@@ -103,6 +103,7 @@ public class ChildOfAthena implements Listener {
                                     if ((Party.get(player.getUniqueId()) != (Party.get(i.getUniqueId()))) || (Party.get(i.getUniqueId()) == null) || (Party.get(i.getUniqueId()) == "1")) {
                                         ItemStack item = ((Player) i).getInventory().getItemInMainHand();
                                         ((Player) i).getInventory().remove(((Player) i).getInventory().getItemInMainHand());
+                                        ((Player) i).sendTitle("You've been disarmed!", "", 50, 50, 50);
                                         new BukkitRunnable() {
                                             @Override
                                             public void run() {
@@ -120,6 +121,7 @@ public class ChildOfAthena implements Listener {
                                     if ((Party.get(player.getUniqueId()) != (Party.get(i.getUniqueId()))) || (Party.get(i.getUniqueId()) == null) || (Party.get(i.getUniqueId()) == "1")) {
                                         ItemStack item = ((Player) i).getInventory().getItemInMainHand();
                                         ((Player) i).getInventory().remove(((Player) i).getInventory().getItemInMainHand());
+                                        ((Player) i).sendTitle("You've been disarmed!", "", 50, 50, 50);
                                         new BukkitRunnable() {
                                             @Override
                                             public void run() {
@@ -137,6 +139,7 @@ public class ChildOfAthena implements Listener {
                                     if ((Party.get(player.getUniqueId()) != (Party.get(i.getUniqueId()))) || (Party.get(i.getUniqueId()) == null) || (Party.get(i.getUniqueId()) == "1")) {
                                         ItemStack item = ((Player) i).getInventory().getItemInMainHand();
                                         ((Player) i).getInventory().remove(((Player) i).getInventory().getItemInMainHand());
+                                        ((Player) i).sendTitle("You've been disarmed!", "", 50, 50, 50);
                                         new BukkitRunnable() {
                                             @Override
                                             public void run() {
@@ -153,6 +156,7 @@ public class ChildOfAthena implements Listener {
                                 assert disarmed != null;
                                 ItemStack item = disarmed.getInventory().getItemInMainHand();
                                 disarmed.getInventory().remove(disarmed.getInventory().getItemInMainHand());
+                                ((Player) disarmed).sendTitle("You've been disarmed!", "", 50, 50, 50);
                                 new BukkitRunnable() {
                                     @Override
                                     public void run() {
@@ -167,6 +171,7 @@ public class ChildOfAthena implements Listener {
                                 assert disarmed != null;
                                 ItemStack item = disarmed.getInventory().getItemInMainHand();
                                 disarmed.getInventory().remove(disarmed.getInventory().getItemInMainHand());
+                                ((Player) disarmed).sendTitle("You've been disarmed!", "", 50, 50, 50);
                                 new BukkitRunnable() {
                                     @Override
                                     public void run() {

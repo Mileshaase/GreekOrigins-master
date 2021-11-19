@@ -67,6 +67,7 @@ public class PartyCommands implements CommandExecutor {
                 Party.put(player.getUniqueId(), TempInvite.get(player.getUniqueId()));
                 Invited.put(player.getUniqueId(), false);
                 TempInvite.put(player.getUniqueId(), "null");
+                player.sendMessage("You accepted the invite!");
             } else{
                 player.sendMessage("You have not been invited to any parties");
             }
@@ -82,6 +83,7 @@ public class PartyCommands implements CommandExecutor {
         else if (cmd.getName().equalsIgnoreCase("leaveParty")) {
             if(Party.get(player.getUniqueId()) != null && Party.get(player.getUniqueId()) != "1"){
                 Party.put(player.getUniqueId(), "1");
+                player.sendMessage("You have left the party!");
             } else {
                 player.sendMessage("You're not in a party!");
             }

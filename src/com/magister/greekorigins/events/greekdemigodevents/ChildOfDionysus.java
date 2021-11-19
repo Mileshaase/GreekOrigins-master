@@ -27,9 +27,9 @@ import static com.magister.greekorigins.events.generalevents.RollEvents.GodlyPar
 public class ChildOfDionysus implements Listener {
     private static final PotionEffect cooldown = new PotionEffect(PotionEffectType.LUCK, 2400, 0, true, false, true);
 
-    private static final PotionEffect nausea = new PotionEffect(PotionEffectType.CONFUSION, 300, 255, true, false, true);
-    private static final PotionEffect strength = new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 500, 2, true, false, true);
-    private static final PotionEffect absorption = new PotionEffect(PotionEffectType.ABSORPTION, 500, 2, true, false, true);
+    private static final PotionEffect nausea = new PotionEffect(PotionEffectType.CONFUSION, 300, 255, true, true, true);
+    private static final PotionEffect strength = new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 500, 2, true, true, true);
+    private static final PotionEffect absorption = new PotionEffect(PotionEffectType.ABSORPTION, 500, 2, true, true, true);
 
     @EventHandler
     public static void playerHitEntity(EntityDamageByEntityEvent event){

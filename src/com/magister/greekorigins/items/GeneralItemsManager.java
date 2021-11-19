@@ -58,7 +58,7 @@ public class GeneralItemsManager {
         //Shaped Recipe
         ShapedRecipe sr = new ShapedRecipe(NamespacedKey.minecraft("ambrosia"), Ambrosia);
         sr.shape("GDG", "DCD", "GDG");
-        sr.setIngredient('C', Material.GOLDEN_APPLE);
+        sr.setIngredient('C', Material.ENCHANTED_GOLDEN_APPLE);
         sr.setIngredient('G', Material.GOLD_INGOT);
         sr.setIngredient('D', Material.DIAMOND);
         Bukkit.getServer().addRecipe(sr);

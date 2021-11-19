@@ -22,9 +22,9 @@ public class ChildOfAphrodite implements Listener {
     private static final PotionEffect cooldown = new PotionEffect(PotionEffectType.LUCK, 2400, 0, true, false, true);
     private static final PotionEffect tempCooldown = new PotionEffect(PotionEffectType.LUCK, 500, 0, true, false, true);
 
-    private static final PotionEffect slow = new PotionEffect(PotionEffectType.SLOW, 100, 255, true, false, true);
-    private static final PotionEffect stopjump = new PotionEffect(PotionEffectType.JUMP, 100, 200, true, false, true);
-    private static final PotionEffect slowDig = new PotionEffect(PotionEffectType.SLOW_DIGGING, 100, 255, true, false, true);
+    private static final PotionEffect slow = new PotionEffect(PotionEffectType.SLOW, 100, 255, true, true, true);
+    private static final PotionEffect stopjump = new PotionEffect(PotionEffectType.JUMP, 100, 200, true, true, true);
+    private static final PotionEffect slowDig = new PotionEffect(PotionEffectType.SLOW_DIGGING, 100, 255, true, true, true);
 
     @EventHandler
     public static void reTargetEvent(EntityDamageByEntityEvent event){
@@ -58,6 +58,7 @@ public class ChildOfAphrodite implements Listener {
                                         ((LivingEntity) i).addPotionEffect(stopjump);
                                         ((LivingEntity) i).addPotionEffect(slowDig);
                                         ((LivingEntity) i).addPotionEffect(tempCooldown);
+                                        ((Player) i).sendTitle("You've been stunned!", "", 50, 50, 50);
                                     }
                                 }
                                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
@@ -71,6 +72,7 @@ public class ChildOfAphrodite implements Listener {
                                         ((LivingEntity) i).addPotionEffect(stopjump);
                                         ((LivingEntity) i).addPotionEffect(slowDig);
                                         ((LivingEntity) i).addPotionEffect(tempCooldown);
+                                        ((Player) i).sendTitle("You've been stunned!", "", 50, 50, 50);
                                     }
                                 }
                                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
@@ -84,6 +86,7 @@ public class ChildOfAphrodite implements Listener {
                                         ((LivingEntity) i).addPotionEffect(stopjump);
                                         ((LivingEntity) i).addPotionEffect(slowDig);
                                         ((LivingEntity) i).addPotionEffect(tempCooldown);
+                                        ((Player) i).sendTitle("You've been stunned!", "", 50, 50, 50);
                                     }
                                 }
                                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
@@ -94,7 +97,7 @@ public class ChildOfAphrodite implements Listener {
                                 ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 15))).addPotionEffect(slowDig);
                                 ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 15))).addPotionEffect(tempCooldown);
                                 Objects.requireNonNull(getNearestEntityInSight(player, 15)).getWorld().spawnParticle(Particle.HEART, Objects.requireNonNull(getNearestEntityInSight(player, 15)).getLocation(), 100);
-                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
+                                ((Player) Objects.requireNonNull(getNearestEntityInSight(player, 15))).sendTitle("You've been stunned!", "", 50, 50, 50);
                                 player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
                                 ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 10))).addPotionEffect(slow);
@@ -102,8 +105,7 @@ public class ChildOfAphrodite implements Listener {
                                 ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 10))).addPotionEffect(slowDig);
                                 ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 10))).addPotionEffect(tempCooldown);
                                 Objects.requireNonNull(getNearestEntityInSight(player, 10)).getWorld().spawnParticle(Particle.HEART, Objects.requireNonNull(getNearestEntityInSight(player, 10)).getLocation(), 100);
-
-                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
+                                ((Player) Objects.requireNonNull(getNearestEntityInSight(player, 10))).sendTitle("You've been stunned!", "", 50, 50, 50);
                                 player.addPotionEffect(cooldown);
                             }
                          }

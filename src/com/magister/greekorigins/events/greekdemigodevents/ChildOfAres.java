@@ -37,7 +37,7 @@ public class ChildOfAres implements Listener {
                     if (damageBoost >= 5) {
                         damageBoost = 5;
                     }
-                    PotionEffect strength = new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 400, (int) damageBoost, true, false, true);
+                    PotionEffect strength = new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 400, (int) damageBoost, true, true, true);
                     player.addPotionEffect(strength);
                 }
             }
@@ -49,8 +49,8 @@ public class ChildOfAres implements Listener {
         Player player = event.getEntity().getKiller();
         assert player != null;
         if(GodlyParent.get(player.getUniqueId()).equals("Ares")){
-            PotionEffect absorption = new PotionEffect(PotionEffectType.ABSORPTION, 200, 2, true, false, true);
-            PotionEffect regen = new PotionEffect(PotionEffectType.REGENERATION, 200, 1, true, false, true);
+            PotionEffect absorption = new PotionEffect(PotionEffectType.ABSORPTION, 200, 2, true, true, true);
+            PotionEffect regen = new PotionEffect(PotionEffectType.REGENERATION, 200, 1, true, true, true);
             player.addPotionEffect(absorption);
             player.addPotionEffect(regen);
         }
