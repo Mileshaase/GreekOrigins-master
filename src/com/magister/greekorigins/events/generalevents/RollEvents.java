@@ -15,50 +15,48 @@ public class RollEvents implements Listener {
 
     public static void RandomGreekRoll(Player player){
         Random rand = new Random();
-        int chosenGod = rand.nextInt(731);
+        int chosenGod = rand.nextInt(100);
 
         if(chosenGod == 1){
             GodlyParent.put(player.getUniqueId(), "Chronos");
         }
-        if(chosenGod >= 11){
+        if(chosenGod >= 1 && chosenGod <= 2){
             GodlyParent.put(player.getUniqueId(), "Zeus");
         }
-        if(chosenGod >= 21){
+        if(chosenGod >= 2 && chosenGod <= 3){
             GodlyParent.put(player.getUniqueId(), "Poseidon");
         }
-        if(chosenGod >= 31){
+        if(chosenGod >= 3 && chosenGod <= 4){
             GodlyParent.put(player.getUniqueId(), "Hades");
         }
-        if(chosenGod >= 101){
+        if(chosenGod >= 10 && chosenGod <= 20){
             GodlyParent.put(player.getUniqueId(), "Aphrodite");
         }
-        if(chosenGod >= 171){
+        if(chosenGod >= 20  && chosenGod <= 30){
             GodlyParent.put(player.getUniqueId(), "Apollo");
         }
-        if(chosenGod >= 241){
+        if(chosenGod >= 30 && chosenGod <= 40){
             GodlyParent.put(player.getUniqueId(), "Ares");
         }
-        if(chosenGod >= 311){
+        if(chosenGod >= 40 && chosenGod <= 50){
             GodlyParent.put(player.getUniqueId(), "Artemis");
         }
-        if(chosenGod >= 381){
+        if(chosenGod >= 50 && chosenGod <= 60){
             GodlyParent.put(player.getUniqueId(), "Athena");
         }
-        if(chosenGod >= 451){
+        if(chosenGod >= 60 && chosenGod <= 70){
             GodlyParent.put(player.getUniqueId(), "Demeter");
         }
-        if(chosenGod >= 521){
+        if(chosenGod >= 70 && chosenGod <= 80){
             GodlyParent.put(player.getUniqueId(), "Dionysus");
         }
-        if(chosenGod >= 591){
+        if(chosenGod >= 80 && chosenGod <= 90){
             GodlyParent.put(player.getUniqueId(), "Hephaestus");
         }
-        if(chosenGod >= 661){
+        if(chosenGod >= 90 && chosenGod <= 98){
             GodlyParent.put(player.getUniqueId(), "Hermes");
         }
         player.sendTitle(ChatColor.DARK_PURPLE + "You're Godly Parent is ", ChatColor.GOLD + GodlyParent.get(player.getUniqueId()), 1, 50, 1);
         NumberOfRolls.put(player.getUniqueId(), NumberOfRolls.get(player.getUniqueId()) - 1);
-        CustomConfig.get().addDefault(String.valueOf(player.getUniqueId() + " parent:"), GodlyParent.get(player.getUniqueId()));
-        CustomConfig.get().addDefault(String.valueOf(player.getUniqueId() + " rolls:"), NumberOfRolls.get(player.getUniqueId()));
     }
 }

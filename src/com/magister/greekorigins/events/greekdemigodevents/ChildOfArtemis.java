@@ -56,7 +56,6 @@ public class ChildOfArtemis implements Listener {
 
                     Arrow oldArrow = (Arrow) event.getProjectile();
                     oldArrow.setPickupStatus(AbstractArrow.PickupStatus.DISALLOWED);
-                    int fireticks = oldArrow.getFireTicks();
                     int knockbackStrength = oldArrow.getKnockbackStrength();
                     double angleBetweenArrows = (CONE_DEGREES / (amount - 1)) * Math.PI / 180;
                     double pitch = (player.getLocation().getPitch() + 90) * Math.PI / 180;

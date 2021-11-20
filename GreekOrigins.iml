@@ -23,24 +23,16 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="file://$MODULE_DIR$/../PluginDev/Dependency" />
-          <root url="file://$MODULE_DIR$/../PluginDev/Dependency" />
+          <root url="file://$MODULE_DIR$/../Dependency" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="file://$MODULE_DIR$/../PluginDev/Dependency" />
-          <root url="file://$MODULE_DIR$/../PluginDev/Dependency/Bukkit/src/main/java" />
-          <root url="file://$MODULE_DIR$/../PluginDev/Dependency/Bukkit/src/test/java" />
-          <root url="file://$MODULE_DIR$/../PluginDev/Dependency/CraftBukkit/src/main/java" />
-          <root url="file://$MODULE_DIR$/../PluginDev/Dependency/CraftBukkit/src/test/java" />
-          <root url="file://$MODULE_DIR$/../PluginDev/Dependency/Spigot/Spigot-API/src/main/java" />
-          <root url="file://$MODULE_DIR$/../PluginDev/Dependency/Spigot/Spigot-API/src/test/java" />
-          <root url="file://$MODULE_DIR$/../PluginDev/Dependency/Spigot/Spigot-Server/src/main/java" />
-          <root url="file://$MODULE_DIR$/../PluginDev/Dependency/Spigot/Spigot-Server/src/test/java" />
-          <root url="file://$MODULE_DIR$/../PluginDev/Dependency/work/decompile-00fabbe5" />
+          <root url="file://$MODULE_DIR$/../Dependency" />
+          <root url="file://$MODULE_DIR$/../Dependency/Bukkit/src/main/java" />
+          <root url="file://$MODULE_DIR$/../Dependency/Bukkit/src/test/java" />
         </SOURCES>
-        <jarDirectory url="file://$MODULE_DIR$/../PluginDev/Dependency" recursive="false" />
-        <jarDirectory url="file://$MODULE_DIR$/../PluginDev/Dependency" recursive="false" type="SOURCES" />
+        <jarDirectory url="file://$MODULE_DIR$/../Dependency" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/../Dependency" recursive="false" type="SOURCES" />
       </library>
     </orderEntry>
   </component>
