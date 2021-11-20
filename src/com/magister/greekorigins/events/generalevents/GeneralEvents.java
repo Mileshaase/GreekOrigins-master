@@ -52,12 +52,6 @@ public class GeneralEvents implements Listener {
         PlayerLevel.put(player.getUniqueId(), CustomConfig.get().getDouble(player.getUniqueId() + " level:"));
         GodlyParent.put(player.getUniqueId(), (String) CustomConfig.get().get(player.getUniqueId() + " parent:"));
         NumberOfRolls.put(player.getUniqueId(), (int) CustomConfig.get().getDouble(player.getUniqueId() + " rolls:"));
-//
-//        CustomConfig.get().addDefault(String.valueOf(player.getUniqueId() + " level:"), PlayerLevel.get(player.getUniqueId()));
-//        CustomConfig.get().addDefault(String.valueOf(player.getUniqueId() + " parent:"), GodlyParent.get(player.getUniqueId()));
-//        CustomConfig.get().addDefault(String.valueOf(player.getUniqueId() + " rolls:"), NumberOfRolls.get(player.getUniqueId()));
-        CustomConfig.get().options().copyDefaults(true);
-        CustomConfig.save();
     }
 
     @EventHandler
@@ -65,9 +59,11 @@ public class GeneralEvents implements Listener {
         Player player = event.getPlayer();
         CustomConfig.get().addDefault(String.valueOf(player.getUniqueId() + " level:"), PlayerLevel.get(player.getUniqueId()));
         CustomConfig.get().addDefault(String.valueOf(player.getUniqueId() + " parent:"), GodlyParent.get(player.getUniqueId()));
-        CustomConfig.get().addDefault(String.valueOf(player.getUniqueId() + " rolls:"), NumberOfRolls.get(player.getUniqueId()));
-        CustomConfig.get().options().copyDefaults(true);
-        CustomConfig.save();
+        if(player.hasPlayedBefore()) {
+            CustomConfig.get().addDefault(String.valueOf(player.getUniqueId() + " rolls:"), NumberOfRolls.get(player.getUniqueId()));
+        }
+//        CustomConfig.get().options().copyDefaults(true);
+//        CustomConfig.save();
     }
 
     @EventHandler

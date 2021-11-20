@@ -64,47 +64,6 @@ public class ChildOfChronos implements Listener {
                                     loc = i.getLocation();
                                     player.teleport(loc);
                                     ((LivingEntity) i).damage(4);
-                                    ((LivingEntity) i).addPotionEffect(slowness);
-                                    ((LivingEntity) i).addPotionEffect(stopjump);
-                                    ((LivingEntity) i).addPotionEffect(slowdig);
-                                    new BukkitRunnable() {
-                                        @Override
-                                        public void run() {
-                                            // What you want to schedule goes here
-
-                                        }
-                                    }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
-                                }
-                                player.teleport(start);
-                                player.addPotionEffect(cooldown);
-                            } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
-                                List<Entity> players = player.getNearbyEntities(20, 20, 20);
-                                for (Entity i : players) {
-                                    loc = i.getLocation();
-                                    player.teleport(loc);
-                                    ((LivingEntity) i).damage(4);
-                                    ((LivingEntity) i).addPotionEffect(slowness);
-                                    ((LivingEntity) i).addPotionEffect(stopjump);
-                                    ((LivingEntity) i).addPotionEffect(slowdig);
-                                    new BukkitRunnable() {
-                                        @Override
-                                        public void run() {
-                                            // What you want to schedule goes here
-
-                                        }
-                                    }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
-                                }
-                                player.teleport(start);
-                                player.addPotionEffect(cooldown);
-                            } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
-                                List<Entity> players = player.getNearbyEntities(15, 15, 15);
-                                for (Entity i : players) {
-                                    loc = i.getLocation();
-                                    player.teleport(loc);
-                                    ((LivingEntity) i).damage(4);
-                                    ((LivingEntity) i).addPotionEffect(slowness);
-                                    ((LivingEntity) i).addPotionEffect(stopjump);
-                                    ((LivingEntity) i).addPotionEffect(slowdig);
                                     new BukkitRunnable() {
                                         @Override
                                         public void run() {
@@ -113,7 +72,36 @@ public class ChildOfChronos implements Listener {
                                         }
                                     }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 10);
                                 }
-                                player.teleport(start);
+                                player.addPotionEffect(cooldown);
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
+                                List<Entity> players = player.getNearbyEntities(20, 20, 20);
+                                for (Entity i : players) {
+                                    loc = i.getLocation();
+                                    player.teleport(loc);
+                                    ((LivingEntity) i).damage(4);
+                                    new BukkitRunnable() {
+                                        @Override
+                                        public void run() {
+                                            // What you want to schedule goes here
+                                            player.teleport(start);
+                                        }
+                                    }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 10);
+                                }
+                                player.addPotionEffect(cooldown);
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
+                                List<Entity> players = player.getNearbyEntities(15, 15, 15);
+                                for (Entity i : players) {
+                                    loc = i.getLocation();
+                                    player.teleport(loc);
+                                    ((LivingEntity) i).damage(4);
+                                    new BukkitRunnable() {
+                                        @Override
+                                        public void run() {
+                                            // What you want to schedule goes here
+                                            player.teleport(start);
+                                        }
+                                    }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 10);
+                                }
                                 player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 20) {
                                 Entity opponent = getNearestEntityInSight(player, 25);
