@@ -270,7 +270,7 @@ public class ChildOfPoseidon implements Listener {
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 20) {
                                 ArrayList<Block> blocks = new ArrayList<>();
                                 for(Entity e : player.getNearbyEntities(10, 10, 10)){
-                                    if (!Party.get(e.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                                    if ((Party.get(player.getUniqueId()) != (Party.get(e.getUniqueId()))) || (Party.get(e.getUniqueId()) == null) || (Party.get(e.getUniqueId()) == "1")) {
                                         blocks.addAll(getNearbyBlocks(e.getLocation(), 1, 2));
                                     }
                                 }
@@ -290,7 +290,7 @@ public class ChildOfPoseidon implements Listener {
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
                                 ArrayList<Block> blocks = new ArrayList<>();
                                 for(Entity e : player.getNearbyEntities(10, 10, 10)){
-                                    if (!Party.get(e.getUniqueId()).equals(Party.get(player.getUniqueId()))) {
+                                    if ((Party.get(player.getUniqueId()) != (Party.get(e.getUniqueId()))) || (Party.get(e.getUniqueId()) == null) || (Party.get(e.getUniqueId()) == "1")) {
                                         blocks.addAll(getNearbyBlocks(e.getLocation(), 1, 2));
                                     }
                                 }

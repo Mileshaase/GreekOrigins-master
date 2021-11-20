@@ -28,7 +28,10 @@ public class Commands implements CommandExecutor {
             String parent = GodlyParent.get(player.getUniqueId());
             player.sendMessage(ChatColor.DARK_PURPLE + "Your Parent is " + parent);
         }
-
+        else if (cmd.getName().equalsIgnoreCase("getlvl")) {
+            double lvl = Math.round(PlayerLevel.get(player.getUniqueId()));
+            player.sendMessage(ChatColor.WHITE + "You're Level " + lvl);
+        }
         if(player.isOp()) {
             if (cmd.getName().equalsIgnoreCase("heal")) {
                 double maxHealth = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getDefaultValue();
@@ -55,9 +58,6 @@ public class Commands implements CommandExecutor {
             } else if (cmd.getName().equalsIgnoreCase("lvl0")) {
                 PlayerLevel.put(player.getUniqueId(), 0d);
                 player.sendMessage(ChatColor.WHITE + "Level 0");
-            } else if (cmd.getName().equalsIgnoreCase("getlvl")) {
-                double lvl = Math.round(PlayerLevel.get(player.getUniqueId()));
-                player.sendMessage(ChatColor.WHITE + "You're Level " + lvl);
             }
             else if (cmd.getName().equalsIgnoreCase("addroll")) {
                 NumberOfRolls.put(player.getUniqueId(), NumberOfRolls.get(player.getUniqueId()) + 1);
