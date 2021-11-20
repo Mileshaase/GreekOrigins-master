@@ -26,7 +26,7 @@ import static com.magister.greekorigins.events.generalevents.RollEvents.GodlyPar
 
 public class ChildOfAthena implements Listener {
 
-    private static final PotionEffect cooldown = new PotionEffect(PotionEffectType.LUCK, 2400, 0, true, false, true);
+    private static final PotionEffect cooldown = new PotionEffect(PotionEffectType.LUCK, 1200, 0, true, false, true);
 
     @EventHandler
     public static void infiniteLevels(EnchantItemEvent event){
@@ -113,7 +113,6 @@ public class ChildOfAthena implements Listener {
                                         }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
                                     }
                                 }
-                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
                                 List<Entity> players = player.getNearbyEntities(20, 10, 20);
@@ -131,7 +130,6 @@ public class ChildOfAthena implements Listener {
                                         }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
                                     }
                                 }
-                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
                                 List<Entity> players = player.getNearbyEntities(10, 10, 10);
@@ -149,7 +147,6 @@ public class ChildOfAthena implements Listener {
                                         }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
                                     }
                                 }
-                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 20) {
                                 Player disarmed = (Player) getNearestEntityInSight(player, 10);
@@ -164,7 +161,6 @@ public class ChildOfAthena implements Listener {
                                         disarmed.getInventory().addItem(item);
                                     }
                                 }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
-                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
                                 Player disarmed = (Player) getNearestEntityInSight(player, 5);

@@ -21,7 +21,7 @@ import static com.magister.greekorigins.events.generalevents.RollEvents.GodlyPar
 
 public class ChildOfDemeter implements Listener {
     private static final PotionEffect negateHunger = new PotionEffect(PotionEffectType.SATURATION, 300, 255, true, false, true);
-    private static final PotionEffect cooldown = new PotionEffect(PotionEffectType.LUCK, 2400, 0, true, false, true);
+    private static final PotionEffect cooldown = new PotionEffect(PotionEffectType.LUCK, 1200, 0, true, false, true);
 
     @EventHandler
     public static void negateHunger(PlayerMoveEvent event){

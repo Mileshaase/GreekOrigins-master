@@ -19,7 +19,7 @@ import static com.magister.greekorigins.events.generalevents.PlayerParties.Party
 import static com.magister.greekorigins.events.generalevents.RollEvents.GodlyParent;
 
 public class ChildOfAphrodite implements Listener {
-    private static final PotionEffect cooldown = new PotionEffect(PotionEffectType.LUCK, 2400, 0, true, false, true);
+    private static final PotionEffect cooldown = new PotionEffect(PotionEffectType.LUCK, 1200, 0, true, false, true);
     private static final PotionEffect tempCooldown = new PotionEffect(PotionEffectType.LUCK, 500, 0, true, false, true);
 
     private static final PotionEffect slow = new PotionEffect(PotionEffectType.SLOW, 100, 255, true, true, true);
@@ -61,7 +61,6 @@ public class ChildOfAphrodite implements Listener {
                                         ((Player) i).sendTitle("You've been stunned!", "", 50, 50, 50);
                                     }
                                 }
-                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
                                 List<Entity> players = player.getNearbyEntities(25, 5, 25);
@@ -75,7 +74,6 @@ public class ChildOfAphrodite implements Listener {
                                         ((Player) i).sendTitle("You've been stunned!", "", 50, 50, 50);
                                     }
                                 }
-                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
                                 List<Entity> players = player.getNearbyEntities(20, 5, 20);
@@ -89,7 +87,6 @@ public class ChildOfAphrodite implements Listener {
                                         ((Player) i).sendTitle("You've been stunned!", "", 50, 50, 50);
                                     }
                                 }
-                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 20) {
                                 ((LivingEntity) Objects.requireNonNull(getNearestEntityInSight(player, 15))).addPotionEffect(slow);

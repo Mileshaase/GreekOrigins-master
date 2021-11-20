@@ -10,6 +10,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -26,7 +27,7 @@ import static com.magister.greekorigins.events.generalevents.PlayerParties.Party
 import static com.magister.greekorigins.events.generalevents.RollEvents.GodlyParent;
 
 public class ChildOfPoseidon implements Listener {
-    private static final PotionEffect cooldown = new PotionEffect(PotionEffectType.LUCK, 2400, 0, true, false, true);
+    private static final PotionEffect cooldown = new PotionEffect(PotionEffectType.LUCK, 1200, 0, true, false, true);
 
     private static final PotionEffect waterBreathing = new PotionEffect(PotionEffectType.WATER_BREATHING, 100, 255, true, true, false);
     private static final PotionEffect dolphinsGrace = new PotionEffect(PotionEffectType.DOLPHINS_GRACE, 100, 255, true, true, false);
@@ -34,6 +35,16 @@ public class ChildOfPoseidon implements Listener {
     private static final PotionEffect regeneration = new PotionEffect(PotionEffectType.REGENERATION, 100, 1, true, false, false);
     private static final PotionEffect strength = new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 100, 2, true, false, false);
     private static final PotionEffect levitate = new PotionEffect(PotionEffectType.LEVITATION, 5, 50, true, true, true);
+
+    @EventHandler
+    public static void noExplosiveDamage(EntityDamageEvent event){
+        Player player = (Player) event.getEntity();
+        if(event.getCause() == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION || event.getCause() == EntityDamageEvent.DamageCause.BLOCK_EXPLOSION) {
+            if(GodlyParent.get(player.getUniqueId()).equals("Poseidon")){
+                event.setCancelled(true);
+            }
+        }
+    }
 
     @EventHandler
     public void onEntityTargetLivingEntity(EntityTargetLivingEntityEvent event) {

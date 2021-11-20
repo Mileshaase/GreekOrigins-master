@@ -25,7 +25,7 @@ import static com.magister.greekorigins.events.generalevents.RollEvents.GodlyPar
 
 public class ChildOfZeus implements Listener {
 
-    private static final PotionEffect cooldown = new PotionEffect(PotionEffectType.LUCK, 2400, 0, true, false, true);
+    private static final PotionEffect cooldown = new PotionEffect(PotionEffectType.LUCK, 1200, 0, true, false, true);
 
     @EventHandler
     public static void noLightningDamage(EntityDamageEvent event){
@@ -74,7 +74,6 @@ public class ChildOfZeus implements Listener {
                                         player.getWorld().strikeLightning(loc);
                                     }
                                 }
-                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
                                 List<Entity> players = player.getNearbyEntities(15, 10, 15);
                                 Location loc;
@@ -85,7 +84,6 @@ public class ChildOfZeus implements Listener {
                                         player.getWorld().strikeLightning(loc);
                                     }
                                 }
-                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
                                 List<Entity> players = player.getNearbyEntities(10, 10, 10);
                                 Location loc;
@@ -96,14 +94,11 @@ public class ChildOfZeus implements Listener {
                                         player.getWorld().strikeLightning(loc);
                                     }
                                 }
-                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 20) {
                                 player.getWorld().strikeLightning(Objects.requireNonNull(getNearestEntityInSight(player, 10)).getLocation());
                                 player.getWorld().strikeLightning(Objects.requireNonNull(getNearestEntityInSight(player, 10)).getLocation());
-                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
                                 player.getWorld().strikeLightning(Objects.requireNonNull(getNearestEntityInSight(player, 5)).getLocation());
-                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                             }
                             player.addPotionEffect(cooldown);
                         }

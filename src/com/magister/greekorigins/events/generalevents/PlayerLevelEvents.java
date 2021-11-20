@@ -33,14 +33,29 @@ public class PlayerLevelEvents implements Listener {
             PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 1);
         }
         CustomConfig.get().addDefault(String.valueOf(player.getUniqueId() + " level:"), PlayerLevel.get(player.getUniqueId()));
+        if(PlayerLevel.get(player.getUniqueId()) == 10){
+            player.sendTitle("You're Level", "10", 50, 50, 50);
+        }
+        else if(PlayerLevel.get(player.getUniqueId()) == 20){
+            player.sendTitle("You're Level", "20", 50, 50, 50);
+        }
+        else if(PlayerLevel.get(player.getUniqueId()) == 30){
+            player.sendTitle("You're Level", "30", 50, 50, 50);
+        }
+        else if(PlayerLevel.get(player.getUniqueId()) == 40){
+            player.sendTitle("You're Level", "40", 50, 50, 50);
+        }
+        else if(PlayerLevel.get(player.getUniqueId()) == 50){
+            player.sendTitle("You're Level", "50", 50, 50, 50);
+        }
     }
 
     @EventHandler
     public static void mobKill(EntityDeathEvent event) {
         Entity mob = event.getEntity();
         Player player = event.getEntity().getKiller();
+        assert player != null;
         if (mob.getType().equals(EntityType.COW) || mob.getType().equals(EntityType.PIG) || mob.getType().equals(EntityType.SHEEP) || mob.getType().equals(EntityType.CHICKEN) || mob.getType().equals(EntityType.DONKEY) || mob.getType().equals(EntityType.HORSE)) {
-            assert player != null;
             if (PlayerLevel.get(player.getUniqueId()) >= 50) {
                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.1);
             } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
@@ -56,7 +71,6 @@ public class PlayerLevelEvents implements Listener {
             }
         }
         if (mob.getType().equals(EntityType.SKELETON) || mob.getType().equals(EntityType.ZOMBIE) || mob.getType().equals(EntityType.HUSK) || mob.getType().equals(EntityType.STRAY) || mob.getType().equals(EntityType.CREEPER) || mob.getType().equals(EntityType.SPIDER) || mob.getType().equals(EntityType.CAVE_SPIDER) || mob.getType().equals(EntityType.DROWNED)) {
-            assert player != null;
             if (PlayerLevel.get(player.getUniqueId()) >= 50) {
                 PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.2);
             } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
@@ -72,5 +86,20 @@ public class PlayerLevelEvents implements Listener {
             }
         }
         CustomConfig.get().addDefault(String.valueOf(player.getUniqueId() + " level:"), PlayerLevel.get(player.getUniqueId()));
+        if(PlayerLevel.get(player.getUniqueId()) == 10){
+            player.sendTitle("You're Level", "10", 50, 50, 50);
+        }
+        else if(PlayerLevel.get(player.getUniqueId()) == 20){
+            player.sendTitle("You're Level", "20", 50, 50, 50);
+        }
+        else if(PlayerLevel.get(player.getUniqueId()) == 30){
+            player.sendTitle("You're Level", "30", 50, 50, 50);
+        }
+        else if(PlayerLevel.get(player.getUniqueId()) == 40){
+            player.sendTitle("You're Level", "40", 50, 50, 50);
+        }
+        else if(PlayerLevel.get(player.getUniqueId()) == 50){
+            player.sendTitle("You're Level", "50", 50, 50, 50);
+        }
     }
 }

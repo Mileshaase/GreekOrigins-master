@@ -17,7 +17,7 @@ import org.bukkit.potion.PotionEffectType;
 import static com.magister.greekorigins.events.generalevents.RollEvents.GodlyParent;
 
 public class ChildOfHermes implements Listener {
-    private static final PotionEffect cooldown = new PotionEffect(PotionEffectType.LUCK, 2400, 0, true, false, true);
+    private static final PotionEffect cooldown = new PotionEffect(PotionEffectType.LUCK, 1200, 0, true, false, true);
 
     private static final PotionEffect levitate = new PotionEffect(PotionEffectType.LEVITATION, 10, 50, true, true, true);
     private static final PotionEffect jump = new PotionEffect(PotionEffectType.JUMP, 1000, 1, true, false, true);

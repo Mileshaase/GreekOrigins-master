@@ -1,11 +1,10 @@
 package com.magister.greekorigins.events.greekdemigodevents;
 
+import com.magister.greekorigins.GreekOrigins;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -13,6 +12,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +23,11 @@ import static com.magister.greekorigins.events.generalevents.PlayerParties.Party
 import static com.magister.greekorigins.events.generalevents.RollEvents.GodlyParent;
 
 public class ChildOfChronos implements Listener {
-    private static final PotionEffect slowness = new PotionEffect(PotionEffectType.SLOW, 200, 255, true, false, true);
-    private static final PotionEffect stopjump = new PotionEffect(PotionEffectType.JUMP, 200, 200, true, false, true);
-    private static final PotionEffect slowdig = new PotionEffect(PotionEffectType.SLOW_FALLING, 200, 255, true, false, true);
+    private static final PotionEffect slowness = new PotionEffect(PotionEffectType.SLOW, 100, 255, true, false, true);
+    private static final PotionEffect stopjump = new PotionEffect(PotionEffectType.JUMP, 100, 200, true, false, true);
+    private static final PotionEffect slowdig = new PotionEffect(PotionEffectType.SLOW_FALLING, 100, 255, true, false, true);
 
-    private static final PotionEffect cooldown = new PotionEffect(PotionEffectType.LUCK, 2400, 0, true, false, true);
+    private static final PotionEffect cooldown = new PotionEffect(PotionEffectType.LUCK, 1200, 0, true, false, true);
 
     @EventHandler
     public static void playerHitEntity(EntityDamageByEntityEvent event){
@@ -36,14 +36,13 @@ public class ChildOfChronos implements Listener {
         if(GodlyParent.get(player.getUniqueId()).equals("Chronos")){
             int  n = rand.nextInt(100) + 1;
             if(PlayerLevel.get(player.getUniqueId()) > 10) {
-                if (n <= 40){
+                if (n <= 10){
                     List<Entity> players = player.getNearbyEntities(10, 10, 10);
                     for(Entity i : players){
                         ((LivingEntity) i).addPotionEffect(slowness);
                         ((LivingEntity) i).addPotionEffect(stopjump);
                         ((LivingEntity) i).addPotionEffect(slowdig);
                     }
-                    PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.2);
                 }
             }
         }
@@ -60,80 +59,88 @@ public class ChildOfChronos implements Listener {
                             Location loc;
                             Location start = player.getLocation();
                             if (PlayerLevel.get(player.getUniqueId()) >= 50) {
-                                player.addPotionEffect(slowness);
-                                player.addPotionEffect(stopjump);
-                                player.addPotionEffect(slowdig);
-                                List<Entity> players = player.getNearbyEntities(40, 40, 40);
-                                for (Entity i : players) {
-                                    int p = players.indexOf(i);
-                                    loc = players.get(p).getLocation();
-                                    player.teleport(loc);
-                                    ((LivingEntity) i).damage(4);
-                                }
-                                player.teleport(start);
-                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
-                                player.addPotionEffect(cooldown);
-                                player.removePotionEffect(slowness.getType());
-                                player.removePotionEffect(stopjump.getType());
-                                player.removePotionEffect(slowdig.getType());
-                            } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
-                                player.addPotionEffect(slowness);
-                                player.addPotionEffect(stopjump);
-                                player.addPotionEffect(slowdig);
                                 List<Entity> players = player.getNearbyEntities(30, 30, 30);
                                 for (Entity i : players) {
                                     loc = i.getLocation();
                                     player.teleport(loc);
                                     ((LivingEntity) i).damage(4);
+                                    ((LivingEntity) i).addPotionEffect(slowness);
+                                    ((LivingEntity) i).addPotionEffect(stopjump);
+                                    ((LivingEntity) i).addPotionEffect(slowdig);
+                                    new BukkitRunnable() {
+                                        @Override
+                                        public void run() {
+                                            // What you want to schedule goes here
+
+                                        }
+                                    }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
                                 }
                                 player.teleport(start);
-                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
-                                player.removePotionEffect(slowness.getType());
-                                player.removePotionEffect(stopjump.getType());
-                                player.removePotionEffect(slowdig.getType());
-                            } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
-                                player.addPotionEffect(slowness);
-                                player.addPotionEffect(stopjump);
-                                player.addPotionEffect(slowdig);
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 40) {
                                 List<Entity> players = player.getNearbyEntities(20, 20, 20);
                                 for (Entity i : players) {
                                     loc = i.getLocation();
                                     player.teleport(loc);
                                     ((LivingEntity) i).damage(4);
+                                    ((LivingEntity) i).addPotionEffect(slowness);
+                                    ((LivingEntity) i).addPotionEffect(stopjump);
+                                    ((LivingEntity) i).addPotionEffect(slowdig);
+                                    new BukkitRunnable() {
+                                        @Override
+                                        public void run() {
+                                            // What you want to schedule goes here
+
+                                        }
+                                    }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
                                 }
                                 player.teleport(start);
-                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
                                 player.addPotionEffect(cooldown);
-                                player.removePotionEffect(slowness.getType());
-                                player.removePotionEffect(stopjump.getType());
-                                player.removePotionEffect(slowdig.getType());
+                            } else if (PlayerLevel.get(player.getUniqueId()) >= 30) {
+                                List<Entity> players = player.getNearbyEntities(15, 15, 15);
+                                for (Entity i : players) {
+                                    loc = i.getLocation();
+                                    player.teleport(loc);
+                                    ((LivingEntity) i).damage(4);
+                                    ((LivingEntity) i).addPotionEffect(slowness);
+                                    ((LivingEntity) i).addPotionEffect(stopjump);
+                                    ((LivingEntity) i).addPotionEffect(slowdig);
+                                    new BukkitRunnable() {
+                                        @Override
+                                        public void run() {
+                                            // What you want to schedule goes here
+                                            player.teleport(start);
+                                        }
+                                    }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 10);
+                                }
+                                player.teleport(start);
+                                player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 20) {
-                                player.addPotionEffect(slowness);
-                                player.addPotionEffect(stopjump);
-                                player.addPotionEffect(slowdig);
-                                Entity opponent = getNearestEntityInSight(player, 20);
+                                Entity opponent = getNearestEntityInSight(player, 25);
                                 assert opponent != null;
                                 player.teleport(opponent.getLocation());
                                 ((LivingEntity) opponent).damage(4);
-                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
-                                player.addPotionEffect(cooldown);
-                                player.removePotionEffect(slowness.getType());
-                                player.removePotionEffect(stopjump.getType());
-                                player.removePotionEffect(slowdig.getType());
+                                new BukkitRunnable() {
+                                    @Override
+                                    public void run() {
+                                        // What you want to schedule goes here
+                                        player.addPotionEffect(cooldown);
+                                        player.teleport(start);
+                                    }
+                                }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 10);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
-                                player.addPotionEffect(slowness);
-                                player.addPotionEffect(stopjump);
-                                player.addPotionEffect(slowdig);
-                                Entity opponent = getNearestEntityInSight(player, 10);
+                                Entity opponent = getNearestEntityInSight(player, 15);
                                 assert opponent != null;
                                 player.teleport(opponent.getLocation());
                                 ((LivingEntity) opponent).damage(4);
-                                PlayerLevel.put(player.getUniqueId(), PlayerLevel.get(player.getUniqueId()) + 0.5);
-                                player.addPotionEffect(cooldown);
-                                player.removePotionEffect(slowness.getType());
-                                player.removePotionEffect(stopjump.getType());
-                                player.removePotionEffect(slowdig.getType());
+                                new BukkitRunnable() {
+                                    @Override
+                                    public void run() {
+                                        // What you want to schedule goes here
+                                        player.addPotionEffect(cooldown);
+                                        player.teleport(start);
+                                    }
+                                }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 10);
                             }
                         }
                     }
@@ -152,7 +159,7 @@ public class ChildOfChronos implements Listener {
                     if (Math.abs(entity.getLocation().getY() - location.getY()) < 1.5) {
                         if (Math.abs(entity.getLocation().getZ() - location.getZ()) < 1.3) {
                             if(entity.getType() != EntityType.SHULKER_BULLET && entity.getType() != EntityType.DROPPED_ITEM && entity.getType() != EntityType.ITEM_FRAME && entity.getType() != EntityType.ARROW && entity.getType() != EntityType.WITHER_SKULL && entity.getType() != EntityType.SNOWBALL && entity.getType() != EntityType.EGG && entity.getType() != EntityType.BOAT) {
-                                if(Party.get(entity.getUniqueId()).equals(Party.get(player.getUniqueId()))){
+                                if (Party.get(player.getUniqueId()) != (Party.get(entity.getUniqueId())) || (Party.get(entity.getUniqueId()) == null) || (Party.get(entity.getUniqueId()) == "1")) {
                                     return entity;
                                 }
                             }

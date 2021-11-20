@@ -20,7 +20,6 @@ public class Commands implements CommandExecutor {
             RollForGod gui = new RollForGod();
             player.openInventory(gui.getInventory());
         }
-
         else if (cmd.getName().equalsIgnoreCase("getrolls")) {
             player.sendMessage("You have " + NumberOfRolls.get(player.getUniqueId()));
         }
@@ -32,7 +31,8 @@ public class Commands implements CommandExecutor {
             double lvl = Math.round(PlayerLevel.get(player.getUniqueId()));
             player.sendMessage(ChatColor.WHITE + "You're Level " + lvl);
         }
-        if(player.isOp()) {
+
+        else if(player.isOp()) {
             if (cmd.getName().equalsIgnoreCase("heal")) {
                 double maxHealth = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getDefaultValue();
                 player.setHealth(maxHealth);
