@@ -1,6 +1,5 @@
 package com.magister.greekorigins.events.generalevents;
 
-import com.magister.greekorigins.files.CustomConfig;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;

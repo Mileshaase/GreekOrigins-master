@@ -9,7 +9,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockIgniteEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.weather.LightningStrikeEvent;
 import org.bukkit.inventory.ItemStack;
@@ -38,17 +37,13 @@ public class GeneralEvents implements Listener {
     }
 
     @EventHandler
-    public void onJoin(PlayerJoinEvent event){
+    public void logWhenJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
+
         if(!player.hasPlayedBefore()){
             PlayerLevel.put(player.getUniqueId(), 0.0);
             NumberOfRolls.put(player.getUniqueId(), 3);
         }
-    }
-
-    @EventHandler
-    public void logWhenJoin(PlayerJoinEvent event){
-        Player player = event.getPlayer();
 
         PlayerLevel.put(player.getUniqueId(), CustomConfig.get().getDouble(player.getUniqueId() + " level:"));
         GodlyParent.put(player.getUniqueId(), (String) CustomConfig.get().get(player.getUniqueId() + " parent:"));
@@ -60,9 +55,16 @@ public class GeneralEvents implements Listener {
     @EventHandler
     public void logWhenLeave(PlayerQuitEvent event){
         Player player = event.getPlayer();
-        CustomConfig.get().set(player.getUniqueId() + " level:", PlayerLevel.get(player.getUniqueId()));
-        CustomConfig.get().set(player.getUniqueId() + " parent:", GodlyParent.get(player.getUniqueId()));
-        CustomConfig.get().set(player.getUniqueId() + " rolls:", NumberOfRolls.get(player.getUniqueId()));
+
+        if(!player.hasPlayedBefore()){
+            CustomConfig.get().addDefault(player.getUniqueId() + " level:", PlayerLevel.get(player.getUniqueId()));
+            CustomConfig.get().addDefault(player.getUniqueId() + " parent:", GodlyParent.get(player.getUniqueId()));
+            CustomConfig.get().addDefault(player.getUniqueId() + " rolls:", NumberOfRolls.get(player.getUniqueId()));
+        } else{
+            CustomConfig.get().set(player.getUniqueId() + " level:", PlayerLevel.get(player.getUniqueId()));
+            CustomConfig.get().set(player.getUniqueId() + " parent:", GodlyParent.get(player.getUniqueId()));
+            CustomConfig.get().set(player.getUniqueId() + " rolls:", NumberOfRolls.get(player.getUniqueId()));
+        }
         CustomConfig.get().options().copyDefaults(true);
         CustomConfig.save();
     }
