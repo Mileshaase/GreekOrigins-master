@@ -1,5 +1,6 @@
 package com.magister.greekorigins.events.greekdemigodevents;
 
+import com.magister.greekorigins.events.generalevents.RollEvents;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -82,6 +83,8 @@ public class ChildOfApollo implements Listener {
                     player.addPotionEffect(cooldown);
                 }
             }
+        } else {
+            RollEvents.hasNotTheGodYoureLookingFor = true;
         }
     }
 
@@ -129,6 +132,8 @@ public class ChildOfApollo implements Listener {
                             player.addPotionEffect(cooldown);
                         }
                     }
+                } else {
+                    RollEvents.hasNotTheGodYoureLookingFor = true;
                 }
             }
         }

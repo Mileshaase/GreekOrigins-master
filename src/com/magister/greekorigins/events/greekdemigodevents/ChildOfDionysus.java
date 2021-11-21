@@ -1,5 +1,6 @@
 package com.magister.greekorigins.events.greekdemigodevents;
 
+import com.magister.greekorigins.events.generalevents.RollEvents;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
@@ -45,6 +46,8 @@ public class ChildOfDionysus implements Listener {
                     }
                 }
             }
+        } else {
+            RollEvents.hasNotTheGodYoureLookingFor = true;
         }
     }
 
@@ -56,6 +59,8 @@ public class ChildOfDionysus implements Listener {
                 player.addPotionEffect(strength);
                 player.addPotionEffect(absorption);
             }
+        } else {
+            RollEvents.hasNotTheGodYoureLookingFor = true;
         }
     }
 
@@ -97,6 +102,8 @@ public class ChildOfDionysus implements Listener {
                             player.addPotionEffect(cooldown);
                         }
                     }
+                } else {
+                    RollEvents.hasNotTheGodYoureLookingFor = true;
                 }
             }
         }

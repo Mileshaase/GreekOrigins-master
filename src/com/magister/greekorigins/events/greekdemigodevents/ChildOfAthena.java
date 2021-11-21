@@ -1,6 +1,7 @@
 package com.magister.greekorigins.events.greekdemigodevents;
 
 import com.magister.greekorigins.GreekOrigins;
+import com.magister.greekorigins.events.generalevents.RollEvents;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.*;
@@ -43,6 +44,8 @@ public class ChildOfAthena implements Listener {
             } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
                 player.setLevel(10);
             }
+        } else {
+            RollEvents.hasNotTheGodYoureLookingFor = true;
         }
     }
 
@@ -61,6 +64,8 @@ public class ChildOfAthena implements Listener {
             } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
                 player.setLevel(10);
             }
+        } else {
+            RollEvents.hasNotTheGodYoureLookingFor = true;
         }
     }
 
@@ -86,6 +91,8 @@ public class ChildOfAthena implements Listener {
                     }
                 }
             }
+        } else {
+            RollEvents.hasNotTheGodYoureLookingFor = true;
         }
     }
 
@@ -179,6 +186,8 @@ public class ChildOfAthena implements Listener {
                             }
                         }
                     }
+                } else {
+                    RollEvents.hasNotTheGodYoureLookingFor = true;
                 }
             }
         }

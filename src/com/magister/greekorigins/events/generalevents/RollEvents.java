@@ -12,6 +12,8 @@ public class RollEvents implements Listener {
     public static HashMap<UUID, String> GodlyParent = new HashMap<>();
     public static HashMap<UUID, Integer> NumberOfRolls = new HashMap<>();
 
+    public static boolean hasNotTheGodYoureLookingFor;
+
     public static void RandomGreekRoll(Player player){
         Random rand = new Random();
         int chosenGod = rand.nextInt(100);

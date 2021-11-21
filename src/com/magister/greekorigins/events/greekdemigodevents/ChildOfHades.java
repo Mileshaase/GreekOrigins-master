@@ -1,6 +1,7 @@
 package com.magister.greekorigins.events.greekdemigodevents;
 
 import com.magister.greekorigins.GreekOrigins;
+import com.magister.greekorigins.events.generalevents.RollEvents;
 import org.bukkit.DyeColor;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -33,6 +34,8 @@ public class ChildOfHades implements Listener {
         assert player != null;
         if (GodlyParent.get(player.getUniqueId()).equals("Hades")) {
             event.setCancelled(true);
+        } else {
+            RollEvents.hasNotTheGodYoureLookingFor = true;
         }
         if(Objects.equals(entity.getCustomName(), "Zambie")){
             if(Objects.equals(Objects.requireNonNull(event.getTarget()).getCustomName(), "Zambie")){
@@ -55,6 +58,8 @@ public class ChildOfHades implements Listener {
                     }
                 }
             }
+        } else {
+            RollEvents.hasNotTheGodYoureLookingFor = true;
         }
     }
 
@@ -140,6 +145,8 @@ public class ChildOfHades implements Listener {
                             player.addPotionEffect(cooldown);
                         }
                     }
+                } else {
+                    RollEvents.hasNotTheGodYoureLookingFor = true;
                 }
             }
         }

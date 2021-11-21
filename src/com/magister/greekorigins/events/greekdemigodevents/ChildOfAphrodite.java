@@ -1,5 +1,6 @@
 package com.magister.greekorigins.events.greekdemigodevents;
 
+import com.magister.greekorigins.events.generalevents.RollEvents;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.block.Block;
@@ -38,6 +39,8 @@ public class ChildOfAphrodite implements Listener {
                     ((Mob) i).setTarget((LivingEntity) event.getDamager());
                 }
             }
+        } else {
+            RollEvents.hasNotTheGodYoureLookingFor = true;
         }
     }
 
@@ -107,6 +110,8 @@ public class ChildOfAphrodite implements Listener {
                             }
                          }
                     }
+                }else {
+                    RollEvents.hasNotTheGodYoureLookingFor = true;
                 }
             }
         }

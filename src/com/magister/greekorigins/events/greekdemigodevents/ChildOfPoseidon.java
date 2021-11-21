@@ -1,6 +1,7 @@
 package com.magister.greekorigins.events.greekdemigodevents;
 
 import com.magister.greekorigins.GreekOrigins;
+import com.magister.greekorigins.events.generalevents.RollEvents;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
@@ -42,6 +43,8 @@ public class ChildOfPoseidon implements Listener {
         if(event.getCause() == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION || event.getCause() == EntityDamageEvent.DamageCause.BLOCK_EXPLOSION) {
             if(GodlyParent.get(player.getUniqueId()).equals("Poseidon")){
                 event.setCancelled(true);
+            }  else {
+                RollEvents.hasNotTheGodYoureLookingFor = true;
             }
         }
     }
@@ -55,6 +58,8 @@ public class ChildOfPoseidon implements Listener {
             if(entity.getType() == EntityType.DROWNED || entity.getType() == EntityType.GUARDIAN || entity.getType() == EntityType.ELDER_GUARDIAN){
                 event.setCancelled(true);
             }
+        } else {
+            RollEvents.hasNotTheGodYoureLookingFor = true;
         }
         if(entity.getType() == EntityType.GUARDIAN || entity.getType() == EntityType.ELDER_GUARDIAN){
             if(player.getType() == EntityType.DROWNED){
@@ -97,7 +102,8 @@ public class ChildOfPoseidon implements Listener {
                     }
                 }
             }
-
+        } else {
+            RollEvents.hasNotTheGodYoureLookingFor = true;
         }
     }
 
@@ -119,6 +125,8 @@ public class ChildOfPoseidon implements Listener {
                     }
                 }
             }
+        }  else {
+            RollEvents.hasNotTheGodYoureLookingFor = true;
         }
     }
 
@@ -325,6 +333,8 @@ public class ChildOfPoseidon implements Listener {
             }else if (event.getAction() == Action.LEFT_CLICK_AIR) {
                 player.getWorld().setWeatherDuration(1);
             }
+        } else {
+            RollEvents.hasNotTheGodYoureLookingFor = true;
         }
     }
 

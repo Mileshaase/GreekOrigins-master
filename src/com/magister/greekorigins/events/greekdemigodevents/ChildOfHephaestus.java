@@ -1,5 +1,6 @@
 package com.magister.greekorigins.events.greekdemigodevents;
 
+import com.magister.greekorigins.events.generalevents.RollEvents;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.entity.*;
@@ -65,6 +66,8 @@ public class ChildOfHephaestus implements Listener {
                     }
                 }
             }
+        } else {
+            RollEvents.hasNotTheGodYoureLookingFor = true;
         }
     }
 
@@ -73,6 +76,8 @@ public class ChildOfHephaestus implements Listener {
         Player player = event.getPlayer();
         if(GodlyParent.get(player.getUniqueId()).equals("Hephaestus")) {
             player.addPotionEffect(fireResist);
+        } else {
+            RollEvents.hasNotTheGodYoureLookingFor = true;
         }
     }
 
@@ -90,6 +95,8 @@ public class ChildOfHephaestus implements Listener {
                     }
                 }
             }
+        } else {
+            RollEvents.hasNotTheGodYoureLookingFor = true;
         }
     }
 
@@ -146,6 +153,8 @@ public class ChildOfHephaestus implements Listener {
                             player.addPotionEffect(cooldown);
                         }
                     }
+                } else {
+                    RollEvents.hasNotTheGodYoureLookingFor = true;
                 }
             }
         }

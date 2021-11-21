@@ -1,6 +1,7 @@
 package com.magister.greekorigins.events.greekdemigodevents;
 
 import com.magister.greekorigins.GreekOrigins;
+import com.magister.greekorigins.events.generalevents.RollEvents;
 import org.bukkit.DyeColor;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -82,6 +83,8 @@ public class ChildOfArtemis implements Listener {
                     player.addPotionEffect(cooldown);
                 }
             }
+        } else {
+            RollEvents.hasNotTheGodYoureLookingFor = true;
         }
     }
 
@@ -203,6 +206,8 @@ public class ChildOfArtemis implements Listener {
                             player.addPotionEffect(cooldown);
                         }
                     }
+                } else {
+                    RollEvents.hasNotTheGodYoureLookingFor = true;
                 }
             }
         }

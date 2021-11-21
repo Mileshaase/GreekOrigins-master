@@ -1,5 +1,6 @@
 package com.magister.greekorigins.events.greekdemigodevents;
 
+import com.magister.greekorigins.events.generalevents.RollEvents;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -41,6 +42,8 @@ public class ChildOfAres implements Listener {
                     player.addPotionEffect(strength);
                 }
             }
+        } else {
+            RollEvents.hasNotTheGodYoureLookingFor = true;
         }
     }
 
@@ -53,6 +56,8 @@ public class ChildOfAres implements Listener {
             PotionEffect regen = new PotionEffect(PotionEffectType.REGENERATION, 200, 1, true, true, true);
             player.addPotionEffect(absorption);
             player.addPotionEffect(regen);
+        } else {
+            RollEvents.hasNotTheGodYoureLookingFor = true;
         }
     }
 
@@ -90,6 +95,8 @@ public class ChildOfAres implements Listener {
                         hasShield = !hasShield;
                         giftShield(player);
                     }
+                } else {
+                    RollEvents.hasNotTheGodYoureLookingFor = true;
                 }
             }
         }

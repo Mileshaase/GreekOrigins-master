@@ -1,5 +1,6 @@
 package com.magister.greekorigins.events.greekdemigodevents;
 
+import com.magister.greekorigins.events.generalevents.RollEvents;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -28,6 +29,8 @@ public class ChildOfDemeter implements Listener {
         Player player = event.getPlayer();
         if(GodlyParent.get(player.getUniqueId()).equals("Demeter")){
             player.addPotionEffect(negateHunger);
+        } else {
+            RollEvents.hasNotTheGodYoureLookingFor = true;
         }
     }
 
@@ -61,6 +64,8 @@ public class ChildOfDemeter implements Listener {
                     }
                 }
             }
+        } else {
+            RollEvents.hasNotTheGodYoureLookingFor = true;
         }
     }
 

@@ -1,5 +1,6 @@
 package com.magister.greekorigins.events.greekdemigodevents;
 
+import com.magister.greekorigins.events.generalevents.RollEvents;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
@@ -34,6 +35,8 @@ public class ChildOfZeus implements Listener {
             event.setDamage(4);
             if(GodlyParent.get(player.getUniqueId()).equals("Zeus")){
                 event.setCancelled(true);
+            } else {
+                RollEvents.hasNotTheGodYoureLookingFor = true;
             }
         }
     }
@@ -53,6 +56,8 @@ public class ChildOfZeus implements Listener {
                     }
                 }
             }
+        } else {
+            RollEvents.hasNotTheGodYoureLookingFor = true;
         }
     }
 
@@ -103,6 +108,8 @@ public class ChildOfZeus implements Listener {
                             player.addPotionEffect(cooldown);
                         }
                     }
+                } else {
+                    RollEvents.hasNotTheGodYoureLookingFor = true;
                 }
             }
         }
