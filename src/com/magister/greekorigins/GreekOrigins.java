@@ -39,6 +39,7 @@ public class GreekOrigins extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new RollEvents(), this);
         getServer().getPluginManager().registerEvents(new GeneralEvents(), this);
         getServer().getPluginManager().registerEvents(new PlayerParties(), this);
+        getServer().getPluginManager().registerEvents(new WeaponEvents(), this);
 
         Commands commands = new Commands();
         GreekGodCommands greekGodCommands = new GreekGodCommands();
