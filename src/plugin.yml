@@ -88,12 +88,7 @@ commands:
     description: Sets players parent to Chronos
     usage: /<command> <player>
 
-  givewine:
-    description: Gives Player Wine Item
-    usage: /<command>
-  givemead:
-    description: Gives Player Mead Item
-    usage: /<command>
+
 
   createparty:
     description: Creates a party for a player
@@ -115,4 +110,20 @@ commands:
     usage: /<command>
   party:
     description: Displays the players current party
+    usage: /<command>
+
+  giveambrosia:
+    description: Gives Ambrosia
+    usage: /<command>
+  givewine:
+    description: Gives Player Wine Item
+    usage: /<command>
+  givemead:
+    description: Gives Player Mead Item
+    usage: /<command>
+  givehelmofdarkness:
+    description: Gives Helm of Darkness
+    usage: /<command>
+  giveposeidonstrident:
+    description: Gives Poseidons Trident
     usage: /<command>
