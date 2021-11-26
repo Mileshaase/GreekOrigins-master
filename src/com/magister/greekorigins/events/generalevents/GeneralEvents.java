@@ -23,6 +23,7 @@ import static com.magister.greekorigins.events.generalevents.RollEvents.*;
 public class GeneralEvents implements Listener {
 
     public static final PotionEffect drunk = new PotionEffect(PotionEffectType.CONFUSION, 1200, 255, true, false, true);
+    private static final PotionEffect cooldown = new PotionEffect(PotionEffectType.LUCK, 1200, 0, true, false, true);
 
     @EventHandler
     public static void lightningStrikeLightFire(BlockIgniteEvent event){
@@ -86,6 +87,14 @@ public class GeneralEvents implements Listener {
             player.sendTitle("Your mythology has been reset", ChatColor.GOLD + "Good Luck!", 1, 50, 1);
             PlayerLevel.put(player.getUniqueId(), 0.0);
             NumberOfRolls.put(player.getUniqueId(), NumberOfRolls.get(player.getUniqueId()) + 3);
+        }
+    }
+
+    @EventHandler
+    public void onDrinkMilk(PlayerItemConsumeEvent event){
+        Player player = event.getPlayer();
+        if(player.hasPotionEffect(PotionEffectType.LUCK)){
+            player.addPotionEffect(cooldown);
         }
     }
 }

@@ -43,7 +43,7 @@ public class ChildOfHephaestus implements Listener {
         Player player = event.getPlayer();
         Random rand = new Random();
         if(GodlyParent.get(player.getUniqueId()).equals("Hephaestus")){
-            if(event.getBlock().getType().equals(Material.IRON_ORE) || event.getBlock().getType().equals(Material.COAL_ORE) || event.getBlock().getType().equals(Material.DIAMOND_ORE) || event.getBlock().getType().equals(Material.GOLD_ORE) || event.getBlock().getType().equals(Material.EMERALD_ORE) || event.getBlock().getType().equals(Material.LAPIS_ORE) || event.getBlock().getType().equals(Material.LAPIS_ORE) || event.getBlock().getType().equals(Material.NETHER_GOLD_ORE) || event.getBlock().getType().equals(Material.NETHER_QUARTZ_ORE) || event.getBlock().getType().equals(Material.REDSTONE_ORE)){
+            if(event.getBlock().getType().equals(Material.IRON_ORE) || event.getBlock().getType().equals(Material.COAL_ORE) || event.getBlock().getType().equals(Material.DIAMOND_ORE) || event.getBlock().getType().equals(Material.GOLD_ORE) || event.getBlock().getType().equals(Material.EMERALD_ORE) || event.getBlock().getType().equals(Material.LAPIS_ORE) || event.getBlock().getType().equals(Material.NETHER_GOLD_ORE) || event.getBlock().getType().equals(Material.NETHER_QUARTZ_ORE) || event.getBlock().getType().equals(Material.REDSTONE_ORE)){
                 int  n = rand.nextInt(100) + 1;
                 ItemStack drops = (ItemStack) event.getBlock().getDrops();
                 int amount = 0;

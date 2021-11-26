@@ -37,11 +37,6 @@ public class ChildOfHades implements Listener {
         } else {
             RollEvents.hasNotTheGodYoureLookingFor = true;
         }
-        if(Objects.equals(entity.getCustomName(), "Zambie")){
-            if(Objects.equals(Objects.requireNonNull(event.getTarget()).getCustomName(), "Zambie")){
-                event.setCancelled(true);
-            }
-        }
     }
 
     @EventHandler

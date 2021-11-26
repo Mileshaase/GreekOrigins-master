@@ -6,6 +6,7 @@ import com.magister.greekorigins.events.greekdemigodevents.*;
 import com.magister.greekorigins.events.inventoryevents.RollForGodInventoryEvents;
 import com.magister.greekorigins.files.CustomConfig;
 import com.magister.greekorigins.items.GeneralItemsManager;
+import com.magister.greekorigins.items.GreekWeapons;
 import com.magister.greekorigins.items.InventoryItemsManager;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -16,6 +17,7 @@ public class GreekOrigins extends JavaPlugin {
     public void onEnable(){
         InventoryItemsManager.init();
         GeneralItemsManager.init();
+        GreekWeapons.init();
 
         getServer().getPluginManager().registerEvents(new ChildOfAphrodite(), this);
         getServer().getPluginManager().registerEvents(new ChildOfApollo(), this);
@@ -41,6 +43,7 @@ public class GreekOrigins extends JavaPlugin {
         Commands commands = new Commands();
         GreekGodCommands greekGodCommands = new GreekGodCommands();
         PartyCommands partyCommands = new PartyCommands();
+        ItemCommands itemCommands = new ItemCommands();
 
         getCommand("heal").setExecutor(commands);
         getCommand("feed").setExecutor(commands);
@@ -79,6 +82,12 @@ public class GreekOrigins extends JavaPlugin {
         getCommand("deny").setExecutor(partyCommands);
         getCommand("leaveParty").setExecutor(partyCommands);
         getCommand("party").setExecutor(partyCommands);
+
+        getCommand("giveAmbrosia").setExecutor(itemCommands);
+        getCommand("giveWine").setExecutor(itemCommands);
+        getCommand("giveMead").setExecutor(itemCommands);
+        getCommand("giveHelmOfDarkness").setExecutor(itemCommands);
+        getCommand("givePoseidonsTrident").setExecutor(itemCommands);
 
         getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[Greek Origins]: Functioning");
 
