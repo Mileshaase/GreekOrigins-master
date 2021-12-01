@@ -34,6 +34,8 @@ public class ChildOfDionysus implements Listener {
 
     @EventHandler
     public static void playerHitEntity(EntityDamageByEntityEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = (Player) event.getDamager();
         Entity attacked = event.getEntity();
         Random rand = new Random();
@@ -53,6 +55,8 @@ public class ChildOfDionysus implements Listener {
 
     @EventHandler
     public static void drunkenStrength(PlayerMoveEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = event.getPlayer();
         if(GodlyParent.get(player.getUniqueId()).equals("Dionysus")) {
             if (player.hasPotionEffect(nausea.getType())) {
@@ -66,6 +70,8 @@ public class ChildOfDionysus implements Listener {
 
     @EventHandler
     public static void playerLeftClick(PlayerInteractEvent event) {
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = event.getPlayer();
         if (player.isSneaking()) {
             if (event.getAction() == Action.LEFT_CLICK_AIR) {

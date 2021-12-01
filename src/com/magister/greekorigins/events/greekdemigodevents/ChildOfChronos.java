@@ -32,6 +32,8 @@ public class ChildOfChronos implements Listener {
 
     @EventHandler
     public static void playerHitEntity(EntityDamageByEntityEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = (Player) event.getDamager();
         Random rand = new Random();
         if(GodlyParent.get(player.getUniqueId()).equals("Chronos")){
@@ -53,6 +55,8 @@ public class ChildOfChronos implements Listener {
 
     @EventHandler
     public static void teleportAttack(PlayerInteractEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = event.getPlayer();
         if(player.isSneaking()) {
             if (event.getAction() == Action.LEFT_CLICK_AIR) {

@@ -30,6 +30,8 @@ public class ChildOfAres implements Listener {
     public static void onPlayerDealDamage(EntityDamageByEntityEvent event){
         Player player = (Player) event.getDamager();
         Random rand = new Random();
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         if(GodlyParent.get(player.getUniqueId()).equals("Ares")){
             int  n = rand.nextInt(100) + 1;
             if (n <= 10) {
@@ -49,6 +51,8 @@ public class ChildOfAres implements Listener {
 
     @EventHandler
     public static void onPlayerKill(PlayerDeathEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = event.getEntity().getKiller();
         assert player != null;
         if(GodlyParent.get(player.getUniqueId()).equals("Ares")){
@@ -63,6 +67,8 @@ public class ChildOfAres implements Listener {
 
     @EventHandler
     public static void giftOfStrength(PlayerInteractEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = event.getPlayer();
         if(player.isSneaking()) {
             if (event.getAction() == Action.LEFT_CLICK_AIR) {

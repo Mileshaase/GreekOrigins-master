@@ -30,6 +30,9 @@ public class ChildOfZeus implements Listener {
 
     @EventHandler
     public static void noLightningDamage(EntityDamageEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
+        assert event.getEntity().getType() == EntityType.PLAYER;
         Player player = (Player) event.getEntity();
         if(event.getCause() == EntityDamageEvent.DamageCause.LIGHTNING){
             event.setDamage(4);
@@ -43,6 +46,8 @@ public class ChildOfZeus implements Listener {
 
     @EventHandler
     public static void playerHitEntity(EntityDamageByEntityEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = (Player) event.getDamager();
         Entity attacked = event.getEntity();
         Random rand = new Random();
@@ -63,6 +68,8 @@ public class ChildOfZeus implements Listener {
 
     @EventHandler
     public static void playerRightClick(PlayerInteractEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = event.getPlayer();
         if(player.isSneaking()) {
             if (event.getAction() == Action.LEFT_CLICK_AIR) {

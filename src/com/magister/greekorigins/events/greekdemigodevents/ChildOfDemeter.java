@@ -26,6 +26,8 @@ public class ChildOfDemeter implements Listener {
 
     @EventHandler
     public static void negateHunger(PlayerMoveEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = event.getPlayer();
         if(GodlyParent.get(player.getUniqueId()).equals("Demeter")){
             player.addPotionEffect(negateHunger);
@@ -36,6 +38,8 @@ public class ChildOfDemeter implements Listener {
 
     @EventHandler
     public static void onLeftClickGrowth(PlayerInteractEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = event.getPlayer();
         if(GodlyParent.get(player.getUniqueId()).equals("Demeter")) {
             if (player.isSneaking()) {

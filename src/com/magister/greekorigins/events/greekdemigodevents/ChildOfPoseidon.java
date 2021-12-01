@@ -39,6 +39,9 @@ public class ChildOfPoseidon implements Listener {
 
     @EventHandler
     public static void noExplosiveDamage(EntityDamageEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
+        assert event.getEntity().getType() == EntityType.PLAYER;
         Player player = (Player) event.getEntity();
         if(event.getCause() == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION || event.getCause() == EntityDamageEvent.DamageCause.BLOCK_EXPLOSION) {
             if(GodlyParent.get(player.getUniqueId()).equals("Poseidon")){
@@ -51,6 +54,8 @@ public class ChildOfPoseidon implements Listener {
 
     @EventHandler
     public void onEntityTargetLivingEntity(EntityTargetLivingEntityEvent event) {
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player  = (Player) event.getTarget();
         Entity entity = event.getEntity();
         assert player != null;
@@ -75,6 +80,8 @@ public class ChildOfPoseidon implements Listener {
 
     @EventHandler
     public static void playerInWater(PlayerMoveEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = event.getPlayer();
         if(GodlyParent.get(player.getUniqueId()).equals("Poseidon")) {
             if (player.isInWater()) {
@@ -109,6 +116,8 @@ public class ChildOfPoseidon implements Listener {
 
     @EventHandler
     public static void playerHitEntity(EntityDamageByEntityEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = (Player) event.getDamager();
         Entity attacked = event.getEntity();
         Random rand = new Random();
@@ -132,6 +141,8 @@ public class ChildOfPoseidon implements Listener {
 
     @EventHandler
     public static void playerShiftRightClick(PlayerInteractEvent event) {
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = event.getPlayer();
         if (GodlyParent.get(player.getUniqueId()).equals("Poseidon")) {
             if (player.isSneaking()) {

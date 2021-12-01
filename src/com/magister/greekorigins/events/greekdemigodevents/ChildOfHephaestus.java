@@ -30,6 +30,9 @@ public class ChildOfHephaestus implements Listener {
 
     @EventHandler
     public static void noFireDamage(EntityDamageEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
+        assert event.getEntity().getType() == EntityType.PLAYER;
         Player player = (Player) event.getEntity();
         if(event.getCause() == EntityDamageEvent.DamageCause.FIRE || event.getCause() == EntityDamageEvent.DamageCause.FIRE_TICK){
             if(GodlyParent.get(player.getUniqueId()).equals("Hephaestus")){
@@ -40,6 +43,8 @@ public class ChildOfHephaestus implements Listener {
 
     @EventHandler
     public static void playerBreakOre(BlockBreakEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = event.getPlayer();
         Random rand = new Random();
         if(GodlyParent.get(player.getUniqueId()).equals("Hephaestus")){
@@ -73,6 +78,8 @@ public class ChildOfHephaestus implements Listener {
 
     @EventHandler
     public static void playerNoFireDamage(PlayerMoveEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = event.getPlayer();
         if(GodlyParent.get(player.getUniqueId()).equals("Hephaestus")) {
             player.addPotionEffect(fireResist);
@@ -83,6 +90,8 @@ public class ChildOfHephaestus implements Listener {
 
     @EventHandler
     public static void playerHitEntity(EntityDamageByEntityEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = (Player) event.getDamager();
         Entity attacked = event.getEntity();
         Random rand = new Random();
@@ -102,6 +111,8 @@ public class ChildOfHephaestus implements Listener {
 
     @EventHandler
     public static void playerRightClick(PlayerInteractEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = event.getPlayer();
         if(player.isSneaking()) {
             if (event.getAction() == Action.LEFT_CLICK_AIR) {

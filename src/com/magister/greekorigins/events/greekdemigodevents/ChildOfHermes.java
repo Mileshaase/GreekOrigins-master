@@ -4,6 +4,7 @@ import com.magister.greekorigins.events.generalevents.RollEvents;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.BlockFace;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -15,6 +16,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import static com.magister.greekorigins.events.generalevents.PlayerLevelEvents.PlayerLevel;
 import static com.magister.greekorigins.events.generalevents.RollEvents.GodlyParent;
 
 public class ChildOfHermes implements Listener {
@@ -27,6 +29,9 @@ public class ChildOfHermes implements Listener {
 
     @EventHandler
     public static void negateFallDamage(EntityDamageEvent event) {
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
+        assert event.getEntity().getType() == EntityType.PLAYER;
         Player player = (Player) event.getEntity();
         if (GodlyParent.get(player.getUniqueId()).equals("Hermes")) {
             if (event.getCause().equals(EntityDamageEvent.DamageCause.FALL) || event.getCause().equals(EntityDamageEvent.DamageCause.FLY_INTO_WALL)) {
@@ -39,6 +44,8 @@ public class ChildOfHermes implements Listener {
 
     @EventHandler
     public static void sped(PlayerMoveEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = event.getPlayer();
         if (GodlyParent.get(player.getUniqueId()).equals("Hermes")) {
             player.addPotionEffect(speed);
@@ -51,6 +58,8 @@ public class ChildOfHermes implements Listener {
 
     @EventHandler
     public static void playerRightClick(PlayerInteractEvent event) {
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = event.getPlayer();
         if (GodlyParent.get(player.getUniqueId()).equals("Hermes")) {
             if (event.getItem() == null) {
@@ -74,6 +83,8 @@ public class ChildOfHermes implements Listener {
 
     @EventHandler
     public static void glideWhileFalling(PlayerMoveEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = event.getPlayer();
         Location loc1 = player.getLocation();
         Location loc2 = player.getLocation();
@@ -91,6 +102,8 @@ public class ChildOfHermes implements Listener {
 
     @EventHandler
     public static void EntityToggleGlideEvent(EntityToggleGlideEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = (Player) event.getEntity();
         if(GodlyParent.get(player.getUniqueId()).equals("Hermes")) {
             if(player.getLocation().getBlock().getRelative(BlockFace.DOWN).getType() == Material.AIR) {

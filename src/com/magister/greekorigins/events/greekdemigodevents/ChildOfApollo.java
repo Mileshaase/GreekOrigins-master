@@ -30,6 +30,8 @@ public class ChildOfApollo implements Listener {
 
     @EventHandler
     public static void onBowFire(EntityShootBowEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = (Player) event.getEntity();
         if(GodlyParent.get(player.getUniqueId()).equals("Apollo")){
             event.setConsumeItem(false);
@@ -90,6 +92,8 @@ public class ChildOfApollo implements Listener {
 
     @EventHandler
     public static void solarFlare(PlayerInteractEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         if (event.getAction() == Action.LEFT_CLICK_AIR) {
             Player player = event.getPlayer();
             if(player.isSneaking()){

@@ -2,7 +2,6 @@ package com.magister.greekorigins.events.greekdemigodevents;
 
 import com.magister.greekorigins.GreekOrigins;
 import com.magister.greekorigins.events.generalevents.RollEvents;
-import org.bukkit.DyeColor;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.*;
@@ -29,6 +28,8 @@ public class ChildOfHades implements Listener {
 
     @EventHandler
     public void onEntityTargetLivingEntity(EntityTargetLivingEntityEvent event) {
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player  = (Player) event.getTarget();
         Entity entity = event.getEntity();
         assert player != null;
@@ -41,6 +42,8 @@ public class ChildOfHades implements Listener {
 
     @EventHandler
     public static void playerHitEntity(EntityDamageByEntityEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = (Player) event.getDamager();
         Entity attacked = event.getEntity();
         Random rand = new Random();
@@ -60,6 +63,8 @@ public class ChildOfHades implements Listener {
 
     @EventHandler
     public static void playerRightClick(PlayerInteractEvent event) {
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = event.getPlayer();
         if(player.isSneaking()){
             if (event.getAction() == Action.LEFT_CLICK_BLOCK) {

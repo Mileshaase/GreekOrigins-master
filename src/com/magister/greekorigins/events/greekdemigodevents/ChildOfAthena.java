@@ -31,6 +31,8 @@ public class ChildOfAthena implements Listener {
 
     @EventHandler
     public static void infiniteLevels(EnchantItemEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = event.getEnchanter();
         if(GodlyParent.get(player.getUniqueId()).equals("Athena")){
             if (PlayerLevel.get(player.getUniqueId()) >= 50) {
@@ -52,6 +54,8 @@ public class ChildOfAthena implements Listener {
     @EventHandler
     public static void infiniteLevels(PlayerMoveEvent event){
         Player player = event.getPlayer();
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         if(GodlyParent.get(player.getUniqueId()).equals("Athena")){
             if (PlayerLevel.get(player.getUniqueId()) >= 50) {
                 player.setLevel(30);
@@ -74,6 +78,8 @@ public class ChildOfAthena implements Listener {
         Player player = (Player) event.getDamager();
         Player attacked = (Player) event.getEntity();
         Random rand = new Random();
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         if(GodlyParent.get(player.getUniqueId()).equals("Athena")){
             int  n = rand.nextInt(100) + 1;
             if(PlayerLevel.get(player.getUniqueId()) > 0) {
@@ -99,6 +105,8 @@ public class ChildOfAthena implements Listener {
     @EventHandler
     public static void playerRightClick(PlayerInteractEvent event){
         Player player = event.getPlayer();
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         if(player.isSneaking()) {
             if (event.getAction() == Action.LEFT_CLICK_AIR) {
                 if (GodlyParent.get(player.getUniqueId()).equals("Athena")) {
@@ -108,16 +116,8 @@ public class ChildOfAthena implements Listener {
                                 List<Entity> players = player.getNearbyEntities(30, 10, 30);
                                 for (Entity i : players) {
                                     if ((Party.get(player.getUniqueId()) != (Party.get(i.getUniqueId()))) || (Party.get(i.getUniqueId()) == null) || (Party.get(i.getUniqueId()) == "1")) {
-                                        ItemStack item = ((Player) i).getInventory().getItemInMainHand();
-                                        ((Player) i).getInventory().remove(((Player) i).getInventory().getItemInMainHand());
                                         ((Player) i).sendTitle("You've been disarmed!", "", 50, 50, 50);
-                                        new BukkitRunnable() {
-                                            @Override
-                                            public void run() {
-                                                // What you want to schedule goes here
-                                                ((Player) i).getInventory().addItem(item);
-                                            }
-                                        }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
+                                        ((Player) i).dropItem(true);
                                     }
                                 }
                                 player.addPotionEffect(cooldown);
@@ -125,16 +125,8 @@ public class ChildOfAthena implements Listener {
                                 List<Entity> players = player.getNearbyEntities(20, 10, 20);
                                 for (Entity i : players) {
                                     if ((Party.get(player.getUniqueId()) != (Party.get(i.getUniqueId()))) || (Party.get(i.getUniqueId()) == null) || (Party.get(i.getUniqueId()) == "1")) {
-                                        ItemStack item = ((Player) i).getInventory().getItemInMainHand();
-                                        ((Player) i).getInventory().remove(((Player) i).getInventory().getItemInMainHand());
+                                        ((Player) i).dropItem(true);
                                         ((Player) i).sendTitle("You've been disarmed!", "", 50, 50, 50);
-                                        new BukkitRunnable() {
-                                            @Override
-                                            public void run() {
-                                                // What you want to schedule goes here
-                                                ((Player) i).getInventory().addItem(item);
-                                            }
-                                        }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
                                     }
                                 }
                                 player.addPotionEffect(cooldown);
@@ -142,46 +134,22 @@ public class ChildOfAthena implements Listener {
                                 List<Entity> players = player.getNearbyEntities(10, 10, 10);
                                 for (Entity i : players) {
                                     if ((Party.get(player.getUniqueId()) != (Party.get(i.getUniqueId()))) || (Party.get(i.getUniqueId()) == null) || (Party.get(i.getUniqueId()) == "1")) {
-                                        ItemStack item = ((Player) i).getInventory().getItemInMainHand();
-                                        ((Player) i).getInventory().remove(((Player) i).getInventory().getItemInMainHand());
                                         ((Player) i).sendTitle("You've been disarmed!", "", 50, 50, 50);
-                                        new BukkitRunnable() {
-                                            @Override
-                                            public void run() {
-                                                // What you want to schedule goes here
-                                                ((Player) i).getInventory().addItem(item);
-                                            }
-                                        }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
+                                        ((Player) i).dropItem(true);
                                     }
                                 }
                                 player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 20) {
                                 Player disarmed = (Player) getNearestEntityInSight(player, 10);
                                 assert disarmed != null;
-                                ItemStack item = disarmed.getInventory().getItemInMainHand();
-                                disarmed.getInventory().remove(disarmed.getInventory().getItemInMainHand());
                                 ((Player) disarmed).sendTitle("You've been disarmed!", "", 50, 50, 50);
-                                new BukkitRunnable() {
-                                    @Override
-                                    public void run() {
-                                        // What you want to schedule goes here
-                                        disarmed.getInventory().addItem(item);
-                                    }
-                                }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
+                                ((Player) disarmed).dropItem(true);
                                 player.addPotionEffect(cooldown);
                             } else if (PlayerLevel.get(player.getUniqueId()) >= 10) {
                                 Player disarmed = (Player) getNearestEntityInSight(player, 5);
                                 assert disarmed != null;
-                                ItemStack item = disarmed.getInventory().getItemInMainHand();
-                                disarmed.getInventory().remove(disarmed.getInventory().getItemInMainHand());
                                 ((Player) disarmed).sendTitle("You've been disarmed!", "", 50, 50, 50);
-                                new BukkitRunnable() {
-                                    @Override
-                                    public void run() {
-                                        // What you want to schedule goes here
-                                        disarmed.getInventory().addItem(item);
-                                    }
-                                }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
+                                ((Player) disarmed).dropItem(true);
                                 player.addPotionEffect(cooldown);
                             }
                         }

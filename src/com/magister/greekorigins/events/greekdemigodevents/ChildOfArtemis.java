@@ -28,6 +28,8 @@ public class ChildOfArtemis implements Listener {
 
     @EventHandler
     public static void onBowFire(EntityShootBowEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = (Player) event.getEntity();
         if(GodlyParent.get(player.getUniqueId()).equals("Artemis")){
             event.setConsumeItem(false);
@@ -90,6 +92,8 @@ public class ChildOfArtemis implements Listener {
 
     @EventHandler
     public static void playerRightClick(PlayerInteractEvent event) {
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = event.getPlayer();
         if(player.isSneaking()){
             if (event.getAction() == Action.LEFT_CLICK_AIR) {

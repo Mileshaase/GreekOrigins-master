@@ -29,6 +29,8 @@ public class ChildOfAphrodite implements Listener {
 
     @EventHandler
     public static void reTargetEvent(EntityDamageByEntityEvent event){
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = (Player) event.getEntity();
         if(GodlyParent.get(player.getUniqueId()).equals("Aphrodite")){
             List<Entity> players = player.getNearbyEntities(10, 10, 10);
@@ -46,6 +48,8 @@ public class ChildOfAphrodite implements Listener {
 
     @EventHandler
     public static void playerLeftClick(PlayerInteractEvent event) {
+        assert GodlyParent != null;
+        assert PlayerLevel != null;
         Player player = event.getPlayer();
         if (player.isSneaking()) {
             if (event.getAction() == Action.LEFT_CLICK_AIR) {
