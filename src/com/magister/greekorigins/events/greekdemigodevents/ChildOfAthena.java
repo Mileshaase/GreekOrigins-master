@@ -1,10 +1,11 @@
 package com.magister.greekorigins.events.greekdemigodevents;
 
-import com.magister.greekorigins.GreekOrigins;
 import com.magister.greekorigins.events.generalevents.RollEvents;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
-import org.bukkit.entity.*;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -12,10 +13,8 @@ import org.bukkit.event.enchantment.EnchantItemEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,15 +84,7 @@ public class ChildOfAthena implements Listener {
             if(PlayerLevel.get(player.getUniqueId()) > 0) {
                 if (n <= 10){
                     if (Party.get(player.getUniqueId()) != (Party.get(attacked.getUniqueId())) || (Party.get(attacked.getUniqueId()) == null) || (Party.get(attacked.getUniqueId()) == "1")) {
-                        ItemStack item = attacked.getInventory().getItemInMainHand();
-                        attacked.getInventory().remove(attacked.getInventory().getItemInMainHand());
-                        new BukkitRunnable() {
-                            @Override
-                            public void run() {
-                                // What you want to schedule goes here
-                                attacked.getInventory().addItem(item);
-                            }
-                        }.runTaskLater(GreekOrigins.getPlugin(GreekOrigins.class), 500);
+                        ((Player) attacked).dropItem(true);
                     }
                 }
             }
